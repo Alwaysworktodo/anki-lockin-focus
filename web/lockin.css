@@ -1,0 +1,868 @@
+/* --- Anki Lock-In CSS Stylesheet --- */
+
+:root {
+  /* Default Theme: Dark (Maximum lock-in) */
+  --lockin-bg: rgba(15, 15, 25, 0.65);
+  --lockin-border: rgba(255, 255, 255, 0.12);
+  --lockin-text: #f0f0f5;
+  --lockin-text-muted: #a0a0b0;
+  
+  /* HSL Neon Colors */
+  --color-green: hsla(160, 90%, 50%, 0.85);
+  --color-yellow: hsla(45, 95%, 50%, 0.85);
+  --color-red: hsla(0, 95%, 55%, 0.85);
+  --color-blue-shield: hsla(210, 100%, 55%, 0.85);
+  --color-streak: hsla(32, 100%, 55%, 0.85);
+  
+  --health-bar-color: var(--color-green);
+}
+
+/* Theme Differentiators */
+body.lockin-light-theme {
+  --lockin-bg: rgba(240, 240, 245, 0.8);
+  --lockin-border: rgba(0, 0, 0, 0.1);
+  --lockin-text: #202028;
+  --lockin-text-muted: #555565;
+}
+
+body.lockin-dark-theme {
+  --lockin-bg: rgba(15, 15, 25, 0.65);
+  --lockin-border: rgba(255, 255, 255, 0.12);
+  --lockin-text: #f0f0f5;
+  --lockin-text-muted: #a0a0b0;
+}
+
+body.lockin-light-theme #lockin-bar {
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
+}
+
+body.lockin-dark-theme #lockin-bar {
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Master Container - Glassmorphic Toolbar */
+#lockin-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 54px;
+  background: var(--lockin-bg);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+  box-sizing: border-box;
+  color: var(--lockin-text);
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+/* TOP POSITION STYLES */
+#lockin-bar.lockin-bar-top {
+  top: 0;
+  border-bottom: 1px solid var(--lockin-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.lockin-active.lockin-bar-top.lockin-main {
+  padding-top: 64px !important;
+  padding-bottom: 0 !important;
+}
+
+/* BOTTOM POSITION STYLES */
+#lockin-bar.lockin-bar-bottom {
+  bottom: 0;
+  border-top: 1px solid var(--lockin-border);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.lockin-active.lockin-bar-bottom.lockin-main {
+  padding-bottom: 74px !important;
+  padding-top: 0 !important;
+}
+
+body.lockin-active.lockin-bar-bottom.lockin-main #qa,
+body.lockin-active.lockin-bar-bottom.lockin-main #card,
+body.lockin-active.lockin-bar-bottom.lockin-main .card {
+  padding-bottom: 74px !important;
+}
+
+body.lockin-active.lockin-bar-top.lockin-main {
+  padding-top: 74px !important;
+  padding-bottom: 0 !important;
+}
+
+body.lockin-active.lockin-bar-top.lockin-main #qa,
+body.lockin-active.lockin-bar-top.lockin-main #card,
+body.lockin-active.lockin-bar-top.lockin-main .card {
+  padding-top: 74px !important;
+}
+
+/* When the custom answer buttons row is visible, push the card content
+   up so the buttons do not overlap the answer text. */
+body.lockin-active.lockin-ans-shown.lockin-bar-bottom #qa,
+body.lockin-active.lockin-ans-shown.lockin-bar-bottom #card,
+body.lockin-active.lockin-ans-shown.lockin-bar-bottom .card {
+  padding-bottom: 140px !important;
+}
+
+/* Left Section: Health Bar Wrapper */
+.lockin-left-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-grow: 1;
+  max-width: 60%;
+}
+
+.lockin-health-bar-container {
+  position: relative;
+  height: 18px;
+  background: rgba(128, 128, 128, 0.08);
+  border-radius: 9px;
+  border: 1px solid rgba(128, 128, 128, 0.15);
+  flex-grow: 1;
+  overflow: hidden;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* The actual changing health segment */
+#lockin-health-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, var(--health-bar-color) 20%, var(--health-bar-color) 100%);
+  border-radius: 8px;
+  transition: width 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease;
+  box-shadow: 0 0 8px var(--health-bar-color);
+}
+
+/* Focus Shield Overlay Grid effect when shield active */
+#lockin-shield-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 4px,
+    rgba(30, 144, 255, 0.4) 4px,
+    rgba(30, 144, 255, 0.4) 8px
+  );
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  animation: shield-slide 10s linear infinite;
+  box-shadow: inset 0 0 8px rgba(0, 191, 255, 0.8);
+}
+
+.lockin-shield-active #lockin-shield-overlay {
+  opacity: 1;
+}
+
+/* Shield glowing frame outline around container */
+.lockin-shield-active .lockin-health-bar-container {
+  border-color: #00bfff;
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.6);
+  animation: shield-pulse 1.5s infinite alternate;
+}
+
+/* Health Badge Indicator */
+#lockin-health-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--lockin-text);
+  background: rgba(128, 128, 128, 0.12);
+  padding: 3px 8px;
+  border-radius: 5px;
+  min-width: 50px;
+  text-align: center;
+  border: 1px solid rgba(128, 128, 128, 0.18);
+  transition: all 0.3s ease;
+}
+
+/* Warm-Up Grace Period Badge style */
+#lockin-health-badge.lockin-warmup-badge {
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.2) 0%, rgba(255, 69, 0, 0.3) 100%);
+  border-color: rgba(255, 140, 0, 0.4);
+  color: #ffa500;
+  box-shadow: 0 0 8px rgba(255, 140, 0, 0.2);
+  min-width: 80px;
+  animation: warmup-glow 1.5s infinite alternate;
+}
+
+/* Center Section: Focus Streak Badge */
+.lockin-center-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#lockin-streak-badge {
+  background: linear-gradient(135deg, rgba(255, 69, 0, 0.2) 0%, rgba(255, 140, 0, 0.3) 100%);
+  border: 1px solid rgba(255, 140, 0, 0.4);
+  color: #ff8c00;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 8px rgba(255, 140, 0, 0.3);
+}
+
+#lockin-streak-badge.streak-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#lockin-streak-badge.streak-gaining {
+  animation: streak-bounce 0.4s ease-out;
+}
+
+/* Right Section: Pomodoro Module */
+.lockin-right-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#lockin-pomo-status {
+  display: flex;
+  align-items: center;
+  background: rgba(128, 128, 128, 0.08);
+  border: 1px solid var(--lockin-border);
+  border-radius: 15px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 8px;
+  color: var(--lockin-text);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: border-color 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+/* Amber Warning State 15s before study ends */
+#lockin-pomo-status.pomo-warning {
+  border-color: rgba(255, 165, 0, 0.8);
+  box-shadow: 0 0 8px rgba(255, 165, 0, 0.4);
+  color: #ffa500;
+  animation: warning-pulse 1.2s infinite alternate;
+}
+
+.lockin-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-green);
+  box-shadow: 0 0 6px var(--color-green);
+  display: inline-block;
+}
+
+.lockin-dot.pomo-break {
+  background-color: var(--color-blue-shield);
+  box-shadow: 0 0 6px var(--color-blue-shield);
+  animation: pulse-dot 1s infinite alternate;
+}
+
+/* Exit Button (back to decks overview) */
+#lockin-exit-btn {
+  background: rgba(128, 128, 128, 0.1);
+  border: 1px solid var(--lockin-border);
+  color: var(--lockin-text);
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#lockin-exit-btn:hover {
+  background: rgba(255, 69, 0, 0.15);
+  border-color: rgba(255, 69, 0, 0.4);
+  color: #ff4500;
+  box-shadow: 0 0 8px rgba(255, 69, 0, 0.2);
+}
+
+#lockin-exit-btn:active {
+  transform: scale(0.95);
+}
+
+/* Fullscreen Low-Health Pulse vignette */
+#lockin-low-health-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-shadow: inset 0 0 80px rgba(255, 0, 0, 0);
+  z-index: 9998;
+  pointer-events: none;
+  transition: box-shadow 0.4s ease;
+}
+
+body.lockin-low-health #lockin-low-health-overlay {
+  box-shadow: inset 0 0 60px rgba(255, 0, 0, 0.45);
+  animation: low-health-glow 1.2s infinite alternate;
+}
+
+body.lockin-low-health #lockin-bar {
+  animation: screen-vibrate 0.1s infinite alternate;
+}
+body.lockin-low-health #lockin-bar.lockin-bar-top {
+  border-bottom-color: rgba(255, 0, 0, 0.4);
+}
+body.lockin-low-health #lockin-bar.lockin-bar-bottom {
+  border-top-color: rgba(255, 0, 0, 0.4);
+}
+
+/* Calming Full-screen Pomodoro Break Overlay */
+#lockin-break-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 11, 20, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 10000;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--lockin-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-out, display 0.5s allow-discrete, overlay 0.5s allow-discrete;
+  transition-behavior: allow-discrete;
+}
+
+#lockin-break-overlay.overlay-open {
+  display: flex;
+  opacity: 1;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+.lockin-break-content {
+  text-align: center;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.lockin-break-title {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00bfff 0%, #1e90ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.lockin-break-subtitle {
+  color: var(--lockin-text-muted);
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Breathing Bubble Visualizer */
+.lockin-breathing-container {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 20px 0;
+}
+
+#lockin-breathing-bubble {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30, 144, 255, 0.4) 0%, rgba(30, 144, 255, 0.05) 70%);
+  border: 1px solid rgba(30, 144, 255, 0.5);
+  box-shadow: 0 0 30px rgba(30, 144, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #00bfff;
+  transition: transform 0.15s linear, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+#lockin-breathing-bubble.breathe-in {
+  box-shadow: 0 0 50px rgba(0, 191, 255, 0.6);
+  border-color: rgba(0, 191, 255, 0.8);
+}
+
+#lockin-breathing-bubble.breathe-out {
+  box-shadow: 0 0 20px rgba(30, 144, 255, 0.2);
+  border-color: rgba(30, 144, 255, 0.3);
+}
+
+#lockin-breathing-bubble.breathe-hold-full {
+  box-shadow: 0 0 50px rgba(0, 191, 255, 0.6);
+  border-color: rgba(0, 191, 255, 0.8);
+  color: #00bfff;
+}
+
+#lockin-breathing-bubble.breathe-hold-empty {
+  box-shadow: 0 0 20px rgba(30, 144, 255, 0.2);
+  border-color: rgba(30, 144, 255, 0.3);
+  color: rgba(0, 191, 255, 0.7);
+}
+
+#lockin-break-timer {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--lockin-text);
+  font-variant-numeric: tabular-nums;
+  margin: 10px 0;
+}
+
+.lockin-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--lockin-text);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.lockin-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.lockin-btn:active {
+  transform: scale(0.96);
+}
+
+/* UI/UX Animations */
+
+@keyframes shield-slide {
+  from { background-position: 0 0; }
+  to { background-position: 50px 50px; }
+}
+
+@keyframes shield-pulse {
+  from { box-shadow: 0 0 4px rgba(0, 191, 255, 0.4); }
+  to { box-shadow: 0 0 12px rgba(0, 191, 255, 0.8); }
+}
+
+@keyframes pulse-dot {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+@keyframes low-health-glow {
+  from { box-shadow: inset 0 0 40px rgba(255, 0, 0, 0.25); }
+  to { box-shadow: inset 0 0 60px rgba(255, 0, 0, 0.45); }
+}
+
+@keyframes screen-vibrate {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-0.5px, 0.5px); }
+  50% { transform: translate(0.5px, -0.5px); }
+  75% { transform: translate(-0.5px, -0.5px); }
+  100% { transform: translate(0.5px, 0.5px); }
+}
+
+@keyframes streak-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+@keyframes pulse-hit {
+  0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); }
+  50% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); }
+  100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); }
+}
+
+@keyframes warmup-glow {
+  from { box-shadow: 0 0 4px rgba(255, 140, 0, 0.1); }
+  to { box-shadow: 0 0 10px rgba(255, 140, 0, 0.3); }
+}
+
+@keyframes warning-pulse {
+  from { border-color: rgba(255, 165, 0, 0.3); }
+  to { border-color: rgba(255, 165, 0, 0.9); }
+}
+
+.lockin-hit {
+  animation: pulse-hit 0.3s ease-out;
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  #lockin-health-fill,
+  #lockin-shield-overlay,
+  #lockin-streak-badge,
+  #lockin-break-overlay,
+  #lockin-breathing-bubble {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  body.lockin-low-health #lockin-low-health-overlay {
+    animation: none !important;
+    box-shadow: inset 0 0 50px rgba(255, 0, 0, 0.35);
+  }
+  
+  body.lockin-low-health #lockin-bar {
+    animation: none !important;
+  }
+}
+
+/* Custom styling for Anki reviewer bottom webview body */
+body.lockin-active.lockin-bottom-webview {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+body.lockin-active.lockin-bottom-webview.lockin-dark-theme {
+  background-color: #0f0f19 !important;
+}
+body.lockin-active.lockin-bottom-webview.lockin-light-theme {
+  background-color: #f0f0f5 !important;
+}
+
+/* Custom styling for Anki reviewer buttons when lockin is active */
+body.lockin-active.lockin-bottom-webview button,
+body.lockin-active.lockin-bottom-webview input[type="button"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: var(--lockin-text) !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+  margin: 0 4px !important;
+}
+
+/* Light theme support */
+body.lockin-active.lockin-bottom-webview.lockin-light-theme button,
+body.lockin-active.lockin-bottom-webview.lockin-light-theme input[type="button"] {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #202028 !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Specific Ease Colors for Buttons */
+body.lockin-active.lockin-bottom-webview button[onclick*="ease1"],
+body.lockin-active.lockin-bottom-webview input[onclick*="ease1"] {
+  border-left: 3px solid var(--color-red) !important;
+}
+body.lockin-active.lockin-bottom-webview button[onclick*="ease2"],
+body.lockin-active.lockin-bottom-webview input[onclick*="ease2"] {
+  border-left: 3px solid var(--color-yellow) !important;
+}
+body.lockin-active.lockin-bottom-webview button[onclick*="ease3"],
+body.lockin-active.lockin-bottom-webview input[onclick*="ease3"],
+body.lockin-active.lockin-bottom-webview #defease {
+  border-left: 3px solid var(--color-green) !important;
+}
+body.lockin-active.lockin-bottom-webview button[onclick*="ease4"],
+body.lockin-active.lockin-bottom-webview input[onclick*="ease4"] {
+  border-left: 3px solid var(--color-blue-shield) !important;
+}
+
+/* Hover effects */
+body.lockin-active.lockin-bottom-webview button:hover,
+body.lockin-active.lockin-bottom-webview input[type="button"]:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15) !important;
+}
+body.lockin-active.lockin-bottom-webview.lockin-light-theme button:hover,
+body.lockin-active.lockin-bottom-webview.lockin-light-theme input[type="button"]:hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Click/Keypress feedback animation */
+body.lockin-active.lockin-bottom-webview .lockin-btn-feedback,
+body.lockin-active.lockin-bottom-webview button:active,
+body.lockin-active.lockin-bottom-webview input[type="button"]:active {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: scale(0.94) !important;
+  transition: all 0.05s ease-out !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Custom rule to hide review answer buttons and containers visually when configured */
+body.lockin-active.lockin-hide-buttons.lockin-bottom-webview button:not(#lockin-exit-btn),
+body.lockin-active.lockin-hide-buttons.lockin-bottom-webview input[type="button"],
+body.lockin-active.lockin-hide-buttons.lockin-bottom-webview #outer,
+body.lockin-active.lockin-hide-buttons.lockin-bottom-webview #bottombar {
+  display: none !important;
+}
+
+/* Floating Pomodoro Widget for Main Screen (DeckBrowser / Overview) */
+.lockin-pomo-floating-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  height: 48px;
+  background: var(--lockin-bg);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid var(--lockin-border);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+  box-sizing: border-box;
+  color: var(--lockin-text);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s, border-color 0.3s;
+}
+
+.lockin-pomo-floating-widget:hover {
+  transform: translateY(-2px);
+  background: rgba(20, 20, 35, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.lockin-light-theme .lockin-pomo-floating-widget {
+  background: rgba(240, 240, 245, 0.85);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+body.lockin-light-theme .lockin-pomo-floating-widget:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Pomo Widget dot indicator status colors */
+.lockin-pomo-floating-widget .lockin-dot {
+  width: 10px;
+  height: 10px;
+  transition: all 0.3s ease;
+}
+
+.lockin-pomo-floating-widget .lockin-dot.pomo-paused {
+  background-color: var(--lockin-text-muted);
+  box-shadow: none;
+}
+
+/* Timer countdown text */
+#lockin-pomo-timer-display {
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  min-width: 42px;
+  text-align: center;
+}
+
+/* Widget Control Buttons */
+.lockin-pomo-control-btn {
+  background: rgba(128, 128, 128, 0.12);
+  border: 1px solid var(--lockin-border);
+  color: var(--lockin-text);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  padding: 0;
+}
+
+.lockin-pomo-control-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: scale(1.08);
+}
+
+body.lockin-light-theme .lockin-pomo-control-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.lockin-light-theme .lockin-pomo-control-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+#lockin-pomo-toggle-btn {
+  color: var(--color-green);
+}
+
+body.lockin-light-theme #lockin-pomo-toggle-btn {
+  color: #2e7d32;
+}
+
+#lockin-pomo-stop-btn {
+  color: var(--color-red);
+}
+
+body.lockin-light-theme #lockin-pomo-stop-btn {
+  color: #c62828;
+}
+
+.lockin-pomo-control-btn:active {
+  transform: scale(0.92);
+}
+
+/* ==========================================================
+   Custom Answer Buttons Overlay (Ring of Buttons style)
+   Sits just above the lockin-bar; replaces the native Anki
+   bottom bar when "Hide Bottom Bar" is enabled.
+   ========================================================== */
+
+body.lockin-active .lockin-answer-buttons {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  /* lockin-bar is ~52px tall; sit just above it */
+  bottom: 54px;
+  display: flex;
+  gap: 8px;
+  z-index: 9998;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+  pointer-events: auto;
+  width: calc(100% - 40px);
+  max-width: 600px;
+  transition: opacity 300ms ease-out, transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+body.lockin-active .lockin-answer-buttons.lockin-hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(12px);
+  pointer-events: none;
+}
+
+body.lockin-active .lockin-answer-buttons.lockin-shown {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+body.lockin-active .lockin-ans-btn {
+  flex: 1 1 0;
+  min-width: 80px;
+  max-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.12s ease, filter 0.15s ease, box-shadow 0.18s;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+body.lockin-active .lockin-ans-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.12);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+body.lockin-active .lockin-ans-btn:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Click feedback: bright pulse + pop */
+@keyframes lockin-ans-pick {
+  0%   { transform: scale(1);   filter: brightness(1); }
+  30%  { transform: scale(1.10); filter: brightness(1.35); }
+  60%  { transform: scale(0.96); filter: brightness(1.15); }
+  100% { transform: scale(1);   filter: brightness(1); }
+}
+
+body.lockin-active .lockin-ans-btn.lockin-ans-picked {
+  animation: lockin-ans-pick 350ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+body.lockin-active .lockin-ans-btn:focus,
+body.lockin-active .lockin-ans-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px #5d5dff, 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+body.lockin-light-theme .lockin-ans-btn:focus,
+body.lockin-light-theme .lockin-ans-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px #5d5dff, 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Unsupported ease (e.g. learning cards where only Again/Good are valid) */
+body.lockin-active .lockin-ans-btn.lockin-ans-unsupported {
+  cursor: not-allowed;
+  opacity: 0.35;
+  filter: saturate(0.2);
+}
+body.lockin-active .lockin-ans-btn.lockin-ans-unsupported:hover {
+  transform: none;
+  filter: saturate(0.2);
+}
+
+/* Solid per-ease colors (matching Ring of Buttons reference) */
+body.lockin-active .lockin-ans-btn.lockin-ans--again { background: #e74c3c; }
+body.lockin-active .lockin-ans-btn.lockin-ans--hard  { background: #f39c12; }
+body.lockin-active .lockin-ans-btn.lockin-ans--good  { background: #2ecc71; }
+body.lockin-active .lockin-ans-btn.lockin-ans--easy  { background: #3498db; }
+
+body.lockin-active .lockin-ans-interval {
+  font-variant-numeric: tabular-nums;
+}
+
+/* On very small heights, shrink the buttons to keep them on screen */
+@media (max-height: 540px) {
+  body.lockin-active .lockin-ans-btn {
+    padding: 9px 6px;
+    font-size: 13px;
+  }
+}
+
+body.lockin-bar-top.lockin-active .lockin-answer-buttons {
+  bottom: 20px;
+}
+
+
