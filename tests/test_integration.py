@@ -837,7 +837,7 @@ class TestBugVerification:
         
         vol_pos = content.find('config.speed_focus_volume')
         assert vol_pos >= 0, "Volume config is read"
-        assert 'volume *' in content, "Volume is used as multiplier"
+        assert 'vol *' in content, "Volume is used as multiplier (via `vol` variable)"
         print("      OK: volume=0 correctly produces silence")
 
     def test_bug_027_hold_empty_breathing_scale(self):

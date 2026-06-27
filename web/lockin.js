@@ -389,15 +389,22 @@
     safePycmd("lockin-pomo-sync:" + JSON.stringify({ state: pomoState, time_left: pomoTimeLeft }));
   }
 
-  function togglePomodoro() {
+  function pausePomodoro() {
     initAudio();
     if (pomoState === 'study' || pomoState === 'break') {
       pomoState = 'paused';
-    } else if (pomoState === 'paused') {
-      pomoState = (window.AnkiLockInPomoState && window.AnkiLockInPomoState.state === 'break') ? 'break' : 'study';
+      syncPomoState();
+      updateUI();
     }
-    syncPomoState();
-    updateUI();
+  }
+
+  function resumePomodoro() {
+    initAudio();
+    if (pomoState === 'paused') {
+      pomoState = (window.AnkiLockInPomoState && window.AnkiLockInPomoState.state === 'break') ? 'break' : 'study';
+      syncPomoState();
+      updateUI();
+    }
   }
 
   function stopPomodoro() {
@@ -524,13 +531,15 @@
             <span class="lockin-dot"></span>
           </div>
           <div id="lockin-pomo-timer-display">25:00</div>
-          <button class="lockin-pomo-control-btn" id="lockin-pomo-toggle-btn" title="Start/Pause Timer">▶</button>
+          <button class="lockin-pomo-control-btn" id="lockin-pomo-pause-btn" title="Pause Timer">⏸</button>
+          <button class="lockin-pomo-control-btn" id="lockin-pomo-resume-btn" title="Resume Timer" style="display:none;">▶</button>
           <button class="lockin-pomo-control-btn" id="lockin-pomo-stop-btn" title="Stop & Reset Timer">■</button>
         `;
         document.body.appendChild(widget);
 
         // Bind widget controls
-        document.getElementById('lockin-pomo-toggle-btn').addEventListener('click', togglePomodoro);
+        document.getElementById('lockin-pomo-pause-btn').addEventListener('click', pausePomodoro);
+        document.getElementById('lockin-pomo-resume-btn').addEventListener('click', resumePomodoro);
         document.getElementById('lockin-pomo-stop-btn').addEventListener('click', stopPomodoro);
       }
     }
@@ -603,6 +612,7 @@
 
     detectTheme();
     updateUI();
+    updateSpacerHeight(!!window.AnkiLockInAnswerMode);
   }
 
   function updateUI() {
@@ -615,7 +625,8 @@
     const root = document.documentElement;
 
     const widgetTimer = document.getElementById('lockin-pomo-timer-display');
-    const widgetToggleBtn = document.getElementById('lockin-pomo-toggle-btn');
+    const widgetPauseBtn = document.getElementById('lockin-pomo-pause-btn');
+    const widgetResumeBtn = document.getElementById('lockin-pomo-resume-btn');
     const widgetDot = document.querySelector('#lockin-pomo-widget .lockin-dot');
 
     const minutes = Math.floor(pomoTimeLeft / 60);
@@ -626,13 +637,13 @@
       widgetTimer.textContent = timeStr;
     }
 
-    if (widgetToggleBtn) {
+    if (widgetPauseBtn && widgetResumeBtn) {
       if (pomoState === 'paused') {
-        widgetToggleBtn.textContent = '▶';
-        widgetToggleBtn.title = 'Start Timer';
+        widgetPauseBtn.style.display = 'none';
+        widgetResumeBtn.style.display = '';
       } else {
-        widgetToggleBtn.textContent = '⏸';
-        widgetToggleBtn.title = 'Pause Timer';
+        widgetPauseBtn.style.display = '';
+        widgetResumeBtn.style.display = 'none';
       }
     }
 
@@ -1051,6 +1062,68 @@
     }
   }
 
+  // --- Dynamic bottom spacer (prevents card content going under fixed bar/buttons) ---
+  // Anki replaces #qa.innerHTML on every card transition, so the spacer must be
+  // re-injected in onShowQuestion/onShowAnswer/updateButtons via ensureSpacer().
+
+  function findScrollContainer() {
+    const qa = document.getElementById('qa');
+    if (!qa) return null;
+    // If #qa itself scrolls, use it
+    const qaStyle = getComputedStyle(qa);
+    if (qaStyle.overflowY === 'auto' || qaStyle.overflowY === 'scroll') {
+      return qa;
+    }
+    // Search for a nested scrollable wrapper (custom templates)
+    const descendants = qa.querySelectorAll('*');
+    for (let i = 0; i < descendants.length; i++) {
+      const el = descendants[i];
+      const s = getComputedStyle(el);
+      if ((s.overflowY === 'auto' || s.overflowY === 'scroll') && el.scrollHeight > el.clientHeight) {
+        return el;
+      }
+    }
+    // Fallback: #qa
+    return qa;
+  }
+
+  function ensureSpacer() {
+    if (!isMainWebview) return null;
+    const container = findScrollContainer();
+    if (!container) return null;
+    let spacer = document.getElementById('lockin-spacer');
+    if (spacer && spacer.parentElement !== container) {
+      spacer.remove();
+      spacer = null;
+    }
+    if (!spacer) {
+      spacer = document.createElement('div');
+      spacer.id = 'lockin-spacer';
+      container.appendChild(spacer);
+    }
+    return spacer;
+  }
+
+  function updateSpacerHeight(isAnswerMode) {
+    const spacer = ensureSpacer();
+    if (!spacer) return;
+    const barAtBottom = config.bar_position !== 'top';
+    const customBtnsVisible = config.custom_answer_buttons && !config.hide_answer_buttons;
+    let h = 0;
+    if (barAtBottom) {
+      h = 54; // lockin-bar height
+      if (isAnswerMode && customBtnsVisible) {
+        h = 140; // bar + custom answer buttons
+      }
+    } else {
+      // top bar: no bottom bar, but custom buttons sit at bottom in answer mode
+      if (isAnswerMode && customBtnsVisible) {
+        h = 86;
+      }
+    }
+    spacer.style.height = h + 'px';
+  }
+
   // --- Listeners & APIs called by Python ---
 
   const AnkiLockIn = {
@@ -1064,7 +1137,9 @@
       cardStartTime = Date.now();
       cardAnswered = false;
       alertSoundPlayed = false;
-      setAnswerButtonsVisible(false);
+      // Delay hide so answer button click animation plays fully before fade-out
+      setTimeout(() => setAnswerButtonsVisible(false), 250);
+      updateSpacerHeight(false);
       updateUI();
     },
 
@@ -1072,6 +1147,7 @@
       initAudio();
       cardAnswered = true;
       setAnswerButtonsVisible(true);
+      updateSpacerHeight(true);
     },
 
     /**
@@ -1124,9 +1200,13 @@
           btn.disabled = true;
           btn.setAttribute('aria-disabled', 'true');
         }
-        btn.addEventListener('click', function () {
+        // pointerdown gives the pop animation a ~100ms head start during the
+        // physical press, before the click event fires pycmd and Anki transitions.
+        btn.addEventListener('pointerdown', function () {
           btn.classList.add('lockin-ans-picked');
-          setTimeout(function () { btn.classList.remove('lockin-ans-picked'); }, 350);
+          setTimeout(function () { btn.classList.remove('lockin-ans-picked'); }, 200);
+        });
+        btn.addEventListener('click', function () {
           if (typeof pycmd === 'function') { pycmd('ease' + easeKey); }
           else if (typeof window.pycmd === 'function') { window.pycmd('ease' + easeKey); }
         });
@@ -1139,6 +1219,7 @@
       if (window.AnkiLockInAnswerMode) {
         setAnswerButtonsVisible(true);
       }
+      updateSpacerHeight(true);
     },
 
     onAnswerCard: function (ease, label) {
@@ -1260,6 +1341,8 @@
       if (lowHealth) lowHealth.remove();
       const ansBtns = document.getElementById('lockin-answer-buttons');
       if (ansBtns) ansBtns.remove();
+      const oldSpacer = document.getElementById('lockin-spacer');
+      if (oldSpacer) oldSpacer.remove();
       
       document.body.classList.remove('lockin-active', 'lockin-bar-top', 'lockin-bar-bottom', 'lockin-main', 'lockin-bottom-webview', 'lockin-deckbrowser', 'lockin-overview');
       
@@ -1279,7 +1362,7 @@
           btn.classList.add('lockin-ans-picked');
           setTimeout(() => {
             btn.classList.remove('lockin-ans-picked');
-          }, 350);
+          }, 200);
         } else {
           btn.classList.add('lockin-btn-feedback');
           setTimeout(() => {
@@ -1390,7 +1473,7 @@
         const btn = document.querySelector(`.lockin-ans-btn[data-ease="${ease}"]`);
         if (btn) {
           btn.classList.add('lockin-ans-picked');
-          setTimeout(() => btn.classList.remove('lockin-ans-picked'), 350);
+          setTimeout(() => btn.classList.remove('lockin-ans-picked'), 200);
         }
       }
     });

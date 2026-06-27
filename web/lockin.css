@@ -68,11 +68,6 @@ body.lockin-dark-theme #lockin-bar {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-body.lockin-active.lockin-bar-top.lockin-main {
-  padding-top: 64px !important;
-  padding-bottom: 0 !important;
-}
-
 /* BOTTOM POSITION STYLES */
 #lockin-bar.lockin-bar-bottom {
   bottom: 0;
@@ -81,14 +76,8 @@ body.lockin-active.lockin-bar-top.lockin-main {
 }
 
 body.lockin-active.lockin-bar-bottom.lockin-main {
-  padding-bottom: 74px !important;
+  padding-bottom: 0 !important;
   padding-top: 0 !important;
-}
-
-body.lockin-active.lockin-bar-bottom.lockin-main #qa,
-body.lockin-active.lockin-bar-bottom.lockin-main #card,
-body.lockin-active.lockin-bar-bottom.lockin-main .card {
-  padding-bottom: 74px !important;
 }
 
 body.lockin-active.lockin-bar-top.lockin-main {
@@ -96,18 +85,20 @@ body.lockin-active.lockin-bar-top.lockin-main {
   padding-bottom: 0 !important;
 }
 
-body.lockin-active.lockin-bar-top.lockin-main #qa,
-body.lockin-active.lockin-bar-top.lockin-main #card,
-body.lockin-active.lockin-bar-top.lockin-main .card {
-  padding-top: 74px !important;
-}
-
-/* When the custom answer buttons row is visible, push the card content
-   up so the buttons do not overlap the answer text. */
-body.lockin-active.lockin-ans-shown.lockin-bar-bottom #qa,
-body.lockin-active.lockin-ans-shown.lockin-bar-bottom #card,
-body.lockin-active.lockin-ans-shown.lockin-bar-bottom .card {
-  padding-bottom: 140px !important;
+/* Dynamic bottom spacer: injected by JS into the card scroll container so
+   long card content is never covered by the fixed bar / answer buttons.
+   Unlike CSS padding, a real DOM element can't be overridden by custom
+   card templates with high-specificity or !important rules. */
+#lockin-spacer {
+  display: block;
+  width: 100%;
+  clear: both;
+  pointer-events: none;
+  background: transparent;
+  border: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: height 180ms cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Left Section: Health Bar Wrapper */
@@ -523,7 +514,8 @@ body.lockin-low-health #lockin-bar.lockin-bar-bottom {
   #lockin-shield-overlay,
   #lockin-streak-badge,
   #lockin-break-overlay,
-  #lockin-breathing-bubble {
+  #lockin-breathing-bubble,
+  #lockin-spacer {
     transition: none !important;
     animation: none !important;
   }
@@ -719,11 +711,13 @@ body.lockin-light-theme .lockin-pomo-control-btn:hover {
   border-color: rgba(0, 0, 0, 0.15);
 }
 
-#lockin-pomo-toggle-btn {
+#lockin-pomo-pause-btn,
+#lockin-pomo-resume-btn {
   color: var(--color-green);
 }
 
-body.lockin-light-theme #lockin-pomo-toggle-btn {
+body.lockin-light-theme #lockin-pomo-pause-btn,
+body.lockin-light-theme #lockin-pomo-resume-btn {
   color: #2e7d32;
 }
 
@@ -811,13 +805,13 @@ body.lockin-active .lockin-ans-btn:active {
 /* Click feedback: bright pulse + pop */
 @keyframes lockin-ans-pick {
   0%   { transform: scale(1);   filter: brightness(1); }
-  30%  { transform: scale(1.10); filter: brightness(1.35); }
-  60%  { transform: scale(0.96); filter: brightness(1.15); }
+  25%  { transform: scale(1.12); filter: brightness(1.4); }
+  55%  { transform: scale(0.95); filter: brightness(1.15); }
   100% { transform: scale(1);   filter: brightness(1); }
 }
 
 body.lockin-active .lockin-ans-btn.lockin-ans-picked {
-  animation: lockin-ans-pick 350ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  animation: lockin-ans-pick 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 body.lockin-active .lockin-ans-btn:focus,
