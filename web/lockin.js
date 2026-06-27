@@ -134,12 +134,13 @@
   
   let lastTickTime = Date.now();
   let lastHeartbeatTime = 0;
-  let lastPomoSyncTime = 0;
+
   let breakStartTime = 0;
   let isWindowFocused = true;
   let gameOverFreeze = false;
   let gameOverTimeout = null;
   let lastAction = null; // Stores last answer state to revert on undo
+  let lastChosenEase = null; // Tracks which ease button was pressed (persists on answer screen)
 
   // Session Statistics
   let statsCards = 0;
@@ -1017,12 +1018,6 @@
       }
     }
 
-    // Sync Pomodoro state to Python every second (1000ms)
-    if (pomoState !== 'paused' && focusStateActive && (now - lastPomoSyncTime >= 1000)) {
-      syncPomoState();
-      lastPomoSyncTime = now;
-    }
-
     detectTheme();
     updateUI();
   }
@@ -1136,6 +1131,7 @@
       }
       cardStartTime = Date.now();
       cardAnswered = false;
+      lastChosenEase = null;
       alertSoundPlayed = false;
       // Delay hide so answer button click animation plays fully before fade-out
       setTimeout(() => setAnswerButtonsVisible(false), 250);
@@ -1207,6 +1203,7 @@
           setTimeout(function () { btn.classList.remove('lockin-ans-picked'); }, 200);
         });
         btn.addEventListener('click', function () {
+          lastChosenEase = easeKey;
           if (typeof pycmd === 'function') { pycmd('ease' + easeKey); }
           else if (typeof window.pycmd === 'function') { window.pycmd('ease' + easeKey); }
         });
@@ -1218,6 +1215,11 @@
       // here while in answer mode, make sure it isn't stuck hidden.
       if (window.AnkiLockInAnswerMode) {
         setAnswerButtonsVisible(true);
+      }
+      // Re-apply persistent chosen highlight on the button that was pressed
+      if (lastChosenEase !== null) {
+        const chosenBtn = wrap.querySelector(`.lockin-ans-btn[data-ease="${lastChosenEase}"]`);
+        if (chosenBtn) chosenBtn.classList.add('lockin-ans-chosen');
       }
       updateSpacerHeight(true);
     },
@@ -1354,6 +1356,7 @@
       if (data.isShowAnswer) {
         btn = document.getElementById('ansbut') || document.querySelector('button[onclick*="ans"]') || document.querySelector('input[onclick*="ans"]');
       } else if (data.ease) {
+        lastChosenEase = data.ease;
         btn = getAnswerButton(data.ease);
       }
 
@@ -1470,6 +1473,7 @@
       }
 
       if (ease !== null && cardAnswered) {
+        lastChosenEase = ease;
         const btn = document.querySelector(`.lockin-ans-btn[data-ease="${ease}"]`);
         if (btn) {
           btn.classList.add('lockin-ans-picked');

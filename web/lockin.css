@@ -814,6 +814,16 @@ body.lockin-active .lockin-ans-btn.lockin-ans-picked {
   animation: lockin-ans-pick 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
+/* Persistent chosen highlight: stays visible on the answer screen so
+   you can always see which button was pressed. Subtle scale + brightness
+   + white glow to confirm the choice without being distracting. */
+body.lockin-active .lockin-ans-btn.lockin-ans-chosen {
+  transform: scale(1.06);
+  filter: brightness(1.35);
+  box-shadow: 0 0 22px rgba(255, 255, 255, 0.35), 0 4px 14px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
 body.lockin-active .lockin-ans-btn:focus,
 body.lockin-active .lockin-ans-btn:focus-visible {
   outline: none;
