@@ -123,9 +123,29 @@
   let shieldTimeLeft = 0;
   let pomoState = 'study'; // 'study' | 'break' | 'paused'
   let pomoTimeLeft = config.pomodoro_study_duration * 60;
-  if (window.AnkiLockInPomoState && window.AnkiLockInPomoState.time_left !== -1) {
-    pomoState = window.AnkiLockInPomoState.state;
-    pomoTimeLeft = window.AnkiLockInPomoState.time_left;
+  let prePauseState = 'study'; // remembers state before pausing for correct resume
+
+  // 1) Try localStorage first (synchronous, shared across webviews, survives restart)
+  let pomoLoadedFromStorage = false;
+  try {
+    const stored = localStorage.getItem('ankiLockInPomoState');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      if (parsed && typeof parsed.time_left === 'number' && parsed.time_left > 0) {
+        pomoState = parsed.state;
+        pomoTimeLeft = parsed.time_left;
+        prePauseState = parsed.pre_pause_state || 'study';
+        pomoLoadedFromStorage = true;
+      }
+    }
+  } catch (e) {}
+
+  // 2) Fall back to Python-injected state (kept as secondary fallback)
+  if (!pomoLoadedFromStorage) {
+    if (window.AnkiLockInPomoState && window.AnkiLockInPomoState.time_left !== -1) {
+      pomoState = window.AnkiLockInPomoState.state;
+      pomoTimeLeft = window.AnkiLockInPomoState.time_left;
+    }
   }
   
   let cardStartTime = Date.now();
@@ -134,7 +154,7 @@
   
   let lastTickTime = Date.now();
   let lastHeartbeatTime = 0;
-
+  let lastPomoSyncTime = 0;
   let breakStartTime = 0;
   let isWindowFocused = true;
   let gameOverFreeze = false;
@@ -390,10 +410,22 @@
     safePycmd("lockin-pomo-sync:" + JSON.stringify({ state: pomoState, time_left: pomoTimeLeft }));
   }
 
+  function persistPomoStateLocal() {
+    try {
+      localStorage.setItem('ankiLockInPomoState', JSON.stringify({
+        state: pomoState,
+        time_left: pomoTimeLeft,
+        pre_pause_state: prePauseState
+      }));
+    } catch (e) { /* quota / disabled — fail silent, Python sync is the fallback */ }
+  }
+
   function pausePomodoro() {
     initAudio();
     if (pomoState === 'study' || pomoState === 'break') {
+      prePauseState = pomoState; // remember state for correct resume
       pomoState = 'paused';
+      persistPomoStateLocal();
       syncPomoState();
       updateUI();
     }
@@ -402,7 +434,8 @@
   function resumePomodoro() {
     initAudio();
     if (pomoState === 'paused') {
-      pomoState = (window.AnkiLockInPomoState && window.AnkiLockInPomoState.state === 'break') ? 'break' : 'study';
+      pomoState = prePauseState;
+      persistPomoStateLocal();
       syncPomoState();
       updateUI();
     }
@@ -417,6 +450,7 @@
     const overlay = document.getElementById('lockin-break-overlay');
     if (overlay) overlay.classList.remove('overlay-open');
     
+    persistPomoStateLocal();
     syncPomoState();
     updateUI();
   }
@@ -781,6 +815,7 @@
     if (dot) {
       dot.className = 'lockin-dot pomo-break';
     }
+    persistPomoStateLocal();
     syncPomoState();
   }
 
@@ -801,6 +836,7 @@
     
     // Auto heal a tiny bit after break to encourage starting
     health = Math.min(config.health_max, health + 15);
+    persistPomoStateLocal();
     syncPomoState();
     updateUI();
   }
@@ -1016,6 +1052,13 @@
       if (pomoTimeLeft === 0) {
         endBreak();
       }
+    }
+
+    // Sync Pomodoro state to Python every second (1000ms)
+    if (pomoState !== 'paused' && focusStateActive && (now - lastPomoSyncTime >= 1000)) {
+      persistPomoStateLocal();
+      syncPomoState();
+      lastPomoSyncTime = now;
     }
 
     detectTheme();
@@ -1421,14 +1464,32 @@
         gameOverTimeout = null;
       }
       
-      // Load Pomodoro state from injected global variables if available
-      if (window.AnkiLockInPomoState && window.AnkiLockInPomoState.time_left !== -1) {
-        pomoState = window.AnkiLockInPomoState.state;
-        pomoTimeLeft = window.AnkiLockInPomoState.time_left;
-      } else {
-        pomoState = 'study';
-        pomoTimeLeft = config.pomodoro_study_duration * 60;
+      // Load Pomodoro state from localStorage first (synchronous), then fall back to Python-injected global
+      try {
+        const stored = localStorage.getItem('ankiLockInPomoState');
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (parsed && typeof parsed.time_left === 'number' && parsed.time_left > 0) {
+            pomoState = parsed.state;
+            pomoTimeLeft = parsed.time_left;
+            prePauseState = parsed.pre_pause_state || 'study';
+          } else {
+            throw new Error('stale');
+          }
+        } else {
+          throw new Error('empty');
+        }
+      } catch (e) {
+        prePauseState = 'study';
+        if (window.AnkiLockInPomoState && window.AnkiLockInPomoState.time_left !== -1) {
+          pomoState = window.AnkiLockInPomoState.state;
+          pomoTimeLeft = window.AnkiLockInPomoState.time_left;
+        } else {
+          pomoState = 'study';
+          pomoTimeLeft = config.pomodoro_study_duration * 60;
+        }
       }
+      persistPomoStateLocal();
     }
   };
 
