@@ -14,6 +14,8 @@
 
   // Load configuration injected by Python backend, or use defaults
   let config = window.AnkiLockInConfig || {
+    ui_language: "de",
+    collectibles_enabled: true,
     health_max: 100,
     health_drain_rate: 2.0,
     health_heal_easy: 15,
@@ -29,6 +31,9 @@
     speed_focus_volume: 0.5,
     no_distraction_enabled: true,
     no_distraction_auto_fullscreen: true,
+    no_distraction_hide_menu_bar: true,
+    no_distraction_hide_top_toolbar: true,
+    no_distraction_hide_bottom_bar: false,
     adhd_boosters_streak_enabled: true,
     adhd_boosters_shield_enabled: true,
     adhd_boosters_autopause_enabled: true,
@@ -40,8 +45,109 @@
     pomodoro_visible: true,
     bar_position: "bottom",
     custom_answer_buttons: true,
-    hide_answer_buttons: false
+    hide_answer_buttons: false,
+    streak_speed_threshold: 5.0,
+    breathing_pattern: "box"
   };
+
+  // German is the safe default for this add-on. Python may provide a locale in
+  // the collection snapshot (preferred) or through the regular add-on config.
+  const UI_STRINGS = {
+    de: {
+      health: 'LP {value}',
+      warmup: 'AUFWÄRMEN ({seconds}s)',
+      streak: '⚡ SERIE ×{value}',
+      exit: 'Beenden',
+      exit_title: 'Lernmodus beenden und zur Stapelübersicht zurückkehren',
+      pause_timer: 'Timer pausieren',
+      resume_timer: 'Timer fortsetzen',
+      stop_timer: 'Timer stoppen und zurücksetzen',
+      break_title: 'Fokuspause',
+      break_subtitle: 'Zeit, die Augen zu entspannen und ruhig zu atmen.',
+      breathe: 'Atmen',
+      breathe_in: 'Einatmen',
+      breathe_out: 'Ausatmen',
+      breathe_hold: 'Halten',
+      breathe_double: 'Doppelt einatmen',
+      breathe_sigh: 'Seufzend ausatmen',
+      skip_break: 'Pause überspringen und weiterlernen',
+      answer_again: 'Nochmal',
+      answer_hard: 'Schwer',
+      answer_good: 'Gut',
+      answer_easy: 'Einfach',
+      show_answer: 'Antwort zeigen',
+      collection: 'Katzensammlung',
+      collection_open: 'Katzensammlung öffnen. Ausgewählt: {name}. {unlocked} von {total} Katzen entdeckt.{next}',
+      collection_count: '{unlocked}/{total} Katzen',
+      collection_empty: 'Noch keine Katze ausgewählt',
+      collection_complete: 'Sammlung vollständig',
+      collection_next: ' Nächstes Ziel: {label}.',
+      new_cat: 'Neue Katze entdeckt!',
+      new_cats: '{count} neue Katzen entdeckt!',
+      unlock_reason: 'Neues Sammlungsziel erreicht',
+      view_collection: 'Ansehen',
+      close: 'Schließen'
+    },
+    en: {
+      health: 'HP {value}',
+      warmup: 'WARM UP ({seconds}s)',
+      streak: '⚡ STREAK ×{value}',
+      exit: 'Exit',
+      exit_title: 'Exit review and return to decks',
+      pause_timer: 'Pause timer',
+      resume_timer: 'Resume timer',
+      stop_timer: 'Stop and reset timer',
+      break_title: 'Focus break',
+      break_subtitle: 'Let your eyes rest and breathe slowly.',
+      breathe: 'Breathe',
+      breathe_in: 'Breathe in',
+      breathe_out: 'Breathe out',
+      breathe_hold: 'Hold',
+      breathe_double: 'Double inhale',
+      breathe_sigh: 'Sigh out',
+      skip_break: 'Skip break and continue studying',
+      answer_again: 'Again',
+      answer_hard: 'Hard',
+      answer_good: 'Good',
+      answer_easy: 'Easy',
+      show_answer: 'Show Answer',
+      collection: 'Cat collection',
+      collection_open: 'Open cat collection. Equipped: {name}. {unlocked} of {total} cats discovered.{next}',
+      collection_count: '{unlocked}/{total} cats',
+      collection_empty: 'No cat equipped yet',
+      collection_complete: 'Collection complete',
+      collection_next: ' Next goal: {label}.',
+      new_cat: 'New cat discovered!',
+      new_cats: '{count} new cats discovered!',
+      unlock_reason: 'New collection goal reached',
+      view_collection: 'View',
+      close: 'Close'
+    }
+  };
+
+  let collectionSnapshot = window.AnkiLockInCollectionSnapshot || null;
+
+  function getLocale() {
+    const requested = (collectionSnapshot && collectionSnapshot.locale) ||
+      config.ui_language || config.language || 'de';
+    return String(requested).toLowerCase().startsWith('en') ? 'en' : 'de';
+  }
+
+  function t(key, values) {
+    const locale = getLocale();
+    let value = (UI_STRINGS[locale] && UI_STRINGS[locale][key]) ||
+      UI_STRINGS.de[key] || UI_STRINGS.en[key] || key;
+    Object.keys(values || {}).forEach(function (name) {
+      value = value.replace(new RegExp('\\{' + name + '\\}', 'g'), String(values[name]));
+    });
+    return value;
+  }
+
+  const reducedMotionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+
+  function prefersReducedMotion() {
+    return !!(reducedMotionQuery && reducedMotionQuery.matches);
+  }
 
   // State for custom answer buttons overlay is now pushed from Python via
   // window.AnkiLockIn.updateButtons(buttonsData) which rebuilds the row.
@@ -53,14 +159,6 @@
       pycmd(message);
     } else if (typeof window.pycmd !== 'undefined') {
       window.pycmd(message);
-    } else {
-      setTimeout(() => {
-        if (typeof pycmd !== 'undefined') {
-          pycmd(message);
-        } else if (typeof window.pycmd !== 'undefined') {
-          window.pycmd(message);
-        }
-      }, 50);
     }
   }
 
@@ -91,8 +189,10 @@
     );
 
     if (window.AnkiLockInWebviewKind) {
-      isBottomWebview = (window.AnkiLockInWebviewKind === 'bottom') || hasBottomElements;
-      isMainWebview = (window.AnkiLockInWebviewKind === 'main') && !hasBottomElements;
+      // Python knows the actual context. Generic card-template IDs such as
+      // #buttons or #wrapper must not override that explicit classification.
+      isBottomWebview = (window.AnkiLockInWebviewKind === 'bottom');
+      isMainWebview = (window.AnkiLockInWebviewKind === 'main');
       isDeckBrowserWebview = (window.AnkiLockInWebviewKind === 'deckBrowser');
       isOverviewWebview = (window.AnkiLockInWebviewKind === 'overview');
     } else {
@@ -122,35 +222,22 @@
   let streak = 0;
   let shieldTimeLeft = 0;
   let pomoState = 'study'; // 'study' | 'break' | 'paused'
+  let pomoPhaseBeforePause = 'study';
   let pomoTimeLeft = config.pomodoro_study_duration * 60;
-  let prePauseState = 'study'; // remembers state before pausing for correct resume
-
-  // 1) Try localStorage first (synchronous, shared across webviews, survives restart)
-  let pomoLoadedFromStorage = false;
-  try {
-    const stored = localStorage.getItem('ankiLockInPomoState');
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      if (parsed && typeof parsed.time_left === 'number' && parsed.time_left > 0) {
-        pomoState = parsed.state;
-        pomoTimeLeft = parsed.time_left;
-        prePauseState = parsed.pre_pause_state || 'study';
-        pomoLoadedFromStorage = true;
-      }
-    }
-  } catch (e) {}
-
-  // 2) Fall back to Python-injected state (kept as secondary fallback)
-  if (!pomoLoadedFromStorage) {
-    if (window.AnkiLockInPomoState && window.AnkiLockInPomoState.time_left !== -1) {
-      pomoState = window.AnkiLockInPomoState.state;
-      pomoTimeLeft = window.AnkiLockInPomoState.time_left;
-    }
+  if (window.AnkiLockInPomoState && window.AnkiLockInPomoState.time_left !== -1) {
+    pomoState = window.AnkiLockInPomoState.state;
+    pomoTimeLeft = window.AnkiLockInPomoState.time_left;
+    pomoPhaseBeforePause = window.AnkiLockInPomoState.pre_pause_state === 'break' ? 'break' :
+      (pomoState === 'break' ? 'break' : 'study');
   }
   
   let cardStartTime = Date.now();
-  let cardAnswered = false;
+  let activeQuestionTime = 0;
+  let reviewPhase = window.AnkiLockInAnswerMode ? 'answer' : 'question';
+  let questionResponseTime = null;
+  let revealRequested = false;
   let alertSoundPlayed = false;
+  let latestButtonsPayload = null;
   
   let lastTickTime = Date.now();
   let lastHeartbeatTime = 0;
@@ -159,8 +246,13 @@
   let isWindowFocused = true;
   let gameOverFreeze = false;
   let gameOverTimeout = null;
-  let lastAction = null; // Stores last answer state to revert on undo
-  let lastChosenEase = null; // Tracks which ease button was pressed (persists on answer screen)
+  // Anki exposes an exact undo counter for each answer. Keep full pre-answer
+  // and post-answer snapshots in LIFO order so repeated Undo/Redo restores the
+  // matching state and unrelated Anki undo operations cannot affect the focus game.
+  const answerActionsByUndoCounter = new Map();
+  const answerUndoOrder = [];
+  const undoneActionsByUndoCounter = new Map();
+  const undoneRedoOrder = [];
 
   // Session Statistics
   let statsCards = 0;
@@ -169,6 +261,15 @@
   let statsShields = 0;
   let statsStudyTime = 0;
   let activeStudyDuration = 0; // accumulated focus study time in seconds
+  let cycleStudyStart = 0; // activeStudyDuration offset at start of current pomodoro cycle
+
+  // Accessible unlock notifications are deliberately ephemeral client state;
+  // collection ownership and unseen state remain Python-authoritative.
+  let pendingUnlockEvents = [];
+  let unlockToastQueue = [];
+  let unlockBatchTimer = null;
+  let unlockDismissTimer = null;
+  let unlockToastActive = false;
 
   // Web Audio Context
   let audioCtx = null;
@@ -407,25 +508,18 @@
   // --- Python Communication & Pomodoro Sync ---
   
   function syncPomoState() {
-    safePycmd("lockin-pomo-sync:" + JSON.stringify({ state: pomoState, time_left: pomoTimeLeft }));
-  }
-
-  function persistPomoStateLocal() {
-    try {
-      localStorage.setItem('ankiLockInPomoState', JSON.stringify({
-        state: pomoState,
-        time_left: pomoTimeLeft,
-        pre_pause_state: prePauseState
-      }));
-    } catch (e) { /* quota / disabled — fail silent, Python sync is the fallback */ }
+    safePycmd("lockin-pomo-sync:" + JSON.stringify({
+      state: pomoState,
+      time_left: pomoTimeLeft,
+      pre_pause_state: pomoPhaseBeforePause
+    }));
   }
 
   function pausePomodoro() {
     initAudio();
     if (pomoState === 'study' || pomoState === 'break') {
-      prePauseState = pomoState; // remember state for correct resume
+      pomoPhaseBeforePause = pomoState;
       pomoState = 'paused';
-      persistPomoStateLocal();
       syncPomoState();
       updateUI();
     }
@@ -434,8 +528,7 @@
   function resumePomodoro() {
     initAudio();
     if (pomoState === 'paused') {
-      pomoState = prePauseState;
-      persistPomoStateLocal();
+      pomoState = pomoPhaseBeforePause === 'break' ? 'break' : 'study';
       syncPomoState();
       updateUI();
     }
@@ -443,14 +536,14 @@
 
   function stopPomodoro() {
     initAudio();
+    pomoPhaseBeforePause = 'study';
     pomoState = 'paused';
     pomoTimeLeft = config.pomodoro_study_duration * 60;
-    
+
     // Hide break overlay if visible
     const overlay = document.getElementById('lockin-break-overlay');
     if (overlay) overlay.classList.remove('overlay-open');
     
-    persistPomoStateLocal();
     syncPomoState();
     updateUI();
   }
@@ -464,6 +557,75 @@
       study_time: activeStudyDuration
     };
     safePycmd("anki-lockin-stats:" + JSON.stringify(stats));
+  }
+
+  function storeAnswerAction(undoCounter, preSnapshot) {
+    if (undoCounter === null || undoCounter === undefined) return;
+    undoneActionsByUndoCounter.clear();
+    undoneRedoOrder.length = 0;
+
+    // A counter is expected to be unique within an Anki runtime. If the same
+    // exact value is ever delivered twice, keep only its newest snapshot so
+    // the LIFO stack and map cannot diverge.
+    if (answerActionsByUndoCounter.has(undoCounter)) {
+      for (let index = answerUndoOrder.length - 1; index >= 0; index--) {
+        if (Object.is(answerUndoOrder[index], undoCounter)) {
+          answerUndoOrder.splice(index, 1);
+          break;
+        }
+      }
+    }
+    answerActionsByUndoCounter.set(undoCounter, preSnapshot);
+    answerUndoOrder.push(undoCounter);
+  }
+
+  function takeLatestAnswerAction(undoCounter) {
+    if (undoCounter === null || undoCounter === undefined) return null;
+    if (!answerActionsByUndoCounter.has(undoCounter)) return null;
+
+    const latestCounter = answerUndoOrder[answerUndoOrder.length - 1];
+    if (!Object.is(latestCounter, undoCounter)) {
+      // Anki undo is LIFO. Refuse an out-of-order matching counter rather than
+      // restoring a state snapshot over newer answers.
+      return null;
+    }
+
+    answerUndoOrder.pop();
+    const action = answerActionsByUndoCounter.get(undoCounter);
+    answerActionsByUndoCounter.delete(undoCounter);
+    if (action) {
+      undoneActionsByUndoCounter.set(undoCounter, action);
+      undoneRedoOrder.push(undoCounter);
+      return action;
+    }
+    return null;
+  }
+
+  function takeLatestRedoAction(undoCounter) {
+    if (undoCounter === null || undoCounter === undefined) return null;
+    if (!undoneActionsByUndoCounter.has(undoCounter)) return null;
+
+    const latestCounter = undoneRedoOrder[undoneRedoOrder.length - 1];
+    if (!Object.is(latestCounter, undoCounter)) {
+      return null;
+    }
+
+    undoneRedoOrder.pop();
+    const action = undoneActionsByUndoCounter.get(undoCounter);
+    undoneActionsByUndoCounter.delete(undoCounter);
+    if (action) {
+      answerActionsByUndoCounter.set(undoCounter, action);
+      answerUndoOrder.push(undoCounter);
+      return action.post || action;
+    }
+    return null;
+  }
+
+  function clearAnswerActions() {
+    answerActionsByUndoCounter.clear();
+    answerUndoOrder.length = 0;
+    undoneActionsByUndoCounter.clear();
+    undoneRedoOrder.length = 0;
   }
 
   // --- Theme Awareness ---
@@ -480,6 +642,309 @@
       document.body.classList.add('lockin-light-theme');
       document.body.classList.remove('lockin-dark-theme');
     }
+  }
+
+  function finiteNumber(value, fallback) {
+    const number = Number(value);
+    return Number.isFinite(number) ? number : fallback;
+  }
+
+  function catAssetUrl(cat) {
+    if (!cat) return '';
+    return cat.asset_url || cat.image_url || cat.image || cat.asset || '';
+  }
+
+  function catDisplayName(cat) {
+    if (!cat) return t('collection_empty');
+    return cat.localized_name || cat.name || cat.title || t('collection_empty');
+  }
+
+  function setCatImage(img, fallback, url) {
+    if (!img || !fallback) return;
+    img.onload = function () {
+      img.hidden = false;
+      fallback.hidden = true;
+    };
+    img.onerror = function () {
+      img.hidden = true;
+      fallback.hidden = false;
+      img.removeAttribute('src');
+    };
+    if (url) {
+      fallback.hidden = true;
+      img.hidden = false;
+      img.src = url;
+    } else {
+      img.hidden = true;
+      img.removeAttribute('src');
+      fallback.hidden = false;
+    }
+  }
+
+  function nextMilestoneText(snapshot) {
+    const milestone = snapshot && snapshot.next_milestone;
+    if (!milestone) {
+      const unlocked = Math.max(0, finiteNumber(snapshot && snapshot.unlocked_count, 0));
+      const total = Math.max(1, finiteNumber(snapshot && snapshot.total_count, 50));
+      return unlocked >= total ? t('collection_complete') : t('collection_empty');
+    }
+    let label = milestone.localized_label || milestone.label || milestone.progress_label ||
+      milestone.criterion_label || milestone.name || '';
+    const current = finiteNumber(milestone.current, null);
+    const target = finiteNumber(milestone.target, null);
+    if (current !== null && target !== null && target > 0) {
+      label = label ? `${label} · ${Math.max(0, current)}/${target}` : `${Math.max(0, current)}/${target}`;
+    }
+    return label || t('collection_complete');
+  }
+
+  function updateCollectionUI() {
+    const chip = document.getElementById('lockin-cat-chip');
+    if (!chip) return;
+
+    const snapshot = collectionSnapshot || {};
+    const enabled = Boolean(config.collectibles_enabled && snapshot.enabled !== false);
+    chip.hidden = !enabled;
+    if (!enabled) {
+      if (unlockToastActive) dismissUnlockToast();
+      unlockToastQueue.length = 0;
+      pendingUnlockEvents.length = 0;
+      return;
+    }
+
+    const unlocked = Math.max(0, finiteNumber(snapshot.unlocked_count, 0));
+    const total = Math.max(1, finiteNumber(snapshot.total_count, 50));
+    const equipped = snapshot.equipped || snapshot.equipped_cat || null;
+    const name = catDisplayName(equipped);
+    const milestoneText = nextMilestoneText(snapshot);
+    const unseen = Math.max(0, finiteNumber(snapshot.unseen_count, 0));
+
+    const avatar = document.getElementById('lockin-cat-avatar');
+    const avatarFallback = document.getElementById('lockin-cat-avatar-fallback');
+    setCatImage(avatar, avatarFallback, catAssetUrl(equipped));
+
+    const avatarShell = document.getElementById('lockin-cat-avatar-shell');
+    if (avatarShell) {
+      const degrees = Math.max(0, Math.min(360, (unlocked / total) * 360));
+      avatarShell.style.setProperty('--lockin-cat-progress', `${degrees}deg`);
+    }
+
+    const count = document.getElementById('lockin-cat-count');
+    if (count) count.textContent = t('collection_count', { unlocked: unlocked, total: total });
+    const next = document.getElementById('lockin-cat-next');
+    if (next) next.textContent = milestoneText;
+    const unseenBadge = document.getElementById('lockin-cat-unseen');
+    if (unseenBadge) {
+      unseenBadge.hidden = unseen < 1;
+      unseenBadge.textContent = unseen > 99 ? '99+' : String(unseen);
+    }
+
+    const nextAria = milestoneText ? t('collection_next', { label: milestoneText }) : '';
+    chip.setAttribute('aria-label', t('collection_open', {
+      name: name,
+      unlocked: unlocked,
+      total: total,
+      next: nextAria
+    }));
+    chip.title = `${name} — ${unlocked}/${total}. ${milestoneText}`;
+    chip.lang = getLocale();
+  }
+
+  function updateStaticLocalizedUI() {
+    const bar = document.getElementById('lockin-bar');
+    if (bar) bar.lang = getLocale();
+    const exit = document.getElementById('lockin-exit-btn');
+    if (exit) {
+      exit.title = t('exit_title');
+      exit.setAttribute('aria-label', t('exit_title'));
+      const label = exit.querySelector('.lockin-exit-label');
+      if (label) label.textContent = t('exit');
+    }
+    [
+      ['lockin-pomo-pause-btn', 'pause_timer'],
+      ['lockin-pomo-resume-btn', 'resume_timer'],
+      ['lockin-pomo-stop-btn', 'stop_timer'],
+      ['lockin-break-pause-btn', 'pause_timer'],
+      ['lockin-break-resume-btn', 'resume_timer'],
+      ['lockin-break-reset-btn', 'stop_timer']
+    ].forEach(function (entry) {
+      const button = document.getElementById(entry[0]);
+      if (button) {
+        button.title = t(entry[1]);
+        button.setAttribute('aria-label', t(entry[1]));
+        if (entry[0].startsWith('lockin-break-')) button.textContent = t(entry[1]);
+      }
+    });
+    const breakOverlay = document.getElementById('lockin-break-overlay');
+    if (breakOverlay) breakOverlay.lang = getLocale();
+    const breakTitle = document.getElementById('lockin-break-title');
+    if (breakTitle) breakTitle.textContent = t('break_title');
+    const breakSubtitle = document.querySelector('#lockin-break-overlay .lockin-break-subtitle');
+    if (breakSubtitle) breakSubtitle.textContent = t('break_subtitle');
+    const breathing = document.getElementById('lockin-breathing-bubble');
+    if (breathing && pomoState !== 'break') breathing.textContent = t('breathe');
+    const skip = document.getElementById('lockin-skip-break-btn');
+    if (skip) skip.textContent = t('skip_break');
+    const region = document.getElementById('lockin-cat-toast-region');
+    if (region) region.lang = getLocale();
+  }
+
+  function createUnlockToastRegion() {
+    if (!isMainWebview || document.getElementById('lockin-cat-toast-region')) return;
+    const region = document.createElement('div');
+    region.id = 'lockin-cat-toast-region';
+    region.setAttribute('role', 'status');
+    region.setAttribute('aria-live', 'polite');
+    region.setAttribute('aria-atomic', 'true');
+    region.lang = getLocale();
+    document.body.appendChild(region);
+  }
+
+  function appendToastCatImage(parent, cat) {
+    const frame = document.createElement('span');
+    frame.className = 'lockin-cat-toast-thumb';
+    const img = document.createElement('img');
+    img.alt = '';
+    img.decoding = 'async';
+    const fallback = document.createElement('span');
+    fallback.className = 'lockin-cat-toast-thumb-fallback';
+    fallback.textContent = '🐈';
+    fallback.setAttribute('aria-hidden', 'true');
+    frame.appendChild(img);
+    frame.appendChild(fallback);
+    parent.appendChild(frame);
+    setCatImage(img, fallback, catAssetUrl(cat));
+  }
+
+  function scheduleUnlockDismiss() {
+    if (unlockDismissTimer) clearTimeout(unlockDismissTimer);
+    unlockDismissTimer = setTimeout(dismissUnlockToast, 8000);
+  }
+
+  function dismissUnlockToast() {
+    if (!unlockToastActive) return;
+    if (unlockDismissTimer) {
+      clearTimeout(unlockDismissTimer);
+      unlockDismissTimer = null;
+    }
+    const region = document.getElementById('lockin-cat-toast-region');
+    const toast = region && region.querySelector('.lockin-cat-toast');
+    if (toast) toast.classList.remove('lockin-cat-toast--visible');
+    const delay = prefersReducedMotion() ? 0 : 180;
+    setTimeout(function () {
+      if (toast) toast.remove();
+      unlockToastActive = false;
+      renderNextUnlockToast();
+    }, delay);
+  }
+
+  function renderNextUnlockToast() {
+    if (unlockToastActive || unlockToastQueue.length === 0) return;
+    if (!config.collectibles_enabled || (collectionSnapshot && collectionSnapshot.enabled === false)) {
+      unlockToastQueue.length = 0;
+      return;
+    }
+    const breakOverlay = document.getElementById('lockin-break-overlay');
+    if (breakOverlay && breakOverlay.classList.contains('overlay-open')) {
+      setTimeout(renderNextUnlockToast, 500);
+      return;
+    }
+
+    const region = document.getElementById('lockin-cat-toast-region');
+    if (!region) return;
+    const events = unlockToastQueue.shift();
+    if (!events || events.length === 0) return;
+    unlockToastActive = true;
+
+    // Acknowledge delivery to Python so unshown rewards are tracked accurately across review teardown
+    safePycmd('lockin-unlock-delivered:' + JSON.stringify({ cat_ids: events.map(function (e) { return e.id; }) }));
+
+    const toast = document.createElement('div');
+    toast.className = 'lockin-cat-toast';
+    toast.lang = getLocale();
+
+    const thumbs = document.createElement('div');
+    thumbs.className = 'lockin-cat-toast-thumbs';
+    events.slice(0, 3).forEach(function (event) {
+      appendToastCatImage(thumbs, event);
+    });
+
+    const copy = document.createElement('div');
+    copy.className = 'lockin-cat-toast-copy';
+    const title = document.createElement('div');
+    title.className = 'lockin-cat-toast-title';
+    title.textContent = events.length === 1 ? t('new_cat') : t('new_cats', { count: events.length });
+    const detail = document.createElement('div');
+    detail.className = 'lockin-cat-toast-detail';
+    if (events.length === 1) {
+      const event = events[0];
+      const reason = event.localized_reason || event.reason || event.unlock_reason || t('unlock_reason');
+      detail.textContent = `${catDisplayName(event)} — ${reason}`;
+    } else {
+      const names = events.slice(0, 3).map(catDisplayName);
+      detail.textContent = names.join(', ') + (events.length > 3 ? ` +${events.length - 3}` : '');
+    }
+    copy.appendChild(title);
+    copy.appendChild(detail);
+
+    const actions = document.createElement('div');
+    actions.className = 'lockin-cat-toast-actions';
+    const view = document.createElement('button');
+    view.type = 'button';
+    view.className = 'lockin-cat-toast-view';
+    view.textContent = t('view_collection');
+    view.addEventListener('click', function () {
+      const catId = (events && events[0] && events[0].id) || '';
+      safePycmd(catId ? 'lockin-open-cat-collection:' + catId : 'lockin-open-cat-collection');
+      dismissUnlockToast();
+    });
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'lockin-cat-toast-close';
+    close.setAttribute('aria-label', t('close'));
+    close.textContent = '×';
+    close.addEventListener('click', dismissUnlockToast);
+    actions.appendChild(view);
+    actions.appendChild(close);
+
+    toast.appendChild(thumbs);
+    toast.appendChild(copy);
+    toast.appendChild(actions);
+    toast.addEventListener('mouseenter', function () {
+      if (unlockDismissTimer) clearTimeout(unlockDismissTimer);
+    });
+    toast.addEventListener('mouseleave', scheduleUnlockDismiss);
+    toast.addEventListener('focusin', function () {
+      if (unlockDismissTimer) clearTimeout(unlockDismissTimer);
+    });
+    toast.addEventListener('focusout', function (event) {
+      if (!toast.contains(event.relatedTarget)) scheduleUnlockDismiss();
+    });
+    region.appendChild(toast);
+    requestAnimationFrame(function () {
+      toast.classList.add('lockin-cat-toast--visible');
+    });
+    scheduleUnlockDismiss();
+  }
+
+  function flushPendingUnlocks() {
+    unlockBatchTimer = null;
+    if (pendingUnlockEvents.length === 0) return;
+    unlockToastQueue.push(pendingUnlockEvents.splice(0));
+    renderNextUnlockToast();
+  }
+
+  function queueCatUnlocks(events) {
+    if (!config.collectibles_enabled || (collectionSnapshot && collectionSnapshot.enabled === false)) return;
+    const items = Array.isArray(events) ? events : [events];
+    items.filter(function (item) {
+      return item && typeof item === 'object';
+    }).forEach(function (item) {
+      pendingUnlockEvents.push(item);
+    });
+    if (pendingUnlockEvents.length === 0) return;
+    if (unlockBatchTimer) clearTimeout(unlockBatchTimer);
+    unlockBatchTimer = setTimeout(flushPendingUnlocks, 180);
   }
 
   // --- UI Creation ---
@@ -526,23 +991,40 @@
       if (!document.getElementById('lockin-bar')) {
         const bar = document.createElement('div');
         bar.id = 'lockin-bar';
+        bar.lang = getLocale();
         bar.innerHTML = `
           <div class="lockin-left-section">
-            <div id="lockin-health-badge">HP 100</div>
-            <div class="lockin-health-bar-container">
+            <div id="lockin-health-badge">${t('health', { value: 100 })}</div>
+            <div class="lockin-health-bar-container" role="progressbar" aria-valuemin="0" aria-valuemax="${config.health_max}" aria-valuenow="${Math.round(health)}">
               <div id="lockin-health-fill" style="width: 100%"></div>
               <div id="lockin-shield-overlay"></div>
             </div>
           </div>
           <div class="lockin-center-section">
-            <div id="lockin-streak-badge">⚡ STREAK x0</div>
+            <button type="button" id="lockin-cat-chip" aria-haspopup="dialog">
+              <span id="lockin-cat-avatar-shell" class="lockin-cat-avatar-shell" aria-hidden="true">
+                <img id="lockin-cat-avatar" alt="" decoding="async">
+                <span id="lockin-cat-avatar-fallback" class="lockin-cat-avatar-fallback">🐈</span>
+              </span>
+              <span class="lockin-cat-chip-copy">
+                <span id="lockin-cat-count">${t('collection_count', { unlocked: 0, total: 50 })}</span>
+                <span id="lockin-cat-next">${t('collection_empty')}</span>
+              </span>
+              <span id="lockin-cat-unseen" class="lockin-cat-unseen" hidden></span>
+            </button>
+            <div id="lockin-streak-badge" aria-live="off">${t('streak', { value: 0 })}</div>
           </div>
           <div class="lockin-right-section">
             <div id="lockin-pomo-status">
               <span class="lockin-dot"></span>
               <span id="lockin-pomo-timer">25:00</span>
+              <span class="lockin-pomo-controls">
+                <button type="button" class="lockin-pomo-btn" id="lockin-pomo-pause-btn" title="${t('pause_timer')}" aria-label="${t('pause_timer')}">⏸</button>
+                <button type="button" class="lockin-pomo-btn" id="lockin-pomo-resume-btn" title="${t('resume_timer')}" aria-label="${t('resume_timer')}" style="display:none;">▶</button>
+                <button type="button" class="lockin-pomo-btn" id="lockin-pomo-stop-btn" title="${t('stop_timer')}" aria-label="${t('stop_timer')}">■</button>
+              </span>
             </div>
-            <button class="lockin-btn" id="lockin-exit-btn" title="Exit Review & Return to Decks">✕ Exit</button>
+            <button type="button" class="lockin-btn" id="lockin-exit-btn" title="${t('exit_title')}" aria-label="${t('exit_title')}">✕ <span class="lockin-exit-label">${t('exit')}</span></button>
           </div>
         `;
         document.body.appendChild(bar);
@@ -551,31 +1033,15 @@
         document.getElementById('lockin-exit-btn').addEventListener('click', () => {
           safePycmd("anki-lockin-exit");
         });
-      }
-    }
-
-    const showPomoWidget = isDeckBrowserWebview || isOverviewWebview;
-
-    if (showPomoWidget) {
-      if (!document.getElementById('lockin-pomo-widget')) {
-        const widget = document.createElement('div');
-        widget.id = 'lockin-pomo-widget';
-        widget.className = 'lockin-pomo-floating-widget';
-        widget.innerHTML = `
-          <div class="lockin-pomo-dot-container">
-            <span class="lockin-dot"></span>
-          </div>
-          <div id="lockin-pomo-timer-display">25:00</div>
-          <button class="lockin-pomo-control-btn" id="lockin-pomo-pause-btn" title="Pause Timer">⏸</button>
-          <button class="lockin-pomo-control-btn" id="lockin-pomo-resume-btn" title="Resume Timer" style="display:none;">▶</button>
-          <button class="lockin-pomo-control-btn" id="lockin-pomo-stop-btn" title="Stop & Reset Timer">■</button>
-        `;
-        document.body.appendChild(widget);
-
-        // Bind widget controls
-        document.getElementById('lockin-pomo-pause-btn').addEventListener('click', pausePomodoro);
-        document.getElementById('lockin-pomo-resume-btn').addEventListener('click', resumePomodoro);
-        document.getElementById('lockin-pomo-stop-btn').addEventListener('click', stopPomodoro);
+        document.getElementById('lockin-cat-chip').addEventListener('click', () => {
+          safePycmd('lockin-open-cat-collection');
+        });
+        const pauseBtn = document.getElementById('lockin-pomo-pause-btn');
+        if (pauseBtn) pauseBtn.addEventListener('click', pausePomodoro);
+        const resumeBtn = document.getElementById('lockin-pomo-resume-btn');
+        if (resumeBtn) resumeBtn.addEventListener('click', resumePomodoro);
+        const stopBtn = document.getElementById('lockin-pomo-stop-btn');
+        if (stopBtn) stopBtn.addEventListener('click', stopPomodoro);
       }
     }
 
@@ -629,23 +1095,37 @@
       if (!document.getElementById('lockin-break-overlay')) {
         const breakOverlay = document.createElement('div');
         breakOverlay.id = 'lockin-break-overlay';
+        breakOverlay.lang = getLocale();
+        breakOverlay.setAttribute('role', 'dialog');
+        breakOverlay.setAttribute('aria-modal', 'true');
+        breakOverlay.setAttribute('aria-labelledby', 'lockin-break-title');
         breakOverlay.innerHTML = `
           <div class="lockin-break-content">
-            <h1 class="lockin-break-title">Focus Rest Interval</h1>
-            <p class="lockin-break-subtitle">Time to let your eyes rest and breathe deep</p>
+            <h1 class="lockin-break-title" id="lockin-break-title">${t('break_title')}</h1>
+            <p class="lockin-break-subtitle">${t('break_subtitle')}</p>
             <div class="lockin-breathing-container">
-              <div id="lockin-breathing-bubble">Breathe</div>
+              <div id="lockin-breathing-bubble">${t('breathe')}</div>
             </div>
             <div id="lockin-break-timer">05:00</div>
-            <button class="lockin-btn" id="lockin-skip-break-btn">Skip Break & Study</button>
+            <div class="lockin-break-controls">
+              <button type="button" class="lockin-btn" id="lockin-break-pause-btn">${t('pause_timer')}</button>
+              <button type="button" class="lockin-btn" id="lockin-break-resume-btn">${t('resume_timer')}</button>
+              <button type="button" class="lockin-btn" id="lockin-break-reset-btn">${t('stop_timer')}</button>
+            </div>
+            <button type="button" class="lockin-btn" id="lockin-skip-break-btn">${t('skip_break')}</button>
           </div>
         `;
         document.body.appendChild(breakOverlay);
         document.getElementById('lockin-skip-break-btn').addEventListener('click', endBreak);
+        document.getElementById('lockin-break-pause-btn').addEventListener('click', pausePomodoro);
+        document.getElementById('lockin-break-resume-btn').addEventListener('click', resumePomodoro);
+        document.getElementById('lockin-break-reset-btn').addEventListener('click', stopPomodoro);
       }
     }
 
+    createUnlockToastRegion();
     detectTheme();
+    updateCollectionUI();
     updateUI();
     updateSpacerHeight(!!window.AnkiLockInAnswerMode);
   }
@@ -659,54 +1139,76 @@
     const breakTimer = document.getElementById('lockin-break-timer');
     const root = document.documentElement;
 
-    const widgetTimer = document.getElementById('lockin-pomo-timer-display');
-    const widgetPauseBtn = document.getElementById('lockin-pomo-pause-btn');
-    const widgetResumeBtn = document.getElementById('lockin-pomo-resume-btn');
-    const widgetDot = document.querySelector('#lockin-pomo-widget .lockin-dot');
+    const pomoPauseBtn = document.getElementById('lockin-pomo-pause-btn');
+    const pomoResumeBtn = document.getElementById('lockin-pomo-resume-btn');
+    const pomoDot = document.querySelector('#lockin-pomo-status .lockin-dot');
 
     const minutes = Math.floor(pomoTimeLeft / 60);
     const seconds = Math.floor(pomoTimeLeft % 60);
     const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
-    if (widgetTimer) {
-      widgetTimer.textContent = timeStr;
+    if (pomoTimer) {
+      pomoTimer.textContent = timeStr;
+    }
+    if (breakTimer) {
+      breakTimer.textContent = timeStr;
     }
 
-    if (widgetPauseBtn && widgetResumeBtn) {
+    if (pomoPauseBtn && pomoResumeBtn) {
       if (pomoState === 'paused') {
-        widgetPauseBtn.style.display = 'none';
-        widgetResumeBtn.style.display = '';
+        pomoPauseBtn.style.display = 'none';
+        pomoResumeBtn.style.display = 'inline-flex';
       } else {
-        widgetPauseBtn.style.display = '';
-        widgetResumeBtn.style.display = 'none';
+        pomoPauseBtn.style.display = 'inline-flex';
+        pomoResumeBtn.style.display = 'none';
       }
     }
 
-    if (widgetDot) {
-      if (pomoState === 'break') {
-        widgetDot.className = 'lockin-dot pomo-break';
-      } else if (pomoState === 'paused') {
-        widgetDot.className = 'lockin-dot pomo-paused';
+    const breakPause = document.getElementById('lockin-break-pause-btn');
+    const breakResume = document.getElementById('lockin-break-resume-btn');
+    if (breakPause) breakPause.style.display = pomoState === 'paused' ? 'none' : 'inline-flex';
+    if (breakResume) breakResume.style.display = pomoState === 'paused' ? 'inline-flex' : 'none';
+
+    if (pomoDot) {
+      if (pomoState === 'break' || (pomoState === 'paused' && pomoPhaseBeforePause === 'break')) {
+        pomoDot.className = 'lockin-dot pomo-break';
       } else {
-        widgetDot.className = 'lockin-dot';
+        pomoDot.className = 'lockin-dot';
+      }
+    }
+
+    const isBreakActive = pomoState === 'break' || (pomoState === 'paused' && pomoPhaseBeforePause === 'break');
+    const overlay = document.getElementById('lockin-break-overlay');
+    if (overlay) {
+      if (isBreakActive) {
+        overlay.classList.add('overlay-open');
+      } else {
+        overlay.classList.remove('overlay-open');
       }
     }
 
     // 1. Health Bar & Warm-Up Grace status
-    const isGracePeriod = (activeStudyDuration < config.grace_period_duration);
+    const cycleActive = Math.max(0, activeStudyDuration - cycleStudyStart);
+    const isGracePeriod = (cycleActive < config.grace_period_duration);
     const healthPercent = (health / config.health_max) * 100;
     
     if (healthFill) healthFill.style.width = `${healthPercent}%`;
     
     if (healthBadge) {
       if (isGracePeriod) {
-        const warmSecondsLeft = Math.ceil(config.grace_period_duration - activeStudyDuration);
-        healthBadge.textContent = `WARM (${warmSecondsLeft}s)`;
+        const warmSecondsLeft = Math.ceil(config.grace_period_duration - cycleActive);
+        healthBadge.textContent = t('warmup', { seconds: warmSecondsLeft });
         healthBadge.classList.add('lockin-warmup-badge');
       } else {
-        healthBadge.textContent = `HP ${Math.round(health)}`;
+        healthBadge.textContent = t('health', { value: Math.round(health) });
         healthBadge.classList.remove('lockin-warmup-badge');
       }
+    }
+    const healthProgress = document.querySelector('.lockin-health-bar-container[role="progressbar"]');
+    if (healthProgress) {
+      healthProgress.setAttribute('aria-valuemax', String(config.health_max));
+      healthProgress.setAttribute('aria-valuenow', String(Math.round(health)));
+      healthProgress.setAttribute('aria-valuetext', t('health', { value: Math.round(health) }));
     }
 
     // Set colors dynamically based on health thresholds
@@ -752,10 +1254,10 @@
     // 2. Focus Streak
     if (streakBadge) {
       if (config.adhd_boosters_streak_enabled && streak >= 3) {
-        streakBadge.textContent = `⚡ STREAK x${streak}`;
+        streakBadge.textContent = t('streak', { value: streak });
         streakBadge.classList.add('streak-visible');
       } else {
-        streakBadge.textContent = `⚡ STREAK x${streak}`;
+        streakBadge.textContent = t('streak', { value: streak });
         streakBadge.classList.remove('streak-visible');
       }
     }
@@ -801,6 +1303,7 @@
   // --- Pomodoro Management ---
   
   function startBreak() {
+    pomoPhaseBeforePause = 'break';
     pomoState = 'break';
     pomoTimeLeft = config.pomodoro_break_duration * 60;
     breakStartTime = Date.now();
@@ -809,17 +1312,21 @@
     // Show Full screen break overlay
     const overlay = document.getElementById('lockin-break-overlay');
     if (overlay) overlay.classList.add('overlay-open');
+    if (unlockToastActive && unlockDismissTimer) {
+      clearTimeout(unlockDismissTimer);
+      unlockDismissTimer = null;
+    }
 
     // Change pomo dot indicator
     const dot = document.querySelector('#lockin-bar .lockin-dot');
     if (dot) {
       dot.className = 'lockin-dot pomo-break';
     }
-    persistPomoStateLocal();
     syncPomoState();
   }
 
   function endBreak() {
+    pomoPhaseBeforePause = 'study';
     pomoState = 'study';
     pomoTimeLeft = config.pomodoro_study_duration * 60;
     playSound('break_end');
@@ -833,52 +1340,58 @@
     if (dot) {
       dot.className = 'lockin-dot';
     }
-    
+
+    // Refresh warm-up grace period for this pomodoro cycle
+    cycleStudyStart = activeStudyDuration;
+    // Reset idle timer so the break duration doesn't kill the streak
+    cardStartTime = Date.now();
+
     // Auto heal a tiny bit after break to encourage starting
     health = Math.min(config.health_max, health + 15);
-    persistPomoStateLocal();
     syncPomoState();
     updateUI();
+    if (unlockToastActive) scheduleUnlockDismiss();
+    renderNextUnlockToast();
   }
 
   const BREATHING_PATTERNS = {
     'box': {
       name: 'Box Breathing (4-4-4-4)',
       phases: [
-        { name: 'Breathe In', duration: 4, action: 'inhale' },
-        { name: 'Hold', duration: 4, action: 'hold-full' },
-        { name: 'Breathe Out', duration: 4, action: 'exhale' },
-        { name: 'Hold', duration: 4, action: 'hold-empty' }
+        { labelKey: 'breathe_in', duration: 4, action: 'inhale' },
+        { labelKey: 'breathe_hold', duration: 4, action: 'hold-full' },
+        { labelKey: 'breathe_out', duration: 4, action: 'exhale' },
+        { labelKey: 'breathe_hold', duration: 4, action: 'hold-empty' }
       ]
     },
     '478': {
       name: '4-7-8 Relaxation (4-7-8)',
       phases: [
-        { name: 'Breathe In', duration: 4, action: 'inhale' },
-        { name: 'Hold', duration: 7, action: 'hold-full' },
-        { name: 'Breathe Out', duration: 8, action: 'exhale' }
+        { labelKey: 'breathe_in', duration: 4, action: 'inhale' },
+        { labelKey: 'breathe_hold', duration: 7, action: 'hold-full' },
+        { labelKey: 'breathe_out', duration: 8, action: 'exhale' }
       ]
     },
     'coherent': {
       name: 'Coherent Breathing (5-5)',
       phases: [
-        { name: 'Breathe In', duration: 5, action: 'inhale' },
-        { name: 'Breathe Out', duration: 5, action: 'exhale' }
+        { labelKey: 'breathe_in', duration: 5, action: 'inhale' },
+        { labelKey: 'breathe_out', duration: 5, action: 'exhale' }
       ]
     },
     'sigh': {
       name: 'Physiological Sigh (4-2-8)',
       phases: [
-        { name: 'Double Inhale', duration: 4, action: 'inhale' },
-        { name: 'Hold', duration: 2, action: 'hold-full' },
-        { name: 'Sigh Out', duration: 8, action: 'exhale' }
+        { labelKey: 'breathe_double', duration: 4, action: 'inhale' },
+        { labelKey: 'breathe_hold', duration: 2, action: 'hold-full' },
+        { labelKey: 'breathe_sigh', duration: 8, action: 'exhale' }
       ]
     },
     'simple': {
       name: 'Equal Breathing (4-4)',
       phases: [
-        { name: 'Breathe In', duration: 4, action: 'inhale' },
-        { name: 'Breathe Out', duration: 4, action: 'exhale' }
+        { labelKey: 'breathe_in', duration: 4, action: 'inhale' },
+        { labelKey: 'breathe_out', duration: 4, action: 'exhale' }
       ]
     }
   };
@@ -910,7 +1423,13 @@
       accumulated += phase.duration;
     }
 
-    breathingBubble.textContent = activePhase.name;
+    breathingBubble.textContent = t(activePhase.labelKey || 'breathe');
+
+    if (prefersReducedMotion()) {
+      breathingBubble.className = 'breathe-reduced-motion';
+      breathingBubble.style.transform = 'scale(1)';
+      return;
+    }
 
     let scale = 1.0;
     if (activePhase.action === 'inhale') {
@@ -943,97 +1462,98 @@
     // Handle autopause when window loses focus
     const focusStateActive = isWindowFocused || !config.adhd_boosters_autopause_enabled;
 
-    if (pomoState === 'study' && focusStateActive) {
-      if (isMainWebview) {
-        // Increment session active study time
-        activeStudyDuration += dt;
+    // The reviewer is the sole clock owner. Deck browser/overview webviews may
+    // render and control the persisted timer, but must never run a competing
+    // countdown or health loop.
+    if (isMainWebview && pomoState === 'study' && focusStateActive) {
+      // Increment session active study time
+      activeStudyDuration += dt;
+      if (reviewPhase === 'question') {
+        activeQuestionTime += dt;
+      }
 
-        // 1. Manage Focus Shield
-        if (shieldTimeLeft > 0) {
-          shieldTimeLeft = Math.max(0, shieldTimeLeft - dt);
+      // 1. Manage Focus Shield
+      if (shieldTimeLeft > 0) {
+        shieldTimeLeft = Math.max(0, shieldTimeLeft - dt);
+      }
+
+      // 2. Grace Period & Sigmoid Health depletion. Reading the answer side
+      // is study time, but it must not cost health.
+      const cycleActive = Math.max(0, activeStudyDuration - cycleStudyStart);
+      const isGracePeriod = (cycleActive < config.grace_period_duration);
+      if (!isGracePeriod && shieldTimeLeft === 0 && reviewPhase === 'question') {
+        const streakMultiplier = getStreakMultiplier();
+        const cardTime = activeQuestionTime;
+
+        // Sigmoid drain factor starts slow (10% drain) and accelerates as user stalls
+        let drainFactor = 1.0;
+        if (config.sigmoid_drain_enabled) {
+          drainFactor = 0.1 + 1.9 / (1 + Math.exp(-0.35 * (cardTime - 6)));
         }
 
-        // 2. Grace Period & Sigmoid Health depletion
-        const isGracePeriod = (activeStudyDuration < config.grace_period_duration);
-        if (!isGracePeriod && shieldTimeLeft === 0) {
-          const streakMultiplier = getStreakMultiplier();
-          const cardTime = (now - cardStartTime) / 1000;
-          
-          // Sigmoid drain factor starts slow (10% drain) and accelerates as user stalls
-          let drainFactor = 1.0;
-          if (config.sigmoid_drain_enabled && !cardAnswered) {
-            drainFactor = 0.1 + 1.9 / (1 + Math.exp(-0.35 * (cardTime - 6)));
-          }
-          
-          health = Math.max(0, health - (config.health_drain_rate * dt * drainFactor) / streakMultiplier);
+        health = Math.max(0, health - (config.health_drain_rate * dt * drainFactor) / streakMultiplier);
+      }
+
+      // 3. Heartbeat Audio tick for low health (<25%), only while recalling.
+      const healthPercent = (health / config.health_max) * 100;
+      if (reviewPhase === 'question' && !isGracePeriod && config.adhd_boosters_low_health_heartbeat && healthPercent < 25 && health > 0) {
+        const heartbeatFreq = 300 + (healthPercent / 25) * 1100; // 300ms to 1400ms
+        if (now - lastHeartbeatTime >= heartbeatFreq) {
+          playSound('heartbeat');
+          lastHeartbeatTime = now;
         }
+      }
 
-        // 3. Heartbeat Audio tick for low health (<25%)
-        const healthPercent = (health / config.health_max) * 100;
-        if (!isGracePeriod && config.adhd_boosters_low_health_heartbeat && healthPercent < 25 && health > 0) {
-          const heartbeatFreq = 300 + (healthPercent / 25) * 1100; // 300ms to 1400ms
-          if (now - lastHeartbeatTime >= heartbeatFreq) {
-            playSound('heartbeat');
-            lastHeartbeatTime = now;
-          }
-        }
+      // 4. Game over is visual/session feedback only. It must never submit an
+      // Anki rating because that would corrupt scheduling data.
+      if (health === 0) {
+        gameOverFreeze = true;
+        playSound('gameover');
 
-        // 4. Handle Game Over (health = 0)
-        if (health === 0) {
-          gameOverFreeze = true;
-          playSound('gameover');
-          
-          const bar = document.getElementById('lockin-bar');
-          if (bar) bar.classList.add('lockin-hit');
+        const bar = document.getElementById('lockin-bar');
+        if (bar) bar.classList.add('lockin-hit');
 
-          if (gameOverTimeout) clearTimeout(gameOverTimeout);
-          gameOverTimeout = setTimeout(() => {
-            if (bar) bar.classList.remove('lockin-hit');
-            
-            if (!cardAnswered) {
-              safePycmd("ease1");
-              cardAnswered = true;
-            }
-            health = config.health_max * 0.5; // restore health to 50% grace
-            activeStudyDuration = 0; // reset active study duration to avoid death spiral
-            streak = 0; // break the focus streak
+        if (gameOverTimeout) clearTimeout(gameOverTimeout);
+        gameOverTimeout = setTimeout(() => {
+          if (bar) bar.classList.remove('lockin-hit');
+
+          health = config.health_max * 0.5; // restore health to 50% grace
+          cycleStudyStart = activeStudyDuration;
+          streak = 0;
+          shieldTimeLeft = 0;
+          gameOverFreeze = false;
+          gameOverTimeout = null;
+          updateUI();
+        }, 1500);
+      }
+
+      // 5. Question elapsed and speed-focus alerts
+      if (reviewPhase === 'question') {
+        const questionTime = activeQuestionTime;
+
+        // Streak reset if idle exceeds user threshold
+        if (config.adhd_boosters_streak_enabled && questionTime > config.streak_reset_idle_time) {
+          if (streak > 0) {
+            streak = 0;
             shieldTimeLeft = 0;
-            gameOverFreeze = false;
-            gameOverTimeout = null;
             updateUI();
-          }, 1500);
+          }
         }
 
-        // 5. Question Elapsed, Sigmoid Resets, & Speed Focus alerts
-        if (!cardAnswered) {
-          const questionTime = (now - cardStartTime) / 1000;
+        // Sound warning alert
+        if (config.speed_focus_alert_delay > 0 && questionTime >= config.speed_focus_alert_delay && !alertSoundPlayed) {
+          playSound('alert');
+          alertSoundPlayed = true;
+        }
 
-          // Streak reset if idle exceeds user threshold
-          if (config.adhd_boosters_streak_enabled && questionTime > config.streak_reset_idle_time) {
-            if (streak > 0) {
-              streak = 0;
-              shieldTimeLeft = 0;
-              updateUI();
-            }
-          }
-
-          // Sound warning alert
-          if (config.speed_focus_alert_delay > 0 && questionTime >= config.speed_focus_alert_delay && !alertSoundPlayed) {
-            playSound('alert');
-            alertSoundPlayed = true;
-          }
-
-          // Auto-Reveal Answer
-          if (config.speed_focus_reveal_delay > 0 && questionTime >= config.speed_focus_reveal_delay) { // speed_focus_reveal_delay pycmd("ans")
-            safePycmd("ans");
-            cardAnswered = true; // prevent double triggers
-          }
-
-          // Auto-Grade Fail
-          if (config.speed_focus_fail_delay > 0 && questionTime >= config.speed_focus_fail_delay && !cardAnswered) { // speed_focus_fail_delay pycmd("ease1")
-            safePycmd("ease1");
-            cardAnswered = true;
-          }
+        // Both timeout settings may reveal the answer, but neither may grade
+        // it. onShowAnswer() remains the authoritative phase transition.
+        const revealExpired = config.speed_focus_reveal_delay > 0 && questionTime >= config.speed_focus_reveal_delay;
+        const legacyFailExpired = config.speed_focus_fail_delay > 0 && questionTime >= config.speed_focus_fail_delay;
+        if (!revealRequested && (revealExpired || legacyFailExpired)) {
+          questionResponseTime = activeQuestionTime;
+          revealRequested = true;
+          safePycmd("ans");
         }
       }
 
@@ -1042,8 +1562,8 @@
       if (pomoTimeLeft === 0) {
         startBreak();
       }
-    } 
-    else if (pomoState === 'break' && focusStateActive) {
+    }
+    else if (isMainWebview && pomoState === 'break' && focusStateActive) {
       pomoTimeLeft = Math.max(0, pomoTimeLeft - dt);
 
       // Update dynamic breathing exercise
@@ -1055,8 +1575,7 @@
     }
 
     // Sync Pomodoro state to Python every second (1000ms)
-    if (pomoState !== 'paused' && focusStateActive && (now - lastPomoSyncTime >= 1000)) {
-      persistPomoStateLocal();
+    if (isMainWebview && pomoState !== 'paused' && focusStateActive && (now - lastPomoSyncTime >= 1000)) {
       syncPomoState();
       lastPomoSyncTime = now;
     }
@@ -1162,6 +1681,58 @@
     spacer.style.height = h + 'px';
   }
 
+  function normalizeRating(data, easeKey) {
+    const explicit = data && (data.rating || data.semantic_rating || data.semantic);
+    if (explicit) {
+      const normalized = String(explicit).toLowerCase();
+      if (['again', 'hard', 'good', 'easy'].includes(normalized)) return normalized;
+    }
+    const label = String((data && data.label) || '').trim().toLowerCase();
+    const labels = {
+      again: 'again', nochmal: 'again', wieder: 'again',
+      hard: 'hard', schwer: 'hard',
+      good: 'good', gut: 'good',
+      easy: 'easy', einfach: 'easy'
+    };
+    if (labels[label]) return labels[label];
+    return ({ '1': 'again', '2': 'hard', '3': 'good', '4': 'easy' })[String(easeKey)] || '';
+  }
+
+  function renderQuestionControls() {
+    const wrap = document.getElementById('lockin-answer-buttons');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    const customBtnsVisible = isMainWebview && config.custom_answer_buttons && !config.hide_answer_buttons;
+    if (!customBtnsVisible) {
+      setAnswerButtonsVisible(false);
+      updateSpacerHeight(false);
+      return;
+    }
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'lockin-show-ans-btn';
+    btn.className = 'lockin-ans-btn lockin-show-ans-btn';
+    btn.setAttribute('aria-keyshortcuts', 'Space');
+    btn.setAttribute('aria-label', t('show_answer'));
+    btn.title = t('show_answer') + ' (Space)';
+    const labelSpan = document.createElement('span');
+    labelSpan.className = 'lockin-ans-label';
+    labelSpan.textContent = t('show_answer');
+    btn.appendChild(labelSpan);
+
+    btn.addEventListener('pointerdown', function () {
+      if (prefersReducedMotion()) return;
+      btn.classList.add('lockin-ans-picked');
+      setTimeout(function () { btn.classList.remove('lockin-ans-picked'); }, 200);
+    });
+    btn.addEventListener('click', function () {
+      safePycmd('ans');
+    });
+    wrap.appendChild(btn);
+    setAnswerButtonsVisible(true);
+    updateSpacerHeight(true);
+  }
+
   // --- Listeners & APIs called by Python ---
 
   const AnkiLockIn = {
@@ -1173,31 +1744,46 @@
         gameOverFreeze = false;
       }
       cardStartTime = Date.now();
-      cardAnswered = false;
-      lastChosenEase = null;
+      activeQuestionTime = 0;
+      reviewPhase = 'question';
+      window.AnkiLockInAnswerMode = false;
+      questionResponseTime = null;
+      revealRequested = false;
       alertSoundPlayed = false;
-      // Delay hide so answer button click animation plays fully before fade-out
-      setTimeout(() => setAnswerButtonsVisible(false), 250);
-      updateSpacerHeight(false);
+      renderQuestionControls();
       updateUI();
     },
 
     onShowAnswer: function () {
       initAudio();
-      cardAnswered = true;
-      setAnswerButtonsVisible(true);
-      updateSpacerHeight(true);
+      if (questionResponseTime === null) {
+        questionResponseTime = activeQuestionTime;
+      }
+      reviewPhase = 'answer';
+      window.AnkiLockInAnswerMode = true;
+      revealRequested = false;
+      if (latestButtonsPayload) {
+        AnkiLockIn.updateButtons(latestButtonsPayload);
+      }
+      const customBtnsVisible = isMainWebview && config.custom_answer_buttons && !config.hide_answer_buttons;
+      setAnswerButtonsVisible(customBtnsVisible);
+      updateSpacerHeight(customBtnsVisible);
     },
 
     /**
      * Rebuild the custom answer button row from data pushed by Python.
      * buttonsData is an object keyed by numeric ease (string) with values:
-     *   { label: "Again" | "Hard" | "Good" | "Easy", interval: "10d" | "" }
+     *   { rating: "again" | "hard" | "good" | "easy",
+     *     label: "Again" | "Hard" | "Good" | "Easy", interval: "10d" | "" }
      * Buttons are wired to Anki's native pycmd("easeN") so the click goes
      * through _linkHandler -> _answerCard (same path as native buttons).
      */
     updateButtons: function (buttonsData) {
-      safePycmd('lockin-debug:JS updateButtons called: ' + JSON.stringify(buttonsData));
+      latestButtonsPayload = buttonsData;
+      if (reviewPhase === 'question') {
+        renderQuestionControls();
+        return;
+      }
       const wrap = document.getElementById('lockin-answer-buttons');
       if (!wrap) return;
       if (!buttonsData || typeof buttonsData !== 'object') return;
@@ -1205,36 +1791,42 @@
       // Clear existing buttons
       wrap.innerHTML = '';
 
-      const colorMap = { 1: '#e74c3c', 2: '#f39c12', 3: '#2ecc71', 4: '#3498db' };
       const clsMap = {
-        1: 'lockin-ans--again',
-        2: 'lockin-ans--hard',
-        3: 'lockin-ans--good',
-        4: 'lockin-ans--easy'
+        again: 'lockin-ans--again',
+        hard: 'lockin-ans--hard',
+        good: 'lockin-ans--good',
+        easy: 'lockin-ans--easy'
       };
 
       Object.keys(buttonsData).forEach(function (easeKey) {
-        const data = buttonsData[easeKey];
+        const data = buttonsData[easeKey] || {};
+        const rating = normalizeRating(data, easeKey);
+        const translatedLabel = rating ? t('answer_' + rating) : (data.localized_label || data.label || easeKey);
+        const interval = data.interval ? String(data.interval) : '';
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'lockin-ans-btn ' + (clsMap[easeKey] || '');
+        btn.className = 'lockin-ans-btn ' + (clsMap[rating] || '');
         btn.setAttribute('data-ease', easeKey);
-        btn.title = data.label || '';
-        btn.style.cssText =
-          'flex:1 1 0;min-width:80px;max-width:150px;' +
-          'display:flex;align-items:center;justify-content:center;' +
-          'padding:10px 16px;border:none;border-radius:10px;' +
-          'background:' + (colorMap[easeKey] || '#888') + ';' +
-          'color:#fff;cursor:pointer;' +
-          'box-shadow:0 4px 14px rgba(0,0,0,0.25);' +
-          'font:inherit;font-size:15px;font-weight:700;line-height:1;' +
-          'outline:none;-webkit-appearance:none;appearance:none;' +
-          'text-shadow:0 1px 2px rgba(0,0,0,0.25);';
-        btn.innerHTML =
-          '<span class="lockin-ans-interval" data-interval-for="' + easeKey + '">' +
-          (data.interval || '—') + '</span>';
-        // Buttons with no computed interval (learning cards) are disabled
-        if (!data.interval) {
+        if (rating) btn.setAttribute('data-rating', rating);
+        btn.setAttribute('aria-keyshortcuts', easeKey);
+        btn.title = interval ? `${translatedLabel} — ${interval}` : translatedLabel;
+        btn.setAttribute('aria-label', btn.title);
+
+        const labelSpan = document.createElement('span');
+        labelSpan.className = 'lockin-ans-label';
+        labelSpan.textContent = translatedLabel;
+        btn.appendChild(labelSpan);
+        if (interval) {
+          const intervalSpan = document.createElement('span');
+          intervalSpan.className = 'lockin-ans-interval';
+          intervalSpan.setAttribute('data-interval-for', easeKey);
+          intervalSpan.textContent = interval;
+          btn.appendChild(intervalSpan);
+        }
+
+        // Missing interval text is not evidence that a valid rating is
+        // unsupported. Only an explicit backend flag may disable it.
+        if (data.enabled === false || data.available === false) {
           btn.classList.add('lockin-ans-unsupported');
           btn.disabled = true;
           btn.setAttribute('aria-disabled', 'true');
@@ -1242,11 +1834,11 @@
         // pointerdown gives the pop animation a ~100ms head start during the
         // physical press, before the click event fires pycmd and Anki transitions.
         btn.addEventListener('pointerdown', function () {
+          if (prefersReducedMotion()) return;
           btn.classList.add('lockin-ans-picked');
           setTimeout(function () { btn.classList.remove('lockin-ans-picked'); }, 200);
         });
         btn.addEventListener('click', function () {
-          lastChosenEase = easeKey;
           if (typeof pycmd === 'function') { pycmd('ease' + easeKey); }
           else if (typeof window.pycmd === 'function') { window.pycmd('ease' + easeKey); }
         });
@@ -1256,18 +1848,32 @@
       // Anki's main webview persists across card transitions, so the row
       // is naturally visible from the moment it is populated. If we land
       // here while in answer mode, make sure it isn't stuck hidden.
-      if (window.AnkiLockInAnswerMode) {
+      if (reviewPhase === 'answer' || window.AnkiLockInAnswerMode) {
         setAnswerButtonsVisible(true);
       }
-      // Re-apply persistent chosen highlight on the button that was pressed
-      if (lastChosenEase !== null) {
-        const chosenBtn = wrap.querySelector(`.lockin-ans-btn[data-ease="${lastChosenEase}"]`);
-        if (chosenBtn) chosenBtn.classList.add('lockin-ans-chosen');
-      }
-      updateSpacerHeight(true);
+      updateSpacerHeight(reviewPhase === 'answer');
     },
 
-    onAnswerCard: function (ease, label) {
+    updateCollection: function (snapshot) {
+      collectionSnapshot = snapshot && typeof snapshot === 'object' ? snapshot : null;
+      window.AnkiLockInCollectionSnapshot = collectionSnapshot;
+      updateStaticLocalizedUI();
+      updateCollectionUI();
+      updateUI();
+    },
+
+    showCatUnlock: function (events) {
+      queueCatUnlocks(events);
+    },
+
+    flushStats: function () {
+      // Reuse the regular loop's elapsed-time accounting. tick() advances
+      // lastTickTime, so the next scheduled tick cannot count this slice twice.
+      tick();
+      sendStatsToPython();
+    },
+
+    onAnswerCard: function (ease, label, undoCounter) {
       initAudio();
       if (gameOverTimeout) {
         clearTimeout(gameOverTimeout);
@@ -1275,7 +1881,16 @@
         gameOverFreeze = false;
       }
 
-      const answerSpeed = (Date.now() - cardStartTime) / 1000;
+      const preAnswerState = {
+        health: health,
+        streak: streak,
+        statsCards: statsCards,
+        statsCorrect: statsCorrect,
+        statsMaxStreak: statsMaxStreak,
+        shieldTimeLeft: shieldTimeLeft,
+        statsShields: statsShields
+      };
+      const answerSpeed = questionResponseTime !== null ? questionResponseTime : activeQuestionTime;
       statsCards++;
 
       // 1. Calculate Health Change. Prefer the semantic label pushed from
@@ -1300,14 +1915,8 @@
         healthDelta += 5;
       }
 
-      // Track undo details
-      let streakDelta = 0;
-      let shieldTimeAdded = 0;
-
       // Heal/damage bar
-      const oldHealth = health;
       health = Math.max(0, Math.min(config.health_max, health + healthDelta));
-      const actualHealthDelta = health - oldHealth;
 
       if (ease > 1) {
         statsCorrect++;
@@ -1324,7 +1933,6 @@
       if (config.adhd_boosters_streak_enabled) {
         const streakSpeedThreshold = config.streak_speed_threshold || 5.0;
         if (ease > 1 && answerSpeed <= streakSpeedThreshold) {
-          streakDelta = 1;
           streak++;
           
           if (streak > statsMaxStreak) {
@@ -1342,7 +1950,6 @@
           if (streak % 5 === 0) {
             if (config.adhd_boosters_shield_enabled) {
               shieldTimeLeft = 12.0; // 12 seconds shield
-              shieldTimeAdded = 12.0;
               statsShields++;
               playSound('shield_up');
             } else {
@@ -1354,13 +1961,17 @@
         }
       }
 
-      // Store this action for undo
-      lastAction = {
-        healthDelta: actualHealthDelta,
-        streakDelta: streakDelta,
-        isCorrect: ease > 1,
-        shieldTimeAdded: shieldTimeAdded
+      const postAnswerState = {
+        health: health,
+        streak: streak,
+        statsCards: statsCards,
+        statsCorrect: statsCorrect,
+        statsMaxStreak: statsMaxStreak,
+        shieldTimeLeft: shieldTimeLeft,
+        statsShields: statsShields
       };
+      preAnswerState.post = postAnswerState;
+      storeAnswerAction(undoCounter, preAnswerState);
 
       sendStatsToPython();
       updateUI();
@@ -1378,8 +1989,6 @@
       // Clean up existing elements and rebuild based on new config position
       const bar = document.getElementById('lockin-bar');
       if (bar) bar.remove();
-      const widget = document.getElementById('lockin-pomo-widget');
-      if (widget) widget.remove();
       const overlay = document.getElementById('lockin-break-overlay');
       if (overlay) overlay.remove();
       const lowHealth = document.getElementById('lockin-low-health-overlay');
@@ -1392,6 +2001,16 @@
       document.body.classList.remove('lockin-active', 'lockin-bar-top', 'lockin-bar-bottom', 'lockin-main', 'lockin-bottom-webview', 'lockin-deckbrowser', 'lockin-overview');
       
       createUI();
+      if (reviewPhase === 'question') {
+        renderQuestionControls();
+      } else if (reviewPhase === 'answer' || window.AnkiLockInAnswerMode) {
+        if (latestButtonsPayload) {
+          AnkiLockIn.updateButtons(latestButtonsPayload);
+        }
+        const customBtnsVisible = isMainWebview && config.custom_answer_buttons && !config.hide_answer_buttons;
+        setAnswerButtonsVisible(customBtnsVisible);
+        updateSpacerHeight(customBtnsVisible);
+      }
     },
 
     animateButton: function (data) {
@@ -1399,16 +2018,17 @@
       if (data.isShowAnswer) {
         btn = document.getElementById('ansbut') || document.querySelector('button[onclick*="ans"]') || document.querySelector('input[onclick*="ans"]');
       } else if (data.ease) {
-        lastChosenEase = data.ease;
         btn = getAnswerButton(data.ease);
       }
 
       if (btn) {
         if (btn.classList.contains('lockin-ans-btn')) {
-          btn.classList.add('lockin-ans-picked');
-          setTimeout(() => {
-            btn.classList.remove('lockin-ans-picked');
-          }, 200);
+          if (!prefersReducedMotion()) {
+            btn.classList.add('lockin-ans-picked');
+            setTimeout(() => {
+              btn.classList.remove('lockin-ans-picked');
+            }, 200);
+          }
         } else {
           btn.classList.add('lockin-btn-feedback');
           setTimeout(() => {
@@ -1418,32 +2038,40 @@
       }
     },
 
-    onUndo: function () {
-      // Reset answer button state — the undone card returns to its prior phase
-      setAnswerButtonsVisible(false);
-      if (lastAction) {
-        // Revert stats
-        statsCards = Math.max(0, statsCards - 1);
-        if (lastAction.isCorrect) {
-          statsCorrect = Math.max(0, statsCorrect - 1);
-        }
+    onUndo: function (undoCounter) {
+      const snapshot = takeLatestAnswerAction(undoCounter);
+      if (!snapshot) return;
 
-        // Revert health
-        health = Math.max(0, Math.min(config.health_max, health - lastAction.healthDelta));
+      // The undone card returns to its question phase. Restore the full snapshot
+      // rather than subtracting deltas, and re-render the question controls so
+      // the custom "Show Answer" button remains available.
+      reviewPhase = 'question';
+      window.AnkiLockInAnswerMode = false;
+      renderQuestionControls();
+      health = snapshot.health;
+      streak = snapshot.streak;
+      statsCards = snapshot.statsCards;
+      statsCorrect = snapshot.statsCorrect;
+      statsMaxStreak = snapshot.statsMaxStreak;
+      shieldTimeLeft = snapshot.shieldTimeLeft;
+      statsShields = snapshot.statsShields;
+      sendStatsToPython();
+      updateUI();
+    },
 
-        // Revert streak
-        streak = Math.max(0, streak - lastAction.streakDelta);
+    onRedo: function (undoCounter) {
+      const snapshot = takeLatestRedoAction(undoCounter);
+      if (!snapshot) return;
 
-        // Revert shield
-        if (lastAction.shieldTimeAdded > 0) {
-          shieldTimeLeft = Math.max(0, shieldTimeLeft - lastAction.shieldTimeAdded);
-          statsShields = Math.max(0, statsShields - 1);
-        }
-
-        lastAction = null; // Clear so you can't double undo
-        sendStatsToPython();
-        updateUI();
-      }
+      health = snapshot.health;
+      streak = snapshot.streak;
+      statsCards = snapshot.statsCards;
+      statsCorrect = snapshot.statsCorrect;
+      statsMaxStreak = snapshot.statsMaxStreak;
+      shieldTimeLeft = snapshot.shieldTimeLeft;
+      statsShields = snapshot.statsShields;
+      sendStatsToPython();
+      updateUI();
     },
 
     createUI: createUI,
@@ -1451,45 +2079,35 @@
       health = config.health_max;
       streak = 0;
       shieldTimeLeft = 0;
-      cardAnswered = false;
+      reviewPhase = window.AnkiLockInAnswerMode ? 'answer' : 'question';
+      activeQuestionTime = 0;
+      questionResponseTime = null;
+      revealRequested = false;
       alertSoundPlayed = false;
       statsCards = 0;
       statsCorrect = 0;
       statsMaxStreak = 0;
       statsShields = 0;
+      clearAnswerActions();
       activeStudyDuration = 0;
+      cycleStudyStart = 0;
       gameOverFreeze = false;
       if (gameOverTimeout) {
         clearTimeout(gameOverTimeout);
         gameOverTimeout = null;
       }
       
-      // Load Pomodoro state from localStorage first (synchronous), then fall back to Python-injected global
-      try {
-        const stored = localStorage.getItem('ankiLockInPomoState');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          if (parsed && typeof parsed.time_left === 'number' && parsed.time_left > 0) {
-            pomoState = parsed.state;
-            pomoTimeLeft = parsed.time_left;
-            prePauseState = parsed.pre_pause_state || 'study';
-          } else {
-            throw new Error('stale');
-          }
-        } else {
-          throw new Error('empty');
-        }
-      } catch (e) {
-        prePauseState = 'study';
-        if (window.AnkiLockInPomoState && window.AnkiLockInPomoState.time_left !== -1) {
-          pomoState = window.AnkiLockInPomoState.state;
-          pomoTimeLeft = window.AnkiLockInPomoState.time_left;
-        } else {
-          pomoState = 'study';
-          pomoTimeLeft = config.pomodoro_study_duration * 60;
-        }
+      // Load Pomodoro state from injected global variables if available
+      if (window.AnkiLockInPomoState && window.AnkiLockInPomoState.time_left !== -1) {
+        pomoState = window.AnkiLockInPomoState.state;
+        pomoTimeLeft = window.AnkiLockInPomoState.time_left;
+        pomoPhaseBeforePause = window.AnkiLockInPomoState.pre_pause_state === 'break' ? 'break' :
+          (pomoState === 'break' ? 'break' : 'study');
+      } else {
+        pomoState = 'study';
+        pomoPhaseBeforePause = 'study';
+        pomoTimeLeft = config.pomodoro_study_duration * 60;
       }
-      persistPomoStateLocal();
     }
   };
 
@@ -1528,13 +2146,12 @@
       } else if (e.key === '4') {
         ease = 4;
       } else if (e.key === ' ' || e.key === 'Enter') {
-        if (cardAnswered) {
+        if (reviewPhase === 'answer') {
           ease = 3; // Treat as default Good ease for visual highlight
         }
       }
 
-      if (ease !== null && cardAnswered) {
-        lastChosenEase = ease;
+      if (ease !== null && reviewPhase === 'answer' && !prefersReducedMotion()) {
         const btn = document.querySelector(`.lockin-ans-btn[data-ease="${ease}"]`);
         if (btn) {
           btn.classList.add('lockin-ans-picked');

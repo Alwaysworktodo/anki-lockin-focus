@@ -13,6 +13,8 @@
   --color-red: hsla(0, 95%, 55%, 0.85);
   --color-blue-shield: hsla(210, 100%, 55%, 0.85);
   --color-streak: hsla(32, 100%, 55%, 0.85);
+  --color-cat: #b78cff;
+  --lockin-cat-track: rgba(128, 128, 128, 0.25);
   
   --health-bar-color: var(--color-green);
 }
@@ -49,9 +51,10 @@ body.lockin-dark-theme #lockin-bar {
   background: var(--lockin-bg);
   backdrop-filter: blur(14px) saturate(180%);
   -webkit-backdrop-filter: blur(14px) saturate(180%);
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) auto minmax(140px, 1fr);
+  gap: 12px;
   align-items: center;
-  justify-content: space-between;
   padding: 0 20px;
   z-index: 9999;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -106,8 +109,7 @@ body.lockin-active.lockin-bar-top.lockin-main {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-grow: 1;
-  max-width: 60%;
+  min-width: 0;
 }
 
 .lockin-health-bar-container {
@@ -193,6 +195,8 @@ body.lockin-active.lockin-bar-top.lockin-main {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
+  min-width: 0;
 }
 
 #lockin-streak-badge {
@@ -221,11 +225,131 @@ body.lockin-active.lockin-bar-top.lockin-main {
   animation: streak-bounce 0.4s ease-out;
 }
 
+/* Equipped cat + stable collection progress. Unlock logic stays in Python. */
+#lockin-cat-chip {
+  position: relative;
+  height: 42px;
+  max-width: 184px;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 3px 10px 3px 3px;
+  border: 1px solid var(--lockin-border);
+  border-radius: 22px;
+  background: rgba(128, 128, 128, 0.1);
+  color: var(--lockin-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+#lockin-cat-chip:hover {
+  background: rgba(183, 140, 255, 0.16);
+  border-color: rgba(183, 140, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+#lockin-cat-chip:focus-visible {
+  outline: 3px solid #7651d8;
+  outline-offset: 2px;
+}
+
+.lockin-cat-avatar-shell {
+  --lockin-cat-progress: 0deg;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(var(--color-cat) var(--lockin-cat-progress), var(--lockin-cat-track) 0);
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+#lockin-cat-avatar,
+.lockin-cat-avatar-fallback {
+  grid-area: 1 / 1;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(20, 20, 30, 0.9);
+  border: 2px solid var(--lockin-bg);
+  box-sizing: border-box;
+}
+
+#lockin-cat-avatar {
+  object-fit: cover;
+}
+
+.lockin-cat-avatar-fallback {
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.lockin-cat-chip-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+#lockin-cat-count {
+  overflow: hidden;
+  color: var(--lockin-text);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#lockin-cat-next {
+  overflow: hidden;
+  color: var(--lockin-text-muted);
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lockin-cat-unseen {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  min-width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+  padding: 0 4px;
+  border: 2px solid var(--lockin-bg);
+  border-radius: 10px;
+  background: #b3261e;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+#lockin-cat-unseen[hidden],
+#lockin-cat-chip[hidden],
+#lockin-cat-avatar[hidden],
+.lockin-cat-avatar-fallback[hidden] {
+  display: none !important;
+}
+
 /* Right Section: Pomodoro Module */
 .lockin-right-section {
   display: flex;
   align-items: center;
   gap: 12px;
+  justify-self: end;
+  min-width: 0;
 }
 
 #lockin-pomo-status {
@@ -316,6 +440,165 @@ body.lockin-low-health #lockin-bar.lockin-bar-top {
 }
 body.lockin-low-health #lockin-bar.lockin-bar-bottom {
   border-top-color: rgba(255, 0, 0, 0.4);
+}
+
+/* Non-blocking collectible unlock status. Kept below the break overlay so a
+   focus break remains visually modal; JS pauses the dismissal while hidden. */
+#lockin-cat-toast-region {
+  position: fixed;
+  right: 18px;
+  bottom: 70px;
+  width: min(440px, calc(100vw - 36px));
+  z-index: 9999;
+  pointer-events: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--lockin-text);
+}
+
+body.lockin-bar-top #lockin-cat-toast-region {
+  top: 70px;
+  bottom: auto;
+}
+
+.lockin-cat-toast {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 176px;
+  padding: 10px;
+  border: 1px solid rgba(183, 140, 255, 0.55);
+  border-radius: 18px;
+  background: var(--lockin-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  pointer-events: auto;
+  box-sizing: border-box;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.lockin-cat-toast--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.lockin-cat-toast-thumbs {
+  display: flex;
+  align-items: center;
+  min-width: 160px;
+}
+
+.lockin-cat-toast-thumb {
+  width: 160px;
+  height: 160px;
+  min-width: 160px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 14px;
+  background: rgba(128, 128, 128, 0.18);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.lockin-cat-toast-thumb + .lockin-cat-toast-thumb {
+  margin-left: -120px;
+}
+
+.lockin-cat-toast-thumb img,
+.lockin-cat-toast-thumb-fallback {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+}
+
+.lockin-cat-toast-thumb img {
+  object-fit: contain;
+}
+
+.lockin-cat-toast-thumb-fallback {
+  display: grid;
+  place-items: center;
+  font-size: 56px;
+}
+
+.lockin-cat-toast-thumb img[hidden],
+.lockin-cat-toast-thumb-fallback[hidden] {
+  display: none !important;
+}
+
+.lockin-cat-toast-copy {
+  min-width: 0;
+}
+
+.lockin-cat-toast-title {
+  overflow: hidden;
+  color: var(--lockin-text);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lockin-cat-toast-detail {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 3px;
+  color: var(--lockin-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.lockin-cat-toast-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lockin-cat-toast-view,
+.lockin-cat-toast-close {
+  border: 1px solid var(--lockin-border);
+  background: rgba(128, 128, 128, 0.13);
+  color: var(--lockin-text);
+  cursor: pointer;
+  font: inherit;
+}
+
+.lockin-cat-toast-view {
+  min-height: 34px;
+  padding: 0 10px;
+  border-radius: 17px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.lockin-cat-toast-close {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.lockin-cat-toast-view:hover,
+.lockin-cat-toast-close:hover {
+  background: rgba(183, 140, 255, 0.2);
+  border-color: rgba(183, 140, 255, 0.55);
+}
+
+.lockin-cat-toast-view:focus-visible,
+.lockin-cat-toast-close:focus-visible {
+  outline: 3px solid #7651d8;
+  outline-offset: 1px;
 }
 
 /* Calming Full-screen Pomodoro Break Overlay */
@@ -516,8 +799,17 @@ body.lockin-low-health #lockin-bar.lockin-bar-bottom {
   #lockin-break-overlay,
   #lockin-breathing-bubble,
   #lockin-spacer,
+  #lockin-health-badge.lockin-warmup-badge,
+  #lockin-pomo-status.pomo-warning,
+  .lockin-dot.pomo-break,
+  .lockin-shield-active .lockin-health-bar-container,
+  .lockin-hit,
+  .lockin-answer-buttons,
+  .lockin-ans-btn,
   .lockin-ans-btn.lockin-ans-picked,
-  .lockin-ans-btn.lockin-ans-picked::after {
+  #lockin-cat-chip,
+  .lockin-cat-avatar-shell,
+  .lockin-cat-toast {
     transition: none !important;
     animation: none !important;
   }
@@ -619,100 +911,6 @@ body.lockin-active.lockin-hide-buttons.lockin-bottom-webview #bottombar {
   display: none !important;
 }
 
-/* Floating Pomodoro Widget for Main Screen (DeckBrowser / Overview) */
-.lockin-pomo-floating-widget {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  height: 48px;
-  background: var(--lockin-bg);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
-  border: 1px solid var(--lockin-border);
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0 16px;
-  z-index: 9999;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  user-select: none;
-  box-sizing: border-box;
-  color: var(--lockin-text);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s, border-color 0.3s;
-}
-
-.lockin-pomo-floating-widget:hover {
-  transform: translateY(-2px);
-  background: rgba(20, 20, 35, 0.8);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-body.lockin-light-theme .lockin-pomo-floating-widget {
-  background: rgba(240, 240, 245, 0.85);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-}
-
-body.lockin-light-theme .lockin-pomo-floating-widget:hover {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(0, 0, 0, 0.15);
-}
-
-/* Pomo Widget dot indicator status colors */
-.lockin-pomo-floating-widget .lockin-dot {
-  width: 10px;
-  height: 10px;
-  transition: all 0.3s ease;
-}
-
-.lockin-pomo-floating-widget .lockin-dot.pomo-paused {
-  background-color: var(--lockin-text-muted);
-  box-shadow: none;
-}
-
-/* Timer countdown text */
-#lockin-pomo-timer-display {
-  font-size: 14px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  min-width: 42px;
-  text-align: center;
-}
-
-/* Widget Control Buttons */
-.lockin-pomo-control-btn {
-  background: rgba(128, 128, 128, 0.12);
-  border: 1px solid var(--lockin-border);
-  color: var(--lockin-text);
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
-  padding: 0;
-}
-
-.lockin-pomo-control-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.35);
-  transform: scale(1.08);
-}
-
-body.lockin-light-theme .lockin-pomo-control-btn {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
-body.lockin-light-theme .lockin-pomo-control-btn:hover {
-  background: rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 0, 0, 0.15);
-}
-
 #lockin-pomo-pause-btn,
 #lockin-pomo-resume-btn {
   color: var(--color-green);
@@ -729,10 +927,6 @@ body.lockin-light-theme #lockin-pomo-resume-btn {
 
 body.lockin-light-theme #lockin-pomo-stop-btn {
   color: #c62828;
-}
-
-.lockin-pomo-control-btn:active {
-  transform: scale(0.92);
 }
 
 /* ==========================================================
@@ -774,8 +968,11 @@ body.lockin-active .lockin-ans-btn {
   min-width: 80px;
   max-width: 150px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 3px;
+  min-height: 48px;
   padding: 10px 16px;
   border: none;
   border-radius: 10px;
@@ -804,36 +1001,16 @@ body.lockin-active .lockin-ans-btn:active {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
-/* Click feedback: instant pop + halo ring.
-   Peak is at 0% so the glow is visible immediately on press — before the card
-   transitions (~10-30ms). The ring expands outward for a "hit confirmed" feel. */
-
+/* Click feedback: bright pulse + pop */
 @keyframes lockin-ans-pick {
-  0%   { transform: scale(1.18); filter: brightness(1.5); box-shadow: 0 0 28px rgba(255,255,255,0.45), 0 8px 24px rgba(0,0,0,0.35); }
-  20%  { transform: scale(1.08); filter: brightness(1.25); box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
-  50%  { transform: scale(0.97); filter: brightness(1.1);  box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
-  100% { transform: scale(1);    filter: brightness(1);    box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
-}
-
-@keyframes lockin-ans-ring {
-  0%   { transform: scale(1);  opacity: 0.8; }
-  100% { transform: scale(1.35); opacity: 0; }
+  0%   { transform: scale(1);   filter: brightness(1); }
+  25%  { transform: scale(1.12); filter: brightness(1.4); }
+  55%  { transform: scale(0.95); filter: brightness(1.15); }
+  100% { transform: scale(1);   filter: brightness(1); }
 }
 
 body.lockin-active .lockin-ans-btn.lockin-ans-picked {
-  position: relative;
-  overflow: visible;
   animation: lockin-ans-pick 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-body.lockin-active .lockin-ans-btn.lockin-ans-picked::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 12px;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  animation: lockin-ans-ring 280ms ease-out;
-  pointer-events: none;
 }
 
 body.lockin-active .lockin-ans-btn:focus,
@@ -848,7 +1025,7 @@ body.lockin-light-theme .lockin-ans-btn:focus-visible {
   box-shadow: 0 0 0 3px #5d5dff, 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
-/* Unsupported ease (e.g. learning cards where only Again/Good are valid) */
+/* Only used when the backend explicitly marks a rating unavailable. */
 body.lockin-active .lockin-ans-btn.lockin-ans-unsupported {
   cursor: not-allowed;
   opacity: 0.35;
@@ -859,13 +1036,69 @@ body.lockin-active .lockin-ans-btn.lockin-ans-unsupported:hover {
   filter: saturate(0.2);
 }
 
-/* Solid per-ease colors (matching Ring of Buttons reference) */
-body.lockin-active .lockin-ans-btn.lockin-ans--again { background: #e74c3c; }
-body.lockin-active .lockin-ans-btn.lockin-ans--hard  { background: #f39c12; }
-body.lockin-active .lockin-ans-btn.lockin-ans--good  { background: #2ecc71; }
-body.lockin-active .lockin-ans-btn.lockin-ans--easy  { background: #3498db; }
+/* Accessible semantic colors; numeric ease is intentionally not styling. */
+body.lockin-active .lockin-ans-btn.lockin-ans--again { background: #b3261e; }
+body.lockin-active .lockin-ans-btn.lockin-ans--hard  { background: #8a4b00; }
+body.lockin-active .lockin-ans-btn.lockin-ans--good  { background: #146c43; }
+body.lockin-active .lockin-ans-btn.lockin-ans--easy  { background: #0b57d0; }
+
+body.lockin-active .lockin-ans-btn.lockin-show-ans-btn {
+  min-width: 160px;
+  max-width: 260px;
+  background: rgba(128, 128, 128, 0.22);
+  border: 1px solid var(--lockin-border);
+  color: var(--lockin-text);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.lockin-active .lockin-ans-btn.lockin-show-ans-btn:hover {
+  background: rgba(183, 140, 255, 0.28);
+  border-color: rgba(183, 140, 255, 0.6);
+}
+
+/* Reviewer Pomodoro inline controls */
+.lockin-pomo-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 2px;
+}
+
+.lockin-pomo-btn {
+  background: transparent;
+  border: 1px solid var(--lockin-border);
+  border-radius: 8px;
+  color: var(--lockin-text);
+  font-size: 10px;
+  padding: 2px 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.lockin-pomo-btn:hover {
+  background: rgba(183, 140, 255, 0.2);
+  border-color: rgba(183, 140, 255, 0.5);
+}
+
+.lockin-pomo-btn:active {
+  transform: scale(0.92);
+}
+
+body.lockin-active .lockin-ans-label {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.05;
+}
 
 body.lockin-active .lockin-ans-interval {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  opacity: 0.88;
   font-variant-numeric: tabular-nums;
 }
 
@@ -877,8 +1110,83 @@ body.lockin-active .lockin-ans-interval {
   }
 }
 
+@media (max-width: 480px) {
+  body.lockin-active .lockin-answer-buttons {
+    width: calc(100% - 16px);
+    gap: 5px;
+  }
+
+  body.lockin-active .lockin-ans-btn {
+    min-width: 0;
+    padding: 8px 4px;
+  }
+
+  body.lockin-active .lockin-ans-label {
+    font-size: 12px;
+  }
+}
+
 body.lockin-bar-top.lockin-active .lockin-answer-buttons {
   bottom: 20px;
 }
 
+/* Reviewer toolbar responsiveness, including German's longer labels. */
+@media (max-width: 860px) {
+  #lockin-bar {
+    grid-template-columns: minmax(110px, 1fr) auto auto;
+    gap: 8px;
+    padding: 0 10px;
+  }
 
+  #lockin-cat-chip {
+    width: 42px;
+    grid-template-columns: 36px;
+    padding-right: 3px;
+  }
+
+  .lockin-cat-chip-copy {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  #lockin-bar {
+    grid-template-columns: minmax(90px, 1fr) auto auto;
+  }
+
+  .lockin-left-section {
+    gap: 6px;
+  }
+
+  #lockin-health-badge {
+    min-width: 42px;
+    padding-inline: 4px;
+  }
+
+  .lockin-right-section {
+    gap: 6px;
+  }
+
+  .lockin-exit-label {
+    display: none;
+  }
+
+  #lockin-exit-btn {
+    min-width: 36px;
+    padding-inline: 8px;
+  }
+
+  #lockin-cat-toast-region {
+    right: 10px;
+    width: calc(100vw - 20px);
+  }
+}
+
+/* Keep break controls reachable inside the modal overlay. */
+.lockin-break-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}

@@ -2,3 +2,7 @@ __pycache__/
 .pytest_cache/
 *.pyc
 *.zip
+*.ankiaddon
+.ruff_cache/
+dist/
+user_files/

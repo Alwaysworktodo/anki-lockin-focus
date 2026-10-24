@@ -1,4 +1,6 @@
 {
+  "ui_language": "de",
+  "collectibles_enabled": true,
   "health_max": 100,
   "health_drain_rate": 2.0,
   "health_heal_easy": 15,

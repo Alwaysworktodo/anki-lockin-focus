@@ -1,0 +1,1338 @@
+{
+  "schema_version": 1,
+  "daily_goal": 20,
+  "credits": {
+    "popcat": {
+      "creator": "Xavier BF (owner of Oatmeal the cat), popularized by Popcat.click",
+      "source": "Popcat meme (Know Your Meme / Popcat.click)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "maxwell": {
+      "creator": "Dingus the cat by Voidhawk42 / tristan-f-r",
+      "source": "Maxwell the Spinning Cat (Imgur / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "smudge": {
+      "creator": "Miranda Stillabower (@smudge_lord)",
+      "source": "Woman Yelling at a Cat (Instagram / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "polite-cat": {
+      "creator": "Ollie the Cat (@polite_cat_olli_official)",
+      "source": "He Looks Very Polite (9GAG / Instagram / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "huh-cat": {
+      "creator": "Internet meme community",
+      "source": "Huh Cat reaction video meme (TikTok / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "bongo-cat": {
+      "creator": "@StrayRogue (illustration) & @DitzyFlama (animation)",
+      "source": "Bongo Cat (Twitter / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "keyboard-cat": {
+      "creator": "Charlie Schmidt (Fatso the cat, 1984/2007)",
+      "source": "Keyboard Cat (YouTube / Know Your Meme / Wikimedia Commons)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "grumpy-cat": {
+      "creator": "Tabatha Bundesen (Tardar Sauce) / Photo by Gage Skidmore",
+      "source": "Wikimedia Commons (File:Grumpy_Cat_by_Gage_Skidmore.jpg)",
+      "license": "CC BY-SA 3.0"
+    },
+    "nyan-cat": {
+      "creator": "Christopher Torres (PRguitarman)",
+      "source": "Nyan Cat (LOL-Comics / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "meowmeowcatcam": {
+      "creator": "catherpiee & internet meme creators",
+      "source": "meowmeowcatcam meme collection (GitHub)",
+      "license": "Public domain / Community meme archive"
+    },
+    "drooling-cats": {
+      "creator": "shehap0 & community",
+      "source": "Drooling Cats meme collection (GitHub)",
+      "license": "Public domain / Community meme archive"
+    },
+    "lil-bub": {
+      "creator": "Mike Bridavsky / Lil Bub (Photo by Mike Bridavsky)",
+      "source": "Wikimedia Commons (File:Lil-Bub-2013_(cropped).jpg)",
+      "license": "CC BY-SA 3.0"
+    },
+    "crying-cat": {
+      "creator": "Schmuserkadser / seriouscat edit",
+      "source": "Crying Cat meme (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "thumbs-up-crying-cat": {
+      "creator": "Internet meme community",
+      "source": "Thumbs Up Crying Cat (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "coughing-cat": {
+      "creator": "IdaMyrvold (photoshop edit)",
+      "source": "Coughing Cat (Instagram / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "screaming-cat": {
+      "creator": "Internet meme community",
+      "source": "Screaming Cat reaction meme (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "knife-cat": {
+      "creator": "Internet meme community",
+      "source": "Smug Knife Cat (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "soggy-cat": {
+      "creator": "Internet meme community",
+      "source": "Soggy Cat / Wet Cat after bath (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "beluga": {
+      "creator": "Beluga YouTube channel",
+      "source": "Beluga Cat avatar (YouTube / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "basement-cat": {
+      "creator": "Something Awful / 4chan LOLcats community",
+      "source": "Basement Cat (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "big-floppa": {
+      "creator": "Andrey Bondarev (Gregory the Caracal)",
+      "source": "Big Floppa (Instagram / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "longcat": {
+      "creator": "2channel / Futaba Channel community (Shiroi)",
+      "source": "Longcat (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "tacgnol": {
+      "creator": "4chan / 2channel community",
+      "source": "Tacgnol (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "vibing-cat": {
+      "creator": "MickL (Minigrip the cat) / CatJAM emote",
+      "source": "Vibing Cat (TikTok / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "business-cat": {
+      "creator": "Rebecca Garfinkel (Emilio the cat)",
+      "source": "Business Cat (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "ceiling-cat": {
+      "creator": "Something Awful / 4chan LOLcats community",
+      "source": "Ceiling Cat (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "happy-cat": {
+      "creator": "Eric Nakagawa & Kari Unebasami / Something Awful",
+      "source": "I Can Has Cheezburger? (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "monorail-cat": {
+      "creator": "Internet meme community",
+      "source": "Monorail Cat (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "maru": {
+      "creator": "mugumogu (Maru the Scottish Fold)",
+      "source": "Maru in a Box (YouTube / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "jinx": {
+      "creator": "@bigfootjinx",
+      "source": "Jinx the Cat (Twitter / TikTok / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "loading-cat": {
+      "creator": "Internet meme community",
+      "source": "Loading Cat / Buffering Cat (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "standing-cat": {
+      "creator": "Internet meme community",
+      "source": "Standing Cat (Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "stepan": {
+      "creator": "Anna (@loveyoustepan)",
+      "source": "Stepan the Cat (Instagram / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "gacek": {
+      "creator": "Tourist of Szczecin, Poland",
+      "source": "Wikimedia Commons (File:Gacek_on_the_walk.jpg)",
+      "license": "CC BY-SA 4.0"
+    },
+    "tombili": {
+      "creator": "Istanbul community",
+      "source": "Wikimedia Commons (File:Tombili_the_cat_n2.jpg)",
+      "license": "CC BY-SA 4.0"
+    },
+    "woman-yelling-cat": {
+      "creator": "Composite meme by @MISSINGEGIRL / Miranda Stillabower",
+      "source": "Woman Yelling at a Cat (Twitter / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    }
+  },
+  "cats": [
+    {
+      "id": "cat.resolved_cards_total.00001",
+      "sort_order": 1,
+      "rarity": "common",
+      "name": {
+        "de": "Popcat (Geschlossen)",
+        "en": "Popcat (Closed)"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1 Karte ab. Popcat wartet mit geschlossenem Mund.",
+        "en": "Resolve 1 card in total. Popcat is waiting with closed mouth."
+      },
+      "alt": {
+        "de": "Popcat mit geschlossenem Mund vor lila Hintergrund",
+        "en": "Popcat with closed mouth against purple background"
+      },
+      "asset": "web/cats/cat-01.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1
+      },
+      "credit_id": "popcat"
+    },
+    {
+      "id": "cat.resolved_cards_total.00005",
+      "sort_order": 2,
+      "rarity": "common",
+      "name": {
+        "de": "Popcat (Offen)",
+        "en": "Popcat (Open)"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5 Karten ab. Popcat öffnet den Mund weit: POP!",
+        "en": "Resolve 5 cards in total. Popcat opens mouth wide: POP!"
+      },
+      "alt": {
+        "de": "Popcat mit weit geöffnetem O-Mund",
+        "en": "Popcat with wide open O-shaped mouth"
+      },
+      "asset": "web/cats/cat-02.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5
+      },
+      "credit_id": "popcat"
+    },
+    {
+      "id": "cat.resolved_cards_total.00010",
+      "sort_order": 3,
+      "rarity": "common",
+      "name": {
+        "de": "Maxwell der Kater",
+        "en": "Maxwell the Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 10 Karten ab. Der rotierende Kater Maxwell (Dingus).",
+        "en": "Resolve 10 cards in total. The rotating tuxedo cat Maxwell (Dingus)."
+      },
+      "alt": {
+        "de": "Schwarz-weißer Kater Maxwell auf hellem Hintergrund",
+        "en": "Black and white tuxedo cat Maxwell on light background"
+      },
+      "asset": "web/cats/cat-03.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 10
+      },
+      "credit_id": "maxwell"
+    },
+    {
+      "id": "cat.resolved_cards_total.00025",
+      "sort_order": 4,
+      "rarity": "common",
+      "name": {
+        "de": "Smudge am Tisch",
+        "en": "Smudge at the Table"
+      },
+      "description": {
+        "de": "Schließe insgesamt 25 Karten ab. Smudge sitzt skeptisch vor dem Salat.",
+        "en": "Resolve 25 cards in total. Smudge sits skeptically in front of the salad."
+      },
+      "alt": {
+        "de": "Weißer Kater Smudge mit angewidertem Blick am Esstisch vor einem Teller Salat",
+        "en": "White cat Smudge with a confused and disgusted expression at a dining table before a plate of vegetables"
+      },
+      "asset": "web/cats/cat-04.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 25
+      },
+      "credit_id": "smudge"
+    },
+    {
+      "id": "cat.resolved_cards_total.00050",
+      "sort_order": 5,
+      "rarity": "common",
+      "name": {
+        "de": "Höfliche Katze (Ollie)",
+        "en": "Polite Cat (Ollie)"
+      },
+      "description": {
+        "de": "Schließe insgesamt 50 Karten ab. Ollie lächelt höflich für die Hausverwaltung.",
+        "en": "Resolve 50 cards in total. Ollie smiles politely for the landlord."
+      },
+      "alt": {
+        "de": "Kater Ollie mit dem berühmten höflich zusammengekniffenen Lächeln",
+        "en": "Cat Ollie with his famous polite tight-lipped human-like smile"
+      },
+      "asset": "web/cats/cat-05.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 50
+      },
+      "credit_id": "polite-cat"
+    },
+    {
+      "id": "cat.resolved_cards_total.00100",
+      "sort_order": 6,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Huh? Katze",
+        "en": "Huh? Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 100 Karten ab. Die verwirrte Katze mit dem typischen „Huh?“-Blick.",
+        "en": "Resolve 100 cards in total. The confused cat with the iconic huh reaction."
+      },
+      "alt": {
+        "de": "Braune Tabby-Katze blickt völlig verwirrt und verständnislos in die Kamera",
+        "en": "Brown tabby cat staring with an utterly confused and bewildered expression"
+      },
+      "asset": "web/cats/cat-06.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 100
+      },
+      "credit_id": "huh-cat"
+    },
+    {
+      "id": "cat.resolved_cards_total.00200",
+      "sort_order": 7,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Bongo-Katze",
+        "en": "Bongo Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 200 Karten ab. Die weiße Katze trommelt den Lernrhythmus auf Bongos.",
+        "en": "Resolve 200 cards in total. The cute white cat drumming a study beat on bongos."
+      },
+      "alt": {
+        "de": "Gezeichnete weiße Bongo-Katze mit Pfoten auf zwei Trommeln",
+        "en": "Minimalist white Bongo Cat with paws tapping on bongo drums"
+      },
+      "asset": "web/cats/cat-07.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 200
+      },
+      "credit_id": "bongo-cat"
+    },
+    {
+      "id": "cat.resolved_cards_total.00350",
+      "sort_order": 8,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Keyboard-Katze",
+        "en": "Keyboard Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 350 Karten ab. Fatso spielt die legendäre Synth-Melodie.",
+        "en": "Resolve 350 cards in total. Fatso plays the legendary synthesizer tune."
+      },
+      "alt": {
+        "de": "Getigerte Katze Fatso im blauen Shirt spielt auf einem elektronischen Keyboard",
+        "en": "Tabby cat Fatso wearing a blue shirt playing an electronic musical keyboard"
+      },
+      "asset": "web/cats/cat-08.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 350
+      },
+      "credit_id": "keyboard-cat"
+    },
+    {
+      "id": "cat.resolved_cards_total.00500",
+      "sort_order": 9,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Grumpy Cat",
+        "en": "Grumpy Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 500 Karten ab. Tardar Sauce bleibt unbeeindruckt von deinem Fleiß.",
+        "en": "Resolve 500 cards in total. Tardar Sauce remains unimpressed by your effort."
+      },
+      "alt": {
+        "de": "Grumpy Cat Tardar Sauce mit ihrem unvergesslich mürrischen Gesichtsausdruck",
+        "en": "Grumpy Cat Tardar Sauce with her iconic permanently grumpy scowling face"
+      },
+      "asset": "web/cats/cat-09.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 500
+      },
+      "credit_id": "grumpy-cat"
+    },
+    {
+      "id": "cat.resolved_cards_total.00750",
+      "sort_order": 10,
+      "rarity": "rare",
+      "name": {
+        "de": "Nyan Cat",
+        "en": "Nyan Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 750 Karten ab. Fliege mit Regenbogenspur durch den Wissensraum.",
+        "en": "Resolve 750 cards in total. Fly with a rainbow trail through the cosmos of knowledge."
+      },
+      "alt": {
+        "de": "Pixel-Art Katze mit Pop-Tart-Körper und Regenbogenspur im Weltraum",
+        "en": "Pixel art cat with a cherry pop-tart body flying through space leaving a rainbow trail"
+      },
+      "asset": "web/cats/cat-10.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 750
+      },
+      "credit_id": "nyan-cat"
+    },
+    {
+      "id": "cat.resolved_cards_total.01000",
+      "sort_order": 11,
+      "rarity": "rare",
+      "name": {
+        "de": "Big Floppa",
+        "en": "Big Floppa"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1000 Karten ab. Karakal Gregory chillt souverän.",
+        "en": "Resolve 1000 cards in total. Caracal Gregory relaxes majestically."
+      },
+      "alt": {
+        "de": "Karakal Big Floppa mit markanten schwarzen Ohrpinseln blickt gelassen in die Kamera",
+        "en": "Caracal Big Floppa with iconic tufted ears looking calm and majestic"
+      },
+      "asset": "web/cats/cat-31.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1000
+      },
+      "credit_id": "big-floppa"
+    },
+    {
+      "id": "cat.resolved_cards_total.01500",
+      "sort_order": 12,
+      "rarity": "rare",
+      "name": {
+        "de": "Longcat",
+        "en": "Longcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1500 Karten ab. Longcat ist unendlich lang: Longcat is long.",
+        "en": "Resolve 1500 cards in total. Longcat is long and stretches infinitely."
+      },
+      "alt": {
+        "de": "Weiße Katze Shiroi wird hochgehoben und erscheint unendlich lang gestreckt",
+        "en": "White cat Shiroi held up showing an impossibly long stretched body"
+      },
+      "asset": "web/cats/cat-32.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1500
+      },
+      "credit_id": "longcat"
+    },
+    {
+      "id": "cat.resolved_cards_total.02500",
+      "sort_order": 13,
+      "rarity": "epic",
+      "name": {
+        "de": "Tacgnol",
+        "en": "Tacgnol"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2500 Karten ab. Die schwarze Schatten-Gegenkatze von Longcat.",
+        "en": "Resolve 2500 cards in total. The shadowy black nemesis counterpart of Longcat."
+      },
+      "alt": {
+        "de": "Lange schwarze Katze Tacgnol als dunkles Gegenstück zu Longcat",
+        "en": "Long black cat Tacgnol stretched out as the dark nemesis of Longcat"
+      },
+      "asset": "web/cats/cat-33.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2500
+      },
+      "credit_id": "tacgnol"
+    },
+    {
+      "id": "cat.resolved_cards_total.04000",
+      "sort_order": 14,
+      "rarity": "epic",
+      "name": {
+        "de": "Vibing Cat (CatJAM)",
+        "en": "Vibing Cat (CatJAM)"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4000 Karten ab. Die weiße Katze nickt rhythmisch im Beat mit.",
+        "en": "Resolve 4000 cards in total. The white cat bobs its head rhythmically to the beat."
+      },
+      "alt": {
+        "de": "Weiße Katze nickt synchron zur Musik mit dem Kopf (CatJAM)",
+        "en": "White cat enthusiastically bobbing its head to music (CatJAM)"
+      },
+      "asset": "web/cats/cat-34.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4000
+      },
+      "credit_id": "vibing-cat"
+    },
+    {
+      "id": "cat.resolved_cards_total.07000",
+      "sort_order": 15,
+      "rarity": "epic",
+      "name": {
+        "de": "Business-Katze",
+        "en": "Business Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7000 Karten ab. Krawatte gebunden, Quartalszahlen im Griff.",
+        "en": "Resolve 7000 cards in total. Tie tied, quarterly review goals accomplished."
+      },
+      "alt": {
+        "de": "Schwarz-weiße Katze mit gestreifter Krawatte im seriösen Business-Look",
+        "en": "Tuxedo cat wearing a business tie looking ready for a board meeting"
+      },
+      "asset": "web/cats/cat-35.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7000
+      },
+      "credit_id": "business-cat"
+    },
+    {
+      "id": "cat.resolved_cards_total.10000",
+      "sort_order": 16,
+      "rarity": "legendary",
+      "name": {
+        "de": "Decken-Katze",
+        "en": "Ceiling Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 10000 Karten ab. Sie blickt von oben durch die Decke auf dein Lebenswerk.",
+        "en": "Resolve 10000 cards in total. Ceiling Cat watches over your lifetime achievement from above."
+      },
+      "alt": {
+        "de": "Katze schaut durch ein Loch in der Zimmerdecke neugierig nach unten",
+        "en": "Ginger cat peeking down curiously through a hole in the ceiling"
+      },
+      "asset": "web/cats/cat-36.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 10000
+      },
+      "credit_id": "ceiling-cat"
+    },
+    {
+      "id": "cat.session_resolved_max.00003",
+      "sort_order": 17,
+      "rarity": "common",
+      "name": {
+        "de": "Happy Cat",
+        "en": "Happy Cat"
+      },
+      "description": {
+        "de": "Schließe 3 verschiedene Karten in einer Sitzung ab. I Can Has Cheezburger?",
+        "en": "Resolve 3 distinct cards in one session. I Can Has Cheezburger?"
+      },
+      "alt": {
+        "de": "Grau getigerte Happy Cat mit breitem Lächeln: I can has cheezburger?",
+        "en": "Grey striped Happy Cat smiling wide: I can has cheezburger?"
+      },
+      "asset": "web/cats/cat-37.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 3
+      },
+      "credit_id": "happy-cat"
+    },
+    {
+      "id": "cat.session_resolved_max.00005",
+      "sort_order": 18,
+      "rarity": "common",
+      "name": {
+        "de": "Monorail-Katze",
+        "en": "Monorail Cat"
+      },
+      "description": {
+        "de": "Schließe 5 verschiedene Karten in einer Sitzung ab. Perfekt ausbalanciert auf der Schiene.",
+        "en": "Resolve 5 distinct cards in one session. Perfectly balanced on the track like a monorail train."
+      },
+      "alt": {
+        "de": "Katze liegt flach wie ein Zug auf einem Geländer: Monorail Cat",
+        "en": "Cat lying perfectly flattened on a railing resembling a monorail train"
+      },
+      "asset": "web/cats/cat-38.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 5
+      },
+      "credit_id": "monorail-cat"
+    },
+    {
+      "id": "cat.session_resolved_max.00008",
+      "sort_order": 19,
+      "rarity": "common",
+      "name": {
+        "de": "Maru im Karton",
+        "en": "Maru in a Box"
+      },
+      "description": {
+        "de": "Schließe 8 verschiedene Karten in einer Sitzung ab. If it fits, I sits.",
+        "en": "Resolve 8 distinct cards in one session. If it fits, I sits."
+      },
+      "alt": {
+        "de": "Kater Maru quetscht sich vergnügt in einen viel zu kleinen Karton",
+        "en": "Scottish Fold Maru squeezing joyfully into an undersized cardboard box"
+      },
+      "asset": "web/cats/cat-39.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 8
+      },
+      "credit_id": "maru"
+    },
+    {
+      "id": "cat.session_resolved_max.00010",
+      "sort_order": 20,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Jinx die Katze",
+        "en": "Jinx the Cat"
+      },
+      "description": {
+        "de": "Schließe 10 verschiedene Karten in einer Sitzung ab. Riesige Kulleraugen und tapsige Füße.",
+        "en": "Resolve 10 distinct cards in one session. Huge saucer eyes and tiny wonky feet."
+      },
+      "alt": {
+        "de": "Schwarze Katze Jinx mit riesigen runden Augen und weit auseinanderstehenden Füßen",
+        "en": "Black cat Jinx staring into the camera with massive round saucer eyes"
+      },
+      "asset": "web/cats/cat-40.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 10
+      },
+      "credit_id": "jinx"
+    },
+    {
+      "id": "cat.session_resolved_max.00015",
+      "sort_order": 21,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Lade-Katze",
+        "en": "Loading Cat"
+      },
+      "description": {
+        "de": "Schließe 15 verschiedene Karten in einer Sitzung ab. Wenn das Gehirn kurz puffert.",
+        "en": "Resolve 15 distinct cards in one session. When your brain is buffering knowledge."
+      },
+      "alt": {
+        "de": "Katze mit leerem Blick und virtuellem Ladekreis-Symbol auf der Stirn",
+        "en": "Cat with a blank glazed expression and a loading buffering spinner icon on its face"
+      },
+      "asset": "web/cats/cat-41.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 15
+      },
+      "credit_id": "loading-cat"
+    },
+    {
+      "id": "cat.session_resolved_max.00020",
+      "sort_order": 22,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Stehende Katze",
+        "en": "Standing Cat"
+      },
+      "description": {
+        "de": "Schließe 20 verschiedene Karten in einer Sitzung ab. Aufrecht stehend wie ein Erdmännchen.",
+        "en": "Resolve 20 distinct cards in one session. Standing tall on two hind legs like a meerkat."
+      },
+      "alt": {
+        "de": "Getigerte Katze steht aufrecht auf den Hinterbeinen und blickt aufmerksam",
+        "en": "Tabby cat standing upright on its hind legs looking alert like a meerkat"
+      },
+      "asset": "web/cats/cat-42.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 20
+      },
+      "credit_id": "standing-cat"
+    },
+    {
+      "id": "cat.session_resolved_max.00025",
+      "sort_order": 23,
+      "rarity": "rare",
+      "name": {
+        "de": "Seitenblick-Katze",
+        "en": "Side Eye Cat"
+      },
+      "description": {
+        "de": "Schließe 25 verschiedene Karten in einer Sitzung ab. Skeptischer Seitenblick bei schweren Fragen.",
+        "en": "Resolve 25 distinct cards in one session. Skeptical side-eye glance at difficult cards."
+      },
+      "alt": {
+        "de": "Katze wirft einen skeptischen, urteilenden Seitenblick zur Seite",
+        "en": "Cat giving a judgmental and deeply suspicious side-eye glance"
+      },
+      "asset": "web/cats/cat-43.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 25
+      },
+      "credit_id": "meowmeowcatcam"
+    },
+    {
+      "id": "cat.session_resolved_max.00030",
+      "sort_order": 24,
+      "rarity": "rare",
+      "name": {
+        "de": "Verschwörer-Katze",
+        "en": "Scheming Cat"
+      },
+      "description": {
+        "de": "Schließe 30 verschiedene Karten in einer Sitzung ab. Pfoten zusammen: Muehehe.",
+        "en": "Resolve 30 distinct cards in one session. Paws together scheming: muehehe."
+      },
+      "alt": {
+        "de": "Katze hält die Pfoten wie ein Bösewicht zusammen: Muehehe",
+        "en": "Cat holding front paws together like a scheming villain: muehehe"
+      },
+      "asset": "web/cats/cat-44.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 30
+      },
+      "credit_id": "meowmeowcatcam"
+    },
+    {
+      "id": "cat.session_resolved_max.00040",
+      "sort_order": 25,
+      "rarity": "rare",
+      "name": {
+        "de": "Kopfzerbrecher-Katze",
+        "en": "Mind Blown Cat"
+      },
+      "description": {
+        "de": "Schließe 40 verschiedene Karten in einer Sitzung ab. Beide Pfoten am Kopf: Unglaublich!",
+        "en": "Resolve 40 distinct cards in one session. Both paws on head: mind completely blown!"
+      },
+      "alt": {
+        "de": "Katze presst beide Pfoten verzweifelt an die Wangen vor Überraschung",
+        "en": "Cat holding both front paws to its head in sheer disbelief and shock"
+      },
+      "asset": "web/cats/cat-45.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 40
+      },
+      "credit_id": "meowmeowcatcam"
+    },
+    {
+      "id": "cat.session_resolved_max.00050",
+      "sort_order": 26,
+      "rarity": "epic",
+      "name": {
+        "de": "Crashout-Katze",
+        "en": "Crashout Cat"
+      },
+      "description": {
+        "de": "Schließe 50 verschiedene Karten in einer Sitzung ab. Voller Energie und maximaler Fokus.",
+        "en": "Resolve 50 distinct cards in one session. Hyper-focused manic study energy."
+      },
+      "alt": {
+        "de": "Katze mit aufgerissenen Augen und intensivem Tunnelblick",
+        "en": "Cat with wide wild eyes locked in full manic concentration"
+      },
+      "asset": "web/cats/cat-46.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 50
+      },
+      "credit_id": "meowmeowcatcam"
+    },
+    {
+      "id": "cat.session_resolved_max.00075",
+      "sort_order": 27,
+      "rarity": "epic",
+      "name": {
+        "de": "Stepan die Bar-Katze",
+        "en": "Stepan the Cat"
+      },
+      "description": {
+        "de": "Schließe 75 verschiedene Karten in einer Sitzung ab. Gemütlich an der Bar mit Drink.",
+        "en": "Resolve 75 distinct cards in one session. Relaxing casually by the cocktail drink."
+      },
+      "alt": {
+        "de": "Getigerter Kater Stepan lehnt lässig mit Pfote an einem Tisch neben einem Drink",
+        "en": "Striped cat Stepan leaning calmly against a table next to a party drink"
+      },
+      "asset": "web/cats/cat-47.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 75
+      },
+      "credit_id": "stepan"
+    },
+    {
+      "id": "cat.session_resolved_max.00100",
+      "sort_order": 28,
+      "rarity": "legendary",
+      "name": {
+        "de": "Gacek der Straßenkönig",
+        "en": "Gacek the Cat"
+      },
+      "description": {
+        "de": "Schließe 100 verschiedene Karten in einer Sitzung ab. Der berühmte rundliche König von Stettin.",
+        "en": "Resolve 100 distinct cards in one session. The famous round feline monarch of Szczecin."
+      },
+      "alt": {
+        "de": "Rundlicher schwarz-weißer Kater Gacek stolziert majestätisch über den Bürgersteig",
+        "en": "Chonky black and white cat Gacek walking with regal confidence down the sidewalk"
+      },
+      "asset": "web/cats/cat-48.png",
+      "unlock": {
+        "metric": "session_resolved_max",
+        "threshold": 100
+      },
+      "credit_id": "gacek"
+    },
+    {
+      "id": "cat.recoveries_total.00001",
+      "sort_order": 29,
+      "rarity": "common",
+      "name": {
+        "de": "Weinende Katze",
+        "en": "Crying Cat"
+      },
+      "description": {
+        "de": "Schaffe 1 Comeback: Nach „Nochmal“ dieselbe Karte später erfolgreich abschließen.",
+        "en": "Make 1 comeback: resolve the same card later after pressing Again."
+      },
+      "alt": {
+        "de": "Weinende Katze mit glasigen, tränengefüllten Augen",
+        "en": "Schmuserkadser cat with teary glassy emotional eyes"
+      },
+      "asset": "web/cats/cat-21.png",
+      "unlock": {
+        "metric": "recoveries_total",
+        "threshold": 1
+      },
+      "credit_id": "crying-cat"
+    },
+    {
+      "id": "cat.recoveries_total.00003",
+      "sort_order": 30,
+      "rarity": "common",
+      "name": {
+        "de": "Daumen-Hoch-Weinende-Katze",
+        "en": "Thumbs Up Crying Cat"
+      },
+      "description": {
+        "de": "Schaffe insgesamt 3 Comebacks. Trotz Tränen den Daumen nach oben: Alles gut!",
+        "en": "Make 3 total comebacks after Again. Crying inside but giving a brave thumbs up!"
+      },
+      "alt": {
+        "de": "Weinende Katze zeigt einen mutigen Daumen nach oben: Es geht weiter!",
+        "en": "Tearful crying cat giving an encouraging human thumbs up gesture"
+      },
+      "asset": "web/cats/cat-22.png",
+      "unlock": {
+        "metric": "recoveries_total",
+        "threshold": 3
+      },
+      "credit_id": "thumbs-up-crying-cat"
+    },
+    {
+      "id": "cat.recoveries_total.00005",
+      "sort_order": 31,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Hustende Katze",
+        "en": "Coughing Cat"
+      },
+      "description": {
+        "de": "Schaffe insgesamt 5 Comebacks nach „Nochmal“. Ein kurzes Husten, dann geht es weiter.",
+        "en": "Make 5 total comebacks after Again. A heavy cough, then right back into the review."
+      },
+      "alt": {
+        "de": "Katze mit verzogenem Gesicht und geöffnetem Mund beim Husten",
+        "en": "Photoshoped coughing cat with an exaggerated strained facial expression"
+      },
+      "asset": "web/cats/cat-23.png",
+      "unlock": {
+        "metric": "recoveries_total",
+        "threshold": 5
+      },
+      "credit_id": "coughing-cat"
+    },
+    {
+      "id": "cat.recoveries_total.00010",
+      "sort_order": 32,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Schreiende Katze",
+        "en": "Screaming Cat"
+      },
+      "description": {
+        "de": "Schaffe insgesamt 10 Comebacks nach „Nochmal“. Entschlossener Kampfschrei!",
+        "en": "Make 10 total comebacks after Again. A determined battle cry for memory retention."
+      },
+      "alt": {
+        "de": "Katze schreit mit weit aufgerissenem Maul direkt in die Kamera",
+        "en": "Cat screaming with wide open mouth directly into the camera lens"
+      },
+      "asset": "web/cats/cat-24.png",
+      "unlock": {
+        "metric": "recoveries_total",
+        "threshold": 10
+      },
+      "credit_id": "screaming-cat"
+    },
+    {
+      "id": "cat.recoveries_total.00020",
+      "sort_order": 33,
+      "rarity": "rare",
+      "name": {
+        "de": "Messer-Katze",
+        "en": "Knife Cat"
+      },
+      "description": {
+        "de": "Schaffe insgesamt 20 Comebacks nach „Nochmal“. Dem Fehler mit einem Grinsen begegnen.",
+        "en": "Make 20 total comebacks after Again. Smirking in the face of difficult review hurdles."
+      },
+      "alt": {
+        "de": "Weiße Katze mit spöttischem Lächeln, auf die ein Messer gerichtet wird",
+        "en": "Smug white cat smiling defiantly while a knife is pointed towards it"
+      },
+      "asset": "web/cats/cat-25.png",
+      "unlock": {
+        "metric": "recoveries_total",
+        "threshold": 20
+      },
+      "credit_id": "knife-cat"
+    },
+    {
+      "id": "cat.recoveries_total.00035",
+      "sort_order": 34,
+      "rarity": "rare",
+      "name": {
+        "de": "Durchnässte Katze",
+        "en": "Soggy Cat"
+      },
+      "description": {
+        "de": "Schaffe insgesamt 35 Comebacks nach „Nochmal“. Nass nach dem Bad, aber unerschütterlich.",
+        "en": "Make 35 total comebacks after Again. Soaked after a bath, but standing resilient."
+      },
+      "alt": {
+        "de": "Völlig durchnässte kleine Katze nach dem Bad blickt bemitleidenswert aber standhaft",
+        "en": "Soggy wet kitten right after a bath looking tiny and soaking wet"
+      },
+      "asset": "web/cats/cat-26.png",
+      "unlock": {
+        "metric": "recoveries_total",
+        "threshold": 35
+      },
+      "credit_id": "soggy-cat"
+    },
+    {
+      "id": "cat.recoveries_total.00050",
+      "sort_order": 35,
+      "rarity": "epic",
+      "name": {
+        "de": "Beluga-Katze",
+        "en": "Beluga Cat"
+      },
+      "description": {
+        "de": "Schaffe insgesamt 50 Comebacks nach „Nochmal“. Lächle durch jede Herausforderung hindurch.",
+        "en": "Make 50 total comebacks after Again. Keep smiling through every study obstacle."
+      },
+      "alt": {
+        "de": "Beluga-Katze mit dem charakteristischen schelmischen Lächeln",
+        "en": "Beluga cat avatar with its recognizable playful smile"
+      },
+      "asset": "web/cats/cat-27.png",
+      "unlock": {
+        "metric": "recoveries_total",
+        "threshold": 50
+      },
+      "credit_id": "beluga"
+    },
+    {
+      "id": "cat.recoveries_total.00100",
+      "sort_order": 36,
+      "rarity": "legendary",
+      "name": {
+        "de": "Keller-Katze",
+        "en": "Basement Cat"
+      },
+      "description": {
+        "de": "Schaffe insgesamt 100 Comebacks nach „Nochmal“. Aus den Tiefen des Kellers zurück an die Spitze.",
+        "en": "Make 100 total comebacks after Again. Risen from the darkest depths of the basement."
+      },
+      "alt": {
+        "de": "Schwarze Keller-Katze blickt mit glühenden Augen aus der Dunkelheit hervor",
+        "en": "Black Basement Cat peering with glowing eyes from dark shadows"
+      },
+      "asset": "web/cats/cat-28.png",
+      "unlock": {
+        "metric": "recoveries_total",
+        "threshold": 100
+      },
+      "credit_id": "basement-cat"
+    },
+    {
+      "id": "cat.daily_goal_streak_max.00002",
+      "sort_order": 37,
+      "rarity": "common",
+      "name": {
+        "de": "Uwu-Katze",
+        "en": "Uwu Cat"
+      },
+      "description": {
+        "de": "Erreiche das Tagesziel von 20 Karten an 2 aufeinanderfolgenden Tagen.",
+        "en": "Reach the 20-card daily goal on 2 consecutive days."
+      },
+      "alt": {
+        "de": "Niedliche Katze mit sanftem Uwu-Blick",
+        "en": "Cute cat looking forward with soft adorable uwu eyes"
+      },
+      "asset": "web/cats/cat-11.png",
+      "unlock": {
+        "metric": "daily_goal_streak_max",
+        "threshold": 2
+      },
+      "credit_id": "meowmeowcatcam"
+    },
+    {
+      "id": "cat.daily_goal_streak_max.00003",
+      "sort_order": 38,
+      "rarity": "common",
+      "name": {
+        "de": "Pst-Katze",
+        "en": "Shh Cat"
+      },
+      "description": {
+        "de": "Erreiche das Tagesziel von 20 Karten an 3 aufeinanderfolgenden Tagen. Ruhe zum Lernen.",
+        "en": "Reach the 20-card daily goal on 3 consecutive days. Quiet focus mode activated."
+      },
+      "alt": {
+        "de": "Katze legt Pfote an die Lippen: Pst, jetzt wird gelernt",
+        "en": "Cat putting paw near mouth signaling quiet: shh, time to study"
+      },
+      "asset": "web/cats/cat-12.png",
+      "unlock": {
+        "metric": "daily_goal_streak_max",
+        "threshold": 3
+      },
+      "credit_id": "meowmeowcatcam"
+    },
+    {
+      "id": "cat.daily_goal_streak_max.00005",
+      "sort_order": 39,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Kamera-Katze",
+        "en": "Camera Cat"
+      },
+      "description": {
+        "de": "Erreiche das Tagesziel von 20 Karten an 5 aufeinanderfolgenden Tagen.",
+        "en": "Reach the 20-card daily goal on 5 consecutive days."
+      },
+      "alt": {
+        "de": "Katze mit Fotoapparat hält die tägliche Lernserie im Bild fest",
+        "en": "Cat holding a camera capturing the daily review streak"
+      },
+      "asset": "web/cats/cat-13.png",
+      "unlock": {
+        "metric": "daily_goal_streak_max",
+        "threshold": 5
+      },
+      "credit_id": "drooling-cats"
+    },
+    {
+      "id": "cat.daily_goal_streak_max.00007",
+      "sort_order": 40,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Kaffee-Katze",
+        "en": "Coffee Cat"
+      },
+      "description": {
+        "de": "Erreiche das Tagesziel von 20 Karten an 7 aufeinanderfolgenden Tagen. Eine volle Woche!",
+        "en": "Reach the 20-card daily goal on 7 consecutive days. One full week of focus!"
+      },
+      "alt": {
+        "de": "Katze genießt eine warme Tasse Kaffee zur morgendlichen Wiederholung",
+        "en": "Cat savoring a warm cup of coffee during the morning study session"
+      },
+      "asset": "web/cats/cat-14.png",
+      "unlock": {
+        "metric": "daily_goal_streak_max",
+        "threshold": 7
+      },
+      "credit_id": "drooling-cats"
+    },
+    {
+      "id": "cat.daily_goal_streak_max.00014",
+      "sort_order": 41,
+      "rarity": "rare",
+      "name": {
+        "de": "Laptop-Katze",
+        "en": "Laptop Cat"
+      },
+      "description": {
+        "de": "Erreiche das Tagesziel von 20 Karten an 14 aufeinanderfolgenden Tagen. Zwei Wochen Disziplin.",
+        "en": "Reach the 20-card daily goal on 14 consecutive days. Two weeks of consistent study."
+      },
+      "alt": {
+        "de": "Katze tippt konzentriert auf einem Laptop für die tägliche Kartenserie",
+        "en": "Cat typing diligently on a laptop maintaining its daily card streak"
+      },
+      "asset": "web/cats/cat-15.png",
+      "unlock": {
+        "metric": "daily_goal_streak_max",
+        "threshold": 14
+      },
+      "credit_id": "drooling-cats"
+    },
+    {
+      "id": "cat.daily_goal_streak_max.00030",
+      "sort_order": 42,
+      "rarity": "rare",
+      "name": {
+        "de": "Reiche Katze",
+        "en": "Rich Cat"
+      },
+      "description": {
+        "de": "Erreiche das Tagesziel von 20 Karten an 30 aufeinanderfolgenden Tagen. Ein ganzer Monat!",
+        "en": "Reach the 20-card daily goal on 30 consecutive days. A full month rich in knowledge!"
+      },
+      "alt": {
+        "de": "Erfolgreiche Katze im noblen Outfit feiert den Monatsmeilenstein",
+        "en": "Wealthy cat looking prosperous celebrating a full monthly streak milestone"
+      },
+      "asset": "web/cats/cat-16.png",
+      "unlock": {
+        "metric": "daily_goal_streak_max",
+        "threshold": 30
+      },
+      "credit_id": "drooling-cats"
+    },
+    {
+      "id": "cat.daily_goal_streak_max.00060",
+      "sort_order": 43,
+      "rarity": "epic",
+      "name": {
+        "de": "Zauberer-Katze",
+        "en": "Wizard Cat"
+      },
+      "description": {
+        "de": "Erreiche das Tagesziel von 20 Karten an 60 aufeinanderfolgenden Tagen. Wahre Magie!",
+        "en": "Reach the 20-card daily goal on 60 consecutive days. True mastery of long-term retention."
+      },
+      "alt": {
+        "de": "Katze im Zauberergewand mit spitzem Hut wirkt mächtige Lernzauber",
+        "en": "Cat dressed in wizard robes with a pointy hat casting powerful memory spells"
+      },
+      "asset": "web/cats/cat-17.png",
+      "unlock": {
+        "metric": "daily_goal_streak_max",
+        "threshold": 60
+      },
+      "credit_id": "drooling-cats"
+    },
+    {
+      "id": "cat.daily_goal_streak_max.00100",
+      "sort_order": 44,
+      "rarity": "legendary",
+      "name": {
+        "de": "Astronauten-Katze",
+        "en": "Astronaut Cat"
+      },
+      "description": {
+        "de": "Erreiche das Tagesziel von 20 Karten an 100 aufeinanderfolgenden Tagen. Kosmische Ausdauer!",
+        "en": "Reach the 20-card daily goal on 100 consecutive days. Reaching cosmic orbital heights!"
+      },
+      "alt": {
+        "de": "Katze im Astronautenanzug schwebt schwerelos im Weltall",
+        "en": "Cat in an astronaut space suit floating weightlessly in orbit"
+      },
+      "asset": "web/cats/cat-18.png",
+      "unlock": {
+        "metric": "daily_goal_streak_max",
+        "threshold": 100
+      },
+      "credit_id": "drooling-cats"
+    },
+    {
+      "id": "cat.qualified_days_total.00001",
+      "sort_order": 45,
+      "rarity": "common",
+      "name": {
+        "de": "Lil Bub",
+        "en": "Lil Bub"
+      },
+      "description": {
+        "de": "Erreiche an 1 Tag das Tagesziel von 20 verschiedenen Karten. Ein einzigartiger Start.",
+        "en": "Reach the daily goal of 20 distinct cards on 1 day. A wonderful unique start."
+      },
+      "alt": {
+        "de": "Die berühmte Katze Lil Bub mit herausgestreckter Zunge und großen Kulleraugen",
+        "en": "Beloved celebrity rescue cat Lil Bub with her trademark tongue and big green eyes"
+      },
+      "asset": "web/cats/cat-19.png",
+      "unlock": {
+        "metric": "qualified_days_total",
+        "threshold": 1
+      },
+      "credit_id": "lil-bub"
+    },
+    {
+      "id": "cat.qualified_days_total.00005",
+      "sort_order": 46,
+      "rarity": "common",
+      "name": {
+        "de": "Meeting-Katze",
+        "en": "Meeting Cat"
+      },
+      "description": {
+        "de": "Erreiche an insgesamt 5 Tagen das Tagesziel von 20 verschiedenen Karten.",
+        "en": "Reach the daily goal of 20 distinct cards on 5 total days."
+      },
+      "alt": {
+        "de": "Katze im geschäftlichen Meeting präsentiert die Lernfortschritte",
+        "en": "Cat attending an executive study meeting reviewing learning metrics"
+      },
+      "asset": "web/cats/cat-20.png",
+      "unlock": {
+        "metric": "qualified_days_total",
+        "threshold": 5
+      },
+      "credit_id": "drooling-cats"
+    },
+    {
+      "id": "cat.qualified_days_total.00010",
+      "sort_order": 47,
+      "rarity": "uncommon",
+      "name": {
+        "de": "Nachrichten-Katze",
+        "en": "News Reporter Cat"
+      },
+      "description": {
+        "de": "Erreiche an insgesamt 10 Tagen das Tagesziel von 20 verschiedenen Karten.",
+        "en": "Reach the daily goal of 20 distinct cards on 10 total days."
+      },
+      "alt": {
+        "de": "Katze als Nachrichtensprecher berichtet live über 10 erreichte Lerntage",
+        "en": "Cat dressed as a television news anchor reporting live on study achievements"
+      },
+      "asset": "web/cats/cat-29.png",
+      "unlock": {
+        "metric": "qualified_days_total",
+        "threshold": 10
+      },
+      "credit_id": "drooling-cats"
+    },
+    {
+      "id": "cat.qualified_days_total.00025",
+      "sort_order": 48,
+      "rarity": "rare",
+      "name": {
+        "de": "Soldaten-Katze",
+        "en": "Soldier Cat"
+      },
+      "description": {
+        "de": "Erreiche an insgesamt 25 Tagen das Tagesziel von 20 verschiedenen Karten.",
+        "en": "Reach the daily goal of 20 distinct cards on 25 total days."
+      },
+      "alt": {
+        "de": "Katze im Feldanzug meistert diszipliniert jeden Lerntag",
+        "en": "Cat in uniform standing disciplined and dedicated through 25 qualified days"
+      },
+      "asset": "web/cats/cat-30.png",
+      "unlock": {
+        "metric": "qualified_days_total",
+        "threshold": 25
+      },
+      "credit_id": "drooling-cats"
+    },
+    {
+      "id": "cat.qualified_days_total.00050",
+      "sort_order": 49,
+      "rarity": "epic",
+      "name": {
+        "de": "Tombili der Philosoph",
+        "en": "Tombili the Cat"
+      },
+      "description": {
+        "de": "Erreiche an insgesamt 50 Tagen das Tagesziel von 20 verschiedenen Karten.",
+        "en": "Reach the daily goal of 20 distinct cards on 50 total days."
+      },
+      "alt": {
+        "de": "Kater Tombili lümmelt tiefenentspannt mit dem Arm auf der Bordsteinkante",
+        "en": "Iconic Istanbul street cat Tombili lounging relaxed with arm resting on the curb"
+      },
+      "asset": "web/cats/cat-49.png",
+      "unlock": {
+        "metric": "qualified_days_total",
+        "threshold": 50
+      },
+      "credit_id": "tombili"
+    },
+    {
+      "id": "cat.qualified_days_total.00100",
+      "sort_order": 50,
+      "rarity": "legendary",
+      "name": {
+        "de": "Katzen-Meme-Legende",
+        "en": "Cat Meme Legend"
+      },
+      "description": {
+        "de": "Erreiche an insgesamt 100 Tagen das Tagesziel von 20 verschiedenen Karten. Die Krönung!",
+        "en": "Reach the daily goal of 20 distinct cards on 100 total days. The pinnacle of meme cat mastery!"
+      },
+      "alt": {
+        "de": "Das legendäre Woman Yelling at a Cat Meme mit Smudge am Salatteller",
+        "en": "The definitive Woman Yelling at a Cat meme featuring Smudge sitting at the table"
+      },
+      "asset": "web/cats/cat-50.png",
+      "unlock": {
+        "metric": "qualified_days_total",
+        "threshold": 100
+      },
+      "credit_id": "woman-yelling-cat"
+    }
+  ]
+}

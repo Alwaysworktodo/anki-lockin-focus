@@ -1,4 +1,7 @@
 {
   "name": "SiP/OM Reanimationsprotokoll. Patient: GCS 3 - (Lock-In & ADHD Focus Booster)",
-  "package": "anki-lockin-focus"
+  "package": "anki-lockin-focus",
+  "human_version": "0.2.0",
+  "min_point_version": 260800,
+  "max_point_version": 260800
 }
