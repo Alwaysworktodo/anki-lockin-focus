@@ -21,6 +21,7 @@ try:  # pragma: no cover - the real Qt branch is exercised inside Anki.
         QPushButton,
         QScrollArea,
         QSize,
+        QTabWidget,
         QToolButton,
         QVBoxLayout,
         QWidget,
@@ -96,17 +97,12 @@ if QT_AVAILABLE:  # pragma: no branch
 
             self.summary = QLabel()
             self.summary.setObjectName("lockin-cat-summary")
-            self.summary.setAccessibleName(self.text["summary"].format(unlocked=0, total=50))
+            self.summary.setAccessibleName(self.text["summary"].format(unlocked=0, total=220))
             root.addWidget(self.summary)
 
-            scroll = QScrollArea()
-            scroll.setWidgetResizable(True)
-            scroll.setAccessibleName(self.text["title"])
-            self.grid_widget = QWidget()
-            self.grid = QGridLayout(self.grid_widget)
-            self.grid.setSpacing(10)
-            scroll.setWidget(self.grid_widget)
-            root.addWidget(scroll, 1)
+            self.tab_widget = QTabWidget()
+            self.tab_widget.setObjectName("lockin-cat-tabs")
+            root.addWidget(self.tab_widget, 1)
 
             details = QHBoxLayout()
 
@@ -146,13 +142,6 @@ if QT_AVAILABLE:  # pragma: no branch
             buttons.rejected.connect(self.reject)
             root.addWidget(buttons)
 
-        def _clear_grid(self) -> None:
-            while self.grid.count():
-                item = self.grid.takeAt(0)
-                widget = item.widget()
-                if widget is not None:
-                    widget.deleteLater()
-
         def refresh(self) -> None:
             snapshot = self.store.snapshot(self.locale, "")
             self._snapshot = snapshot
@@ -162,32 +151,59 @@ if QT_AVAILABLE:  # pragma: no branch
                 )
             )
             self.summary.setAccessibleName(self.summary.text())
-            self._clear_grid()
 
-            for index, cat in enumerate(snapshot["cats"]):
-                button = QToolButton()
-                button.setObjectName(f"lockin-cat-{cat['id']}")
-                button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
-                button.setIconSize(QSize(96, 96))
-                if cat["unlocked"]:
-                    image_path = self.asset_root / cat["asset"]
-                    if image_path.is_file():
-                        button.setIcon(QIcon(str(image_path)))
-                    button.setText(cat["localized_name"])
-                    accessible = cat["localized_alt"]
-                else:
-                    button.setText("🔒 ???")
-                    accessible = (
-                        f"{self.text['locked']}. "
-                        f"{cat['localized_description']}"
+            self.tab_widget.clear()
+            packs = snapshot.get("packs") or [
+                {"id": "classic", "localized_name": "Classic"}
+            ]
+
+            selected_pack_index = 0
+            for tab_index, pack in enumerate(packs):
+                pack_id = pack["id"]
+                pack_cats = [c for c in snapshot["cats"] if c.get("pack_id") == pack_id]
+                unlocked_in_pack = sum(1 for c in pack_cats if c["unlocked"])
+                total_in_pack = len(pack_cats)
+
+                scroll = QScrollArea()
+                scroll.setWidgetResizable(True)
+                grid_widget = QWidget()
+                grid = QGridLayout(grid_widget)
+                grid.setSpacing(10)
+                scroll.setWidget(grid_widget)
+
+                for index, cat in enumerate(pack_cats):
+                    button = QToolButton()
+                    button.setObjectName(f"lockin-cat-{cat['id']}")
+                    button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
+                    button.setIconSize(QSize(96, 96))
+                    if cat["unlocked"]:
+                        image_path = self.asset_root / cat["asset"]
+                        if image_path.is_file():
+                            button.setIcon(QIcon(str(image_path)))
+                        button.setText(cat["localized_name"])
+                        accessible = cat["localized_alt"]
+                    else:
+                        button.setText("🔒 ???")
+                        accessible = (
+                            f"{self.text['locked']}. "
+                            f"{cat['localized_description']}"
+                        )
+                    button.setAccessibleName(accessible)
+                    button.setAccessibleDescription(cat["localized_description"])
+                    button.setMinimumSize(128, 132)
+                    button.clicked.connect(
+                        lambda _checked=False, cat_id=cat["id"]: self._select_cat(cat_id)
                     )
-                button.setAccessibleName(accessible)
-                button.setAccessibleDescription(cat["localized_description"])
-                button.setMinimumSize(128, 132)
-                button.clicked.connect(
-                    lambda _checked=False, cat_id=cat["id"]: self._select_cat(cat_id)
-                )
-                self.grid.addWidget(button, index // 5, index % 5)
+                    grid.addWidget(button, index // 5, index % 5)
+
+                tab_title = f"{pack['localized_name']} ({unlocked_in_pack}/{total_in_pack})"
+                self.tab_widget.addTab(scroll, tab_title)
+
+                if self.selected_cat_id and any(c["id"] == self.selected_cat_id for c in pack_cats):
+                    selected_pack_index = tab_index
+
+            if self.tab_widget.count() > 0:
+                self.tab_widget.setCurrentIndex(selected_pack_index)
 
             if self.selected_cat_id:
                 self._select_cat(self.selected_cat_id)

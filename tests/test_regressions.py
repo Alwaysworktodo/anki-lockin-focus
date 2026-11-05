@@ -79,6 +79,7 @@ def backend(tmp_path):
         "on_operation_did_execute", "_cancel_collection_retries", "on_profile_will_close",
         "on_profile_did_open", "_reward_asset_path", "_reward_thumbnail",
         "on_js_message", "_bridge_payload", "_bounded_number",
+        "_find_undone_answer_counter", "_deck_screen_classes", "_deck_browser_class",
     }
     tree = ast.parse((ROOT / "__init__.py").read_text())
     functions = [node for node in ast.walk(tree) if isinstance(node, ast.FunctionDef) and node.name in names]
@@ -91,7 +92,7 @@ def backend(tmp_path):
         "CollectiblesStore": CollectiblesStore, "StateError": StateError,
         "_log": logging.getLogger("lockin-regressions"),
         "_collectibles_store": store, "_review_session_id": "session-a",
-        "_answer_undo_counters": {}, "_tracked_answers": [], "_retry_queue": [],
+        "_answer_undo_counters": {}, "_fallback_undo_seq": 0, "_tracked_answers": [], "_retry_queue": [],
         "_pending_redo_counters": [], "_pending_unlock_notifications": [],
         "_retry_timer": None, "_retry_delay_ms": 250, "_retry_overflow_pending": False,
         "_MAX_RETRY_QUEUE_SIZE": 100, "_MAX_BRIDGE_MESSAGE_BYTES": 4096,
@@ -158,6 +159,26 @@ def test_repeated_undo_redo_with_native_counter_aliases(backend):
     assert b.store._db.execute("SELECT COUNT(*) FROM events").fetchone()[0] == 1
     assert len(b.unlocks) == 1
     assert any("onUndo(1)" in script for script in b.scripts)
+
+
+def test_undo_with_mismatched_anki_counter_still_reverts_answer(backend):
+    """Strg+Z must roll back health/stats even if Anki reports another counter."""
+    b = backend
+    counter = b.answer()
+    b.revlog.db.execute("DELETE FROM revlog WHERE id=1001")
+    b.env["on_state_did_undo"](NS(counter=counter + 500))
+    b.drain()
+    assert resolved(b) == 0
+    assert any(f"onUndo({counter})" in script for script in b.scripts)
+
+
+def test_unrelated_undo_does_not_revert_answer(backend):
+    b = backend
+    b.answer()
+    b.env["on_state_did_undo"](NS(counter=999))  # e.g. undoing a note edit
+    b.drain()
+    assert resolved(b) == 1
+    assert not any("onUndo" in script for script in b.scripts)
 
 
 def test_failed_undo_retries_without_claiming_commit(backend, monkeypatch):

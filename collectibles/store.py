@@ -1098,6 +1098,7 @@ class CollectiblesStore:
                 "equipped": equipped,
                 "next_milestone": next_milestone,
                 "metrics": metrics,
+                "packs": [pack.localized(language) for pack in self.catalog.packs],
                 "cats": cats,
             }
 

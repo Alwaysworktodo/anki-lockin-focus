@@ -24,7 +24,7 @@ def browser():
 def reviewer(browser):
     pages = []
 
-    def open_page(pomo=None, dark=False):
+    def open_page(pomo=None, dark=False, kind='main'):
         page = browser.new_page(viewport={"width": 1000, "height": 800},
                                 reduced_motion="reduce", color_scheme="dark" if dark else "light")
         errors = []
@@ -45,17 +45,17 @@ def reviewer(browser):
         config.update(ui_language="en", pomodoro_enable_sound=False,
                       speed_focus_volume=0, speed_focus_alert_delay=0,
                       custom_answer_buttons=True, hide_answer_buttons=False)
-        page.evaluate("""({config, pomo, dark}) => {
+        page.evaluate("""({config, pomo, dark, kind}) => {
           window.AnkiLockInConfig = config;
-          window.AnkiLockInWebviewKind = 'main';
+          window.AnkiLockInWebviewKind = kind;
           window.AnkiLockInPomoState = pomo || {state:'study', pre_pause_state:'study', time_left:120};
           window.commands = [];
           window.pycmd = message => window.commands.push(message);
           if (dark) document.body.classList.add('nightMode');
-        }""", {"config": config, "pomo": pomo, "dark": dark})
+        }""", {"config": config, "pomo": pomo, "dark": dark, "kind": kind})
         page.add_style_tag(content=(ROOT / "web/lockin.css").read_text())
         page.add_script_tag(content=(ROOT / "web/lockin.js").read_text())
-        page.wait_for_selector("#lockin-bar")
+        page.wait_for_selector("#lockin-bar" if kind == "main" else "#lockin-pomo-widget")
         pages.append((page, errors))
         return page
 
@@ -130,3 +130,17 @@ def test_paused_break_resume_pause_reset_are_reachable(reviewer, dark):
     states = page.evaluate("commands.filter(c => c.startsWith('lockin-pomo-sync:')).map(c => JSON.parse(c.split(':').slice(1).join(':')))")
     assert [state["state"] for state in states[-4:]] == ["break", "paused", "break", "paused"]
     assert states[-1]["pre_pause_state"] == "study"
+
+
+@pytest.mark.parametrize("kind", ["deckBrowser", "overview"])
+def test_deck_screen_pomodoro_pill_pause_resume_stop(reviewer, kind):
+    # The deck list must stay usable: pill only, never the full-screen break overlay.
+    page = reviewer({"state": "study", "pre_pause_state": "study", "time_left": 600}, kind=kind)
+    assert page.locator("#lockin-bar").count() == 0
+    assert page.locator("#lockin-break-overlay").count() == 0
+    page.locator("#lockin-pomo-pause-btn").click()
+    page.locator("#lockin-pomo-resume-btn").click()
+    page.locator("#lockin-pomo-stop-btn").click()
+    states = page.evaluate("commands.filter(c => c.startsWith('lockin-pomo-sync:')).map(c => JSON.parse(c.split(':').slice(1).join(':')).state)")
+    assert states == ["paused", "study", "paused"]
+    assert page.locator("#lockin-pomo-timer").text_content() == "25:00"

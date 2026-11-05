@@ -56,12 +56,28 @@ def add_passes(
         )
 
 
-def test_catalog_has_exact_50_bilingual_png_entries_and_thresholds() -> None:
+def test_catalog_has_exact_220_bilingual_png_entries_and_thresholds() -> None:
     catalog = load_catalog()
-    assert len(catalog.entries) == 50
+    assert len(catalog.entries) == 220
     assert catalog.daily_goal == DAILY_GOAL == 20
-    assert [entry.sort_order for entry in catalog.entries] == list(range(1, 51))
-    assert len({entry.id for entry in catalog.entries}) == 50
+    assert [entry.sort_order for entry in catalog.entries] == list(range(1, 221))
+    assert len({entry.id for entry in catalog.entries}) == 220
+    assert len(catalog.packs) == 6
+    assert {p.id for p in catalog.packs} == {
+        "classic",
+        "reactions",
+        "chaos",
+        "popcat_maxwell",
+        "work_lockin",
+        "cozy_loaf",
+    }
+
+    assert len(catalog.entries_by_pack("classic")) == 50
+    assert len(catalog.entries_by_pack("reactions")) == 35
+    assert len(catalog.entries_by_pack("chaos")) == 35
+    assert len(catalog.entries_by_pack("popcat_maxwell")) == 35
+    assert len(catalog.entries_by_pack("work_lockin")) == 35
+    assert len(catalog.entries_by_pack("cozy_loaf")) == 30
 
     by_metric: dict[str, list[int]] = {metric: [] for metric in EXPECTED_THRESHOLDS}
     for entry in catalog.entries:
@@ -74,19 +90,20 @@ def test_catalog_has_exact_50_bilingual_png_entries_and_thresholds() -> None:
 
     assert {metric: tuple(values) for metric, values in by_metric.items()} == EXPECTED_THRESHOLDS
     assert {entry.asset for entry in catalog.entries} == {
-        f"web/cats/cat-{number:02d}.png" for number in range(1, 51)
+        f"web/cats/cat-{number:02d}.png" for number in range(1, 221)
     }
-    expected_assets = {
+    expected_classic_assets = {
         "resolved_cards_total": [*range(1, 11), *range(31, 37)],
         "session_resolved_max": list(range(37, 49)),
         "recoveries_total": list(range(21, 29)),
         "daily_goal_streak_max": list(range(11, 19)),
         "qualified_days_total": [19, 20, 29, 30, 49, 50],
     }
+    classic_entries = catalog.entries_by_pack("classic")
     assert {
-        metric: [int(entry.asset[-6:-4]) for entry in catalog.entries if entry.metric == metric]
-        for metric in expected_assets
-    } == expected_assets
+        metric: [int(entry.asset[-6:-4]) for entry in classic_entries if entry.metric == metric]
+        for metric in expected_classic_assets
+    } == expected_classic_assets
     assert all(
         credit.get("creator") and credit.get("source") and credit.get("license")
         for credit in catalog.credits.values()
@@ -465,3 +482,27 @@ def test_dialog_module_is_import_safe_without_anki() -> None:
     if not qt_available():
         with pytest.raises(RuntimeError, match="Anki"):
             CollectiblesDialog(None)
+
+
+def test_six_themed_packs_and_early_interleaving_access(tmp_path: Path) -> None:
+    store = make_store(tmp_path)
+    today = date.today()
+
+    snap = store.snapshot(today=today)
+    assert len(snap["packs"]) == 6
+    pack_ids = [p["id"] for p in snap["packs"]]
+    assert pack_ids == ["classic", "reactions", "chaos", "popcat_maxwell", "work_lockin", "cozy_loaf"]
+
+    # All cats have pack_id
+    for cat in snap["cats"]:
+        assert cat["pack_id"] in pack_ids
+
+    # Review 275 cards and verify cats from all 6 packs unlock early
+    add_passes(store, 275, day=today)
+    unlocked_snap = store.snapshot(today=today)
+    unlocked_cats = [c for c in unlocked_snap["cats"] if c["unlocked"]]
+    unlocked_packs = {c["pack_id"] for c in unlocked_cats}
+
+    # All 6 packs have at least one cat unlocked by card 275!
+    assert len(unlocked_packs) == 6
+    assert unlocked_packs == set(pack_ids)

@@ -181,6 +181,31 @@
       "creator": "Composite meme by @MISSINGEGIRL / Miranda Stillabower",
       "source": "Woman Yelling at a Cat (Twitter / Know Your Meme)",
       "license": "Fair Use / Public internet meme"
+    },
+    "reactions-community": {
+      "creator": "Internet meme community & reaction creators",
+      "source": "Viral cat reaction memes (Know Your Meme / Twitter / TikTok)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "chaos-community": {
+      "creator": "Cat owners & comedy creators",
+      "source": "3 AM zoomies & chaotic cat memes (Reddit / TikTok / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "popcat-maxwell-community": {
+      "creator": "Popcat & Maxwell animation creators",
+      "source": "Popcat & Dingus spinning remixes (Twitter / YouTube / Know Your Meme)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "work-lockin-community": {
+      "creator": "Study & productivity cat meme creators",
+      "source": "Work & study focus cat memes (Instagram / Reddit / Twitter)",
+      "license": "Fair Use / Public internet meme"
+    },
+    "cozy-loaf-community": {
+      "creator": "Chonker & cat loaf photography community",
+      "source": "Loaf & cozy chonk cat archives (Reddit r/Catloaf / r/Chonkers)",
+      "license": "Fair Use / Public internet meme"
     }
   },
   "cats": [
@@ -205,7 +230,8 @@
         "metric": "resolved_cards_total",
         "threshold": 1
       },
-      "credit_id": "popcat"
+      "credit_id": "popcat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.00005",
@@ -228,7 +254,8 @@
         "metric": "resolved_cards_total",
         "threshold": 5
       },
-      "credit_id": "popcat"
+      "credit_id": "popcat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.00010",
@@ -251,7 +278,8 @@
         "metric": "resolved_cards_total",
         "threshold": 10
       },
-      "credit_id": "maxwell"
+      "credit_id": "maxwell",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.00025",
@@ -274,7 +302,8 @@
         "metric": "resolved_cards_total",
         "threshold": 25
       },
-      "credit_id": "smudge"
+      "credit_id": "smudge",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.00050",
@@ -297,7 +326,8 @@
         "metric": "resolved_cards_total",
         "threshold": 50
       },
-      "credit_id": "polite-cat"
+      "credit_id": "polite-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.00100",
@@ -320,7 +350,8 @@
         "metric": "resolved_cards_total",
         "threshold": 100
       },
-      "credit_id": "huh-cat"
+      "credit_id": "huh-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.00200",
@@ -343,7 +374,8 @@
         "metric": "resolved_cards_total",
         "threshold": 200
       },
-      "credit_id": "bongo-cat"
+      "credit_id": "bongo-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.00350",
@@ -366,7 +398,8 @@
         "metric": "resolved_cards_total",
         "threshold": 350
       },
-      "credit_id": "keyboard-cat"
+      "credit_id": "keyboard-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.00500",
@@ -389,7 +422,8 @@
         "metric": "resolved_cards_total",
         "threshold": 500
       },
-      "credit_id": "grumpy-cat"
+      "credit_id": "grumpy-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.00750",
@@ -412,7 +446,8 @@
         "metric": "resolved_cards_total",
         "threshold": 750
       },
-      "credit_id": "nyan-cat"
+      "credit_id": "nyan-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.01000",
@@ -435,7 +470,8 @@
         "metric": "resolved_cards_total",
         "threshold": 1000
       },
-      "credit_id": "big-floppa"
+      "credit_id": "big-floppa",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.01500",
@@ -458,7 +494,8 @@
         "metric": "resolved_cards_total",
         "threshold": 1500
       },
-      "credit_id": "longcat"
+      "credit_id": "longcat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.02500",
@@ -481,7 +518,8 @@
         "metric": "resolved_cards_total",
         "threshold": 2500
       },
-      "credit_id": "tacgnol"
+      "credit_id": "tacgnol",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.04000",
@@ -504,7 +542,8 @@
         "metric": "resolved_cards_total",
         "threshold": 4000
       },
-      "credit_id": "vibing-cat"
+      "credit_id": "vibing-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.07000",
@@ -527,7 +566,8 @@
         "metric": "resolved_cards_total",
         "threshold": 7000
       },
-      "credit_id": "business-cat"
+      "credit_id": "business-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.resolved_cards_total.10000",
@@ -550,7 +590,8 @@
         "metric": "resolved_cards_total",
         "threshold": 10000
       },
-      "credit_id": "ceiling-cat"
+      "credit_id": "ceiling-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00003",
@@ -573,7 +614,8 @@
         "metric": "session_resolved_max",
         "threshold": 3
       },
-      "credit_id": "happy-cat"
+      "credit_id": "happy-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00005",
@@ -596,7 +638,8 @@
         "metric": "session_resolved_max",
         "threshold": 5
       },
-      "credit_id": "monorail-cat"
+      "credit_id": "monorail-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00008",
@@ -619,7 +662,8 @@
         "metric": "session_resolved_max",
         "threshold": 8
       },
-      "credit_id": "maru"
+      "credit_id": "maru",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00010",
@@ -642,7 +686,8 @@
         "metric": "session_resolved_max",
         "threshold": 10
       },
-      "credit_id": "jinx"
+      "credit_id": "jinx",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00015",
@@ -665,7 +710,8 @@
         "metric": "session_resolved_max",
         "threshold": 15
       },
-      "credit_id": "loading-cat"
+      "credit_id": "loading-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00020",
@@ -688,7 +734,8 @@
         "metric": "session_resolved_max",
         "threshold": 20
       },
-      "credit_id": "standing-cat"
+      "credit_id": "standing-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00025",
@@ -711,7 +758,8 @@
         "metric": "session_resolved_max",
         "threshold": 25
       },
-      "credit_id": "meowmeowcatcam"
+      "credit_id": "meowmeowcatcam",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00030",
@@ -734,7 +782,8 @@
         "metric": "session_resolved_max",
         "threshold": 30
       },
-      "credit_id": "meowmeowcatcam"
+      "credit_id": "meowmeowcatcam",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00040",
@@ -757,7 +806,8 @@
         "metric": "session_resolved_max",
         "threshold": 40
       },
-      "credit_id": "meowmeowcatcam"
+      "credit_id": "meowmeowcatcam",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00050",
@@ -780,7 +830,8 @@
         "metric": "session_resolved_max",
         "threshold": 50
       },
-      "credit_id": "meowmeowcatcam"
+      "credit_id": "meowmeowcatcam",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00075",
@@ -803,7 +854,8 @@
         "metric": "session_resolved_max",
         "threshold": 75
       },
-      "credit_id": "stepan"
+      "credit_id": "stepan",
+      "pack_id": "classic"
     },
     {
       "id": "cat.session_resolved_max.00100",
@@ -826,7 +878,8 @@
         "metric": "session_resolved_max",
         "threshold": 100
       },
-      "credit_id": "gacek"
+      "credit_id": "gacek",
+      "pack_id": "classic"
     },
     {
       "id": "cat.recoveries_total.00001",
@@ -849,7 +902,8 @@
         "metric": "recoveries_total",
         "threshold": 1
       },
-      "credit_id": "crying-cat"
+      "credit_id": "crying-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.recoveries_total.00003",
@@ -872,7 +926,8 @@
         "metric": "recoveries_total",
         "threshold": 3
       },
-      "credit_id": "thumbs-up-crying-cat"
+      "credit_id": "thumbs-up-crying-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.recoveries_total.00005",
@@ -895,7 +950,8 @@
         "metric": "recoveries_total",
         "threshold": 5
       },
-      "credit_id": "coughing-cat"
+      "credit_id": "coughing-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.recoveries_total.00010",
@@ -918,7 +974,8 @@
         "metric": "recoveries_total",
         "threshold": 10
       },
-      "credit_id": "screaming-cat"
+      "credit_id": "screaming-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.recoveries_total.00020",
@@ -941,7 +998,8 @@
         "metric": "recoveries_total",
         "threshold": 20
       },
-      "credit_id": "knife-cat"
+      "credit_id": "knife-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.recoveries_total.00035",
@@ -964,7 +1022,8 @@
         "metric": "recoveries_total",
         "threshold": 35
       },
-      "credit_id": "soggy-cat"
+      "credit_id": "soggy-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.recoveries_total.00050",
@@ -987,7 +1046,8 @@
         "metric": "recoveries_total",
         "threshold": 50
       },
-      "credit_id": "beluga"
+      "credit_id": "beluga",
+      "pack_id": "classic"
     },
     {
       "id": "cat.recoveries_total.00100",
@@ -1010,7 +1070,8 @@
         "metric": "recoveries_total",
         "threshold": 100
       },
-      "credit_id": "basement-cat"
+      "credit_id": "basement-cat",
+      "pack_id": "classic"
     },
     {
       "id": "cat.daily_goal_streak_max.00002",
@@ -1033,7 +1094,8 @@
         "metric": "daily_goal_streak_max",
         "threshold": 2
       },
-      "credit_id": "meowmeowcatcam"
+      "credit_id": "meowmeowcatcam",
+      "pack_id": "classic"
     },
     {
       "id": "cat.daily_goal_streak_max.00003",
@@ -1056,7 +1118,8 @@
         "metric": "daily_goal_streak_max",
         "threshold": 3
       },
-      "credit_id": "meowmeowcatcam"
+      "credit_id": "meowmeowcatcam",
+      "pack_id": "classic"
     },
     {
       "id": "cat.daily_goal_streak_max.00005",
@@ -1079,7 +1142,8 @@
         "metric": "daily_goal_streak_max",
         "threshold": 5
       },
-      "credit_id": "drooling-cats"
+      "credit_id": "drooling-cats",
+      "pack_id": "classic"
     },
     {
       "id": "cat.daily_goal_streak_max.00007",
@@ -1102,7 +1166,8 @@
         "metric": "daily_goal_streak_max",
         "threshold": 7
       },
-      "credit_id": "drooling-cats"
+      "credit_id": "drooling-cats",
+      "pack_id": "classic"
     },
     {
       "id": "cat.daily_goal_streak_max.00014",
@@ -1125,7 +1190,8 @@
         "metric": "daily_goal_streak_max",
         "threshold": 14
       },
-      "credit_id": "drooling-cats"
+      "credit_id": "drooling-cats",
+      "pack_id": "classic"
     },
     {
       "id": "cat.daily_goal_streak_max.00030",
@@ -1148,7 +1214,8 @@
         "metric": "daily_goal_streak_max",
         "threshold": 30
       },
-      "credit_id": "drooling-cats"
+      "credit_id": "drooling-cats",
+      "pack_id": "classic"
     },
     {
       "id": "cat.daily_goal_streak_max.00060",
@@ -1171,7 +1238,8 @@
         "metric": "daily_goal_streak_max",
         "threshold": 60
       },
-      "credit_id": "drooling-cats"
+      "credit_id": "drooling-cats",
+      "pack_id": "classic"
     },
     {
       "id": "cat.daily_goal_streak_max.00100",
@@ -1194,7 +1262,8 @@
         "metric": "daily_goal_streak_max",
         "threshold": 100
       },
-      "credit_id": "drooling-cats"
+      "credit_id": "drooling-cats",
+      "pack_id": "classic"
     },
     {
       "id": "cat.qualified_days_total.00001",
@@ -1217,7 +1286,8 @@
         "metric": "qualified_days_total",
         "threshold": 1
       },
-      "credit_id": "lil-bub"
+      "credit_id": "lil-bub",
+      "pack_id": "classic"
     },
     {
       "id": "cat.qualified_days_total.00005",
@@ -1240,7 +1310,8 @@
         "metric": "qualified_days_total",
         "threshold": 5
       },
-      "credit_id": "drooling-cats"
+      "credit_id": "drooling-cats",
+      "pack_id": "classic"
     },
     {
       "id": "cat.qualified_days_total.00010",
@@ -1263,7 +1334,8 @@
         "metric": "qualified_days_total",
         "threshold": 10
       },
-      "credit_id": "drooling-cats"
+      "credit_id": "drooling-cats",
+      "pack_id": "classic"
     },
     {
       "id": "cat.qualified_days_total.00025",
@@ -1286,7 +1358,8 @@
         "metric": "qualified_days_total",
         "threshold": 25
       },
-      "credit_id": "drooling-cats"
+      "credit_id": "drooling-cats",
+      "pack_id": "classic"
     },
     {
       "id": "cat.qualified_days_total.00050",
@@ -1309,7 +1382,8 @@
         "metric": "qualified_days_total",
         "threshold": 50
       },
-      "credit_id": "tombili"
+      "credit_id": "tombili",
+      "pack_id": "classic"
     },
     {
       "id": "cat.qualified_days_total.00100",
@@ -1332,7 +1406,4162 @@
         "metric": "qualified_days_total",
         "threshold": 100
       },
-      "credit_id": "woman-yelling-cat"
+      "credit_id": "woman-yelling-cat",
+      "pack_id": "classic"
+    },
+    {
+      "id": "cat.resolved_cards_total.00075",
+      "sort_order": 51,
+      "pack_id": "reactions",
+      "rarity": "rare",
+      "name": {
+        "de": "Daumen-hoch Wein-Kater",
+        "en": "Thumbs-Up Crying Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 75 Karten ab. Schluchzend aber tapfer: Ein zittriger Daumen nach oben für die nächste Karte.",
+        "en": "Resolve 75 cards in total. Sobbing but brave: A shaky thumbs-up for the next difficult card."
+      },
+      "alt": {
+        "de": "Weinende Katze mit Tränen in den Augen, die einen Daumen hoch zeigt",
+        "en": "Crying cat with tears in eyes giving a determined thumbs up"
+      },
+      "asset": "web/cats/cat-51.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 75
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00125",
+      "sort_order": 52,
+      "pack_id": "chaos",
+      "rarity": "rare",
+      "name": {
+        "de": "Einzelne Rote Gehirnzelle",
+        "en": "One Orange Braincell"
+      },
+      "description": {
+        "de": "Schließe insgesamt 125 Karten ab. Wartet vergeblich auf das Signal. Der Ladekreis dreht sich endlos.",
+        "en": "Resolve 125 cards in total. Waiting patiently for its turn with the braincell. Loading symbol spinning."
+      },
+      "alt": {
+        "de": "Rote Katze mit Ladesymbol über dem Kopf und leerem Blick",
+        "en": "Orange cat with a spinning loading circle above head and blank stare"
+      },
+      "asset": "web/cats/cat-52.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 125
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00175",
+      "sort_order": 53,
+      "pack_id": "popcat_maxwell",
+      "rarity": "rare",
+      "name": {
+        "de": "Astronauten-Popcat",
+        "en": "Space Popcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 175 Karten ab. Schwebt im runden Glashelm durch den Kosmos und poppt im Vakuum.",
+        "en": "Resolve 175 cards in total. Floating in orbit with a glass bubble helmet, popping soundlessly in space."
+      },
+      "alt": {
+        "de": "Popcat in einem Astronautenhelm mit funkelnden Sternen im Hintergrund",
+        "en": "Popcat wearing a glass space astronaut helmet with stars"
+      },
+      "asset": "web/cats/cat-53.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 175
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00225",
+      "sort_order": 54,
+      "pack_id": "work_lockin",
+      "rarity": "common",
+      "name": {
+        "de": "Krawatten-Kater",
+        "en": "Corporate Necktie Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 225 Karten ab. Rote Seidenkrawatte sitzt perfekt für das Quartals-Review der Vokabeln.",
+        "en": "Resolve 225 cards in total. Crisp red silk tie straightened for the quarterly flashcard review meeting."
+      },
+      "alt": {
+        "de": "Katze trägt eine ordentliche rote Business-Krawatte um den Hals",
+        "en": "Cat wearing a professional red corporate necktie with crisp white collar"
+      },
+      "asset": "web/cats/cat-54.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 225
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00275",
+      "sort_order": 55,
+      "pack_id": "cozy_loaf",
+      "rarity": "common",
+      "name": {
+        "de": "Perfektes Kastenbrot",
+        "en": "Flawless Bread Loaf"
+      },
+      "description": {
+        "de": "Schließe insgesamt 275 Karten ab. Pfoten und Schwanz zu 100 % eingeklappt. Ein goldbraun gebackenes Meisterwerk.",
+        "en": "Resolve 275 cards in total. Paws and tail tucked 100% underneath. A golden-brown bakery masterpiece."
+      },
+      "alt": {
+        "de": "Katze liegt in perfekter Kastenbrot-Haltung ohne sichtbare Beine",
+        "en": "Cat resting in perfect bread loaf tuck with zero paws or tail visible"
+      },
+      "asset": "web/cats/cat-55.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 275
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00325",
+      "sort_order": 56,
+      "pack_id": "reactions",
+      "rarity": "common",
+      "name": {
+        "de": "Schockierter Kater",
+        "en": "Shocked Staring Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 325 Karten ab. Riesige unblinkende Augen starren ins endlose Nichts nach einer harten Karte.",
+        "en": "Resolve 325 cards in total. Huge unblinking eyes staring into the endless void after a hard card."
+      },
+      "alt": {
+        "de": "Schockierte Katze mit riesigen runden Pupillen und offenem Mund",
+        "en": "Shocked cat with giant dilated pupils and open mouth"
+      },
+      "asset": "web/cats/cat-56.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 325
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00375",
+      "sort_order": 57,
+      "pack_id": "chaos",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Der Tassenschubser",
+        "en": "The Mug Pusher"
+      },
+      "description": {
+        "de": "Schließe insgesamt 375 Karten ab. Die Pfote rückt den Kaffeebecher Millimeter für Millimeter an den Abgrund.",
+        "en": "Resolve 375 cards in total. The paw methodically nudges your coffee mug toward the desk edge."
+      },
+      "alt": {
+        "de": "Katze schubst mit ausgestreckter Pfote eine Kaffeetasse an den Rand",
+        "en": "Cat deliberately nudging a coffee mug off the desk with one paw"
+      },
+      "asset": "web/cats/cat-57.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 375
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00425",
+      "sort_order": 58,
+      "pack_id": "popcat_maxwell",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Retro 8-Bit Popcat",
+        "en": "Retro 8-Bit Popcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 425 Karten ab. Pixelige Arcade-Version aus der goldenen Ära der Videospiele.",
+        "en": "Resolve 425 cards in total. Chunky pixel-art arcade sprite from the golden era of 80s gaming."
+      },
+      "alt": {
+        "de": "Pixelige Popcat im Stil eines alten Gameboy-Spiels",
+        "en": "Pixel-art Popcat sprite with pixelated open mouth"
+      },
+      "asset": "web/cats/cat-58.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 425
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00475",
+      "sort_order": 59,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Tipp-Kater an Tasten",
+        "en": "Typing Mechanical Keyboard"
+      },
+      "description": {
+        "de": "Schließe insgesamt 475 Karten ab. Pfoten fliegen mit 120 WPM über die klickenden mechanischen Schalter.",
+        "en": "Resolve 475 cards in total. Paws flying across mechanical keyboard switches at 120 words per minute."
+      },
+      "alt": {
+        "de": "Katze tippt eifrig mit beiden Vorderpfoten auf einer Computertastatur",
+        "en": "Cat with paws blurring as it types furiously on a computer keyboard"
+      },
+      "asset": "web/cats/cat-59.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 475
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00525",
+      "sort_order": 60,
+      "pack_id": "cozy_loaf",
+      "rarity": "common",
+      "name": {
+        "de": "Kuscheldecken-Burrito",
+        "en": "Blanket Burrito Purrito"
+      },
+      "description": {
+        "de": "Schließe insgesamt 525 Karten ab. Fest eingewickelt in eine flauschige Fleece-Decke wie ein warmer Burrito.",
+        "en": "Resolve 525 cards in total. Snugly swaddled in a warm fleece tortilla like the ultimate purrito."
+      },
+      "alt": {
+        "de": "Katzenkopf schaut aus einer fest gewickelten Deckenrolle hervor",
+        "en": "Cat head and ears peeking out from a tightly rolled colorful fleece blanket"
+      },
+      "asset": "web/cats/cat-60.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 525
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00575",
+      "sort_order": 61,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Schreiende Katze",
+        "en": "Screaming Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 575 Karten ab. Ein schriller Urschrei der Verzweiflung bei 50 überfälligen Karten.",
+        "en": "Resolve 575 cards in total. A primal scream of despair facing 50 overdue cards."
+      },
+      "alt": {
+        "de": "Katze mit weit aufgerissenem Maul beim dramatischen Schreien",
+        "en": "Cat with mouth wide open screaming dramatically"
+      },
+      "asset": "web/cats/cat-61.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 575
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00625",
+      "sort_order": 62,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Knöchel-Beißer",
+        "en": "Ankle Biter Goblin"
+      },
+      "description": {
+        "de": "Schließe insgesamt 625 Karten ab. Lauert unter der Sofadecke auf unvorsichtige Füße beim Wiederholen.",
+        "en": "Resolve 625 cards in total. Lurking under the couch blanket waiting for unsuspecting feet."
+      },
+      "alt": {
+        "de": "Katze schnellt unter einer Decke hervor mit gezückten Krallen",
+        "en": "Cat pouncing from under a blanket with mischievous sharp fangs"
+      },
+      "asset": "web/cats/cat-62.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 625
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00675",
+      "sort_order": 63,
+      "pack_id": "popcat_maxwell",
+      "rarity": "epic",
+      "name": {
+        "de": "Goldene Popcat",
+        "en": "Golden Popcat Prestige"
+      },
+      "description": {
+        "de": "Schließe insgesamt 675 Karten ab. Gegossen aus reinem 24-Karat Gold für unerschütterliche Lern-Veteranen.",
+        "en": "Resolve 675 cards in total. Cast in gleaming 24-karat solid gold for dedicated study veterans."
+      },
+      "alt": {
+        "de": "Glänzende goldene Popcat-Statue mit funkelnden Lichtreflexen",
+        "en": "Gleaming metallic gold Popcat with bright sparkle glints"
+      },
+      "asset": "web/cats/cat-63.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 675
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00725",
+      "sort_order": 64,
+      "pack_id": "work_lockin",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Koffein-Schock Kater",
+        "en": "Coffee Overdose Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 725 Karten ab. Klammert sich an den fünften Espresso-Becher mit riesigen Pupillen.",
+        "en": "Resolve 725 cards in total. Clutching the fifth espresso mug of the day with vibrating pupils."
+      },
+      "alt": {
+        "de": "Katze umklammert eine dampfende Kaffeetasse mit zittrigen Augen",
+        "en": "Cat clutching a steaming coffee mug with wide hyper-caffeinated eyes"
+      },
+      "asset": "web/cats/cat-64.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 725
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00775",
+      "sort_order": 65,
+      "pack_id": "cozy_loaf",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Der Kugel-Chonker",
+        "en": "Spherical Chonker Supreme"
+      },
+      "description": {
+        "de": "Schließe insgesamt 775 Karten ab. Ein vollkommen rundes, flauschiges Fellwunder von maximaler Gemütlichkeit.",
+        "en": "Resolve 775 cards in total. A perfectly round, spherical ball of pure fluffy feline comfort."
+      },
+      "alt": {
+        "de": "Sehr runde, kugelrunde flauschige Katze lächelt selig",
+        "en": "Comically round and fluffy spherical cat with chubby smiling cheeks"
+      },
+      "asset": "web/cats/cat-65.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 775
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00825",
+      "sort_order": 66,
+      "pack_id": "reactions",
+      "rarity": "rare",
+      "name": {
+        "de": "Existenzkrise-Kater",
+        "en": "Existential Dread Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 825 Karten ab. Liegt flach auf dem Teppich und hinterfragt jeden Lebensbeschluss.",
+        "en": "Resolve 825 cards in total. Lying flat on the carpet questioning every life decision."
+      },
+      "alt": {
+        "de": "Katze liegt flach auf dem Boden und starrt leer an die Decke",
+        "en": "Cat lying completely flat staring blankly at the ceiling"
+      },
+      "asset": "web/cats/cat-66.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 825
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00875",
+      "sort_order": 67,
+      "pack_id": "chaos",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Laser-Punkt Jäger",
+        "en": "Laser Dot Hunter"
+      },
+      "description": {
+        "de": "Schließe insgesamt 875 Karten ab. Schielt hochkonzentriert auf den roten Punkt direkt auf seiner Nase.",
+        "en": "Resolve 875 cards in total. Cross-eyed with extreme focus on the red laser dot right on its nose."
+      },
+      "alt": {
+        "de": "Katze schielt auf einen roten Laserpunkt auf ihrer Nasenspitze",
+        "en": "Cross-eyed cat staring intensely at a red laser dot on its nose"
+      },
+      "asset": "web/cats/cat-67.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 875
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00925",
+      "sort_order": 68,
+      "pack_id": "popcat_maxwell",
+      "rarity": "rare",
+      "name": {
+        "de": "Regenbogen-Popcat",
+        "en": "Rainbow Gradient Popcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 925 Karten ab. Poppt in allen Spektralfarben des Regenbogens mit Neon-Glanz.",
+        "en": "Resolve 925 cards in total. Popping across the full neon spectrum of the rainbow."
+      },
+      "alt": {
+        "de": "Popcat mit lebhaftem Regenbogen-Farbverlauf und Neon-Aura",
+        "en": "Popcat glowing with vibrant rainbow spectrum gradient colors"
+      },
+      "asset": "web/cats/cat-68.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 925
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.00975",
+      "sort_order": 69,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Professor Schnurr",
+        "en": "Professor Whiskers"
+      },
+      "description": {
+        "de": "Schließe insgesamt 975 Karten ab. Drahtbrille auf der Nase und Fliege am Kragen doziert über Spaced Repetition.",
+        "en": "Resolve 975 cards in total. Round spectacles on the nose giving academic lectures on memory curves."
+      },
+      "alt": {
+        "de": "Katze mit runder Lesebrille und brauner Fliege",
+        "en": "Cat wearing round reading spectacles and a dapper tweed bow tie"
+      },
+      "asset": "web/cats/cat-69.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 975
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01025",
+      "sort_order": 70,
+      "pack_id": "cozy_loaf",
+      "rarity": "rare",
+      "name": {
+        "de": "Flüssige Katze im Glas",
+        "en": "Liquid Cat in a Vase"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1025 Karten ab. Beweist eindrucksvoll: Katzen sind flüssig. Fließt perfekt in die Glasvase.",
+        "en": "Resolve 1025 cards in total. Proof that cats are liquid: Seamlessly filling the curve of a glass vase."
+      },
+      "alt": {
+        "de": "Katze liegt zusammengerollt in einer durchsichtigen Glasvase",
+        "en": "Cat melted like liquid perfectly filling the inside of a clear glass vase"
+      },
+      "asset": "web/cats/cat-70.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1025
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01075",
+      "sort_order": 71,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Seitenblick-Richter",
+        "en": "Side-Eye Judgy Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1075 Karten ab. Ein misstrauischer Blick von der Seite, der deine Lerndisziplin bewertet.",
+        "en": "Resolve 1075 cards in total. A suspicious sideways glare judging your flashcard discipline."
+      },
+      "alt": {
+        "de": "Katze blickt mit verengten Augen streng zur Seite",
+        "en": "Cat looking sharply sideways with squinted judging eyes"
+      },
+      "asset": "web/cats/cat-71.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1075
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01125",
+      "sort_order": 72,
+      "pack_id": "chaos",
+      "rarity": "epic",
+      "name": {
+        "de": "Decken-Kater",
+        "en": "Ceiling Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1125 Karten ab. Beobachtet deine Lernstunde direkt aus der abgehängten Deckenplatte.",
+        "en": "Resolve 1125 cards in total. Watching your study session through a square hole in the ceiling tiles."
+      },
+      "alt": {
+        "de": "Katzenkopf schaut durch ein Loch in der Zimmerdecke nach unten",
+        "en": "Classic Ceiling Cat peering down through a ceiling tile"
+      },
+      "asset": "web/cats/cat-72.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1125
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01175",
+      "sort_order": 73,
+      "pack_id": "popcat_maxwell",
+      "rarity": "epic",
+      "name": {
+        "de": "Laser-Augen Popcat",
+        "en": "Laser Beam Popcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1175 Karten ab. Zwei rote Laserstrahlen schießen aus den Augen beim Öffnen des Mauls.",
+        "en": "Resolve 1175 cards in total. Twin intense red laser beams firing from eyes when the mouth opens."
+      },
+      "alt": {
+        "de": "Popcat feuert glühend rote Laserstrahlen aus beiden Augen",
+        "en": "Popcat firing intense glowing red laser beams from eyes"
+      },
+      "asset": "web/cats/cat-73.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1175
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01225",
+      "sort_order": 74,
+      "pack_id": "work_lockin",
+      "rarity": "common",
+      "name": {
+        "de": "Pomodoro-Meister",
+        "en": "Pomodoro Tomato Master"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1225 Karten ab. Kuschelt den Kopf an eine leuchtend rote Tomaten-Küchenuhr.",
+        "en": "Resolve 1225 cards in total. Resting chin peacefully on a bright red mechanical tomato kitchen timer."
+      },
+      "alt": {
+        "de": "Katze schläft angelehnt an eine rote Tomaten-Eieruhr",
+        "en": "Cat resting happily against a red tomato Pomodoro kitchen timer"
+      },
+      "asset": "web/cats/cat-74.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1225
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01275",
+      "sort_order": 75,
+      "pack_id": "cozy_loaf",
+      "rarity": "common",
+      "name": {
+        "de": "Sonnenfleck-Genießer",
+        "en": "Sunbeam Soaker"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1275 Karten ab. Liegt langgestreckt im einzigen warmen Quadrat Nachmittagssonne auf dem Teppich.",
+        "en": "Resolve 1275 cards in total. Stretched out soaking up the single warm square of afternoon sun on the rug."
+      },
+      "alt": {
+        "de": "Katze sonnt sich ausgestreckt in einem goldenen Sonnenstrahl",
+        "en": "Cat happily stretched out basking in a warm golden square of sunlight"
+      },
+      "asset": "web/cats/cat-75.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1275
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01325",
+      "sort_order": 76,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Selbstgefälliger Kater",
+        "en": "Smug Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1325 Karten ab. Ein arrogantes Grinsen, nachdem du eine schwere Karte blind gewusst hast.",
+        "en": "Resolve 1325 cards in total. An arrogant grin after guessing a tough card 100% correctly."
+      },
+      "alt": {
+        "de": "Katze grinst überheblich mit funkelndem Stern am Zahn",
+        "en": "Smug cat grinning arrogantly with a sparkle star"
+      },
+      "asset": "web/cats/cat-76.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1325
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01375",
+      "sort_order": 77,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Karton-Goblin",
+        "en": "Cardboard Box Goblin"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1375 Karten ab. Wenn es passt, dann sitze ich: Hineingequetscht in eine winzige Schachtel.",
+        "en": "Resolve 1375 cards in total. If it fits, I sits: Squished into a comically undersized Amazon box."
+      },
+      "alt": {
+        "de": "Katze sitzt eingequetscht in einem viel zu kleinen Karton",
+        "en": "Cat squeezed into a comically tiny cardboard shipping box"
+      },
+      "asset": "web/cats/cat-77.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1375
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01425",
+      "sort_order": 78,
+      "pack_id": "popcat_maxwell",
+      "rarity": "rare",
+      "name": {
+        "de": "Cyberpunk-Popcat",
+        "en": "Cyberpunk Popcat 2077"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1425 Karten ab. Mit leuchtendem Neon-Visier und kybernetischen Schnurrhaaren.",
+        "en": "Resolve 1425 cards in total. Equipped with glowing cyber-visor and neon synthwave circuitry."
+      },
+      "alt": {
+        "de": "Popcat mit leuchtend blauem Cyber-Visier und Neon-Details",
+        "en": "Popcat wearing a high-tech glowing cyan cybernetic visor"
+      },
+      "asset": "web/cats/cat-78.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1425
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01475",
+      "sort_order": 79,
+      "pack_id": "work_lockin",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Taschenrechner-Genie",
+        "en": "Calculator Whiz Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1475 Karten ab. Tippt blitzschnell auf die Tasten eines wissenschaftlichen Rechners.",
+        "en": "Resolve 1475 cards in total. Punching numbers on a scientific calculator computing retention rates."
+      },
+      "alt": {
+        "de": "Katze drückt mit einer Pfote Tasten auf einem Taschenrechner",
+        "en": "Cat operating a scientific calculator with tiny focused paw"
+      },
+      "asset": "web/cats/cat-79.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1475
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01525",
+      "sort_order": 80,
+      "pack_id": "cozy_loaf",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Wollmützen-Kater",
+        "en": "Pompom Beanie Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1525 Karten ab. Trägt eine gestrickte blaue Wintermütze mit weißem Bommel auf dem Kopf.",
+        "en": "Resolve 1525 cards in total. Wearing a warm knit pastel winter beanie with a fluffy pompom on top."
+      },
+      "alt": {
+        "de": "Katze trägt eine blaue Strickmütze mit großem Bommel",
+        "en": "Cat wearing a cozy knit winter beanie hat with a fluffy round pompom"
+      },
+      "asset": "web/cats/cat-80.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1525
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01575",
+      "sort_order": 81,
+      "pack_id": "reactions",
+      "rarity": "common",
+      "name": {
+        "de": "Ekel-Blick Kater",
+        "en": "Disgusted Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1575 Karten ab. Gekräuselte Nase beim Anblick von 'Again' auf einer leichten Karte.",
+        "en": "Resolve 1575 cards in total. Wrinkled nose looking at an accidental Again on an easy card."
+      },
+      "alt": {
+        "de": "Katze verzieht das Gesicht voller Abscheu",
+        "en": "Cat making a face of sheer disgust with scrunched nose"
+      },
+      "asset": "web/cats/cat-81.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1575
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01625",
+      "sort_order": 82,
+      "pack_id": "chaos",
+      "rarity": "rare",
+      "name": {
+        "de": "3 Uhr Wand-Zoomies",
+        "en": "3 AM Wall Zoomies"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1625 Karten ab. Ein verschwommener Blitz sprintet um drei Uhr nachts die Wände hoch.",
+        "en": "Resolve 1625 cards in total. A motion-blurred blur sprinting vertically along the hallway wall at 3 AM."
+      },
+      "alt": {
+        "de": "Verschwommene Silhouette einer rennenden Katze mit Speedlines",
+        "en": "Blurry silhouette of a sprinting cat with dynamic speed lines"
+      },
+      "asset": "web/cats/cat-82.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1625
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01675",
+      "sort_order": 83,
+      "pack_id": "popcat_maxwell",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Zauberer-Popcat",
+        "en": "Wizard Popcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1675 Karten ab. Spitzer Zauberhut mit goldenen Sternen spricht Zauberformeln.",
+        "en": "Resolve 1675 cards in total. Pointy wizard hat with golden stars casting memory spells."
+      },
+      "alt": {
+        "de": "Popcat mit blauem Zauberhut und magischem Zauberstab",
+        "en": "Popcat wearing a blue pointed wizard hat with star pattern"
+      },
+      "asset": "web/cats/cat-83.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1675
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01725",
+      "sort_order": 84,
+      "pack_id": "work_lockin",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Nachteulen-Kater",
+        "en": "Midnight Desk Lamp Owl"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1725 Karten ab. Eine grüne Banker-Schreibtischlampe beleuchtet die Mitternachtssitzung.",
+        "en": "Resolve 1725 cards in total. Warm glow of a green banker's desk lamp illuminating 2 AM reviews."
+      },
+      "alt": {
+        "de": "Katze sitzt im Lichtkegel einer grünen Schreibtischlampe",
+        "en": "Cat studying under the warm green shade of a vintage banker lamp"
+      },
+      "asset": "web/cats/cat-84.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1725
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01775",
+      "sort_order": 85,
+      "pack_id": "cozy_loaf",
+      "rarity": "rare",
+      "name": {
+        "de": "Teetassen-Kätzchen",
+        "en": "Teacup Kitten"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1775 Karten ab. Eingekuschelt in eine übergroße Porzellan-Teetasse mit Blümchenmuster.",
+        "en": "Resolve 1775 cards in total. Curled up peacefully inside an oversized floral porcelain teacup."
+      },
+      "alt": {
+        "de": "Winziges Kätzchen schläft friedlich in einer bunten Kaffeetasse",
+        "en": "Tiny kitten resting comfortably inside an oversized floral tea cup"
+      },
+      "asset": "web/cats/cat-85.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1775
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01825",
+      "sort_order": 86,
+      "pack_id": "reactions",
+      "rarity": "rare",
+      "name": {
+        "de": "Schweratmender Kater",
+        "en": "Heavy Breathing Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1825 Karten ab. Extrem-Nahaufnahme mit geblähten Nüstern bei einer 40er-Serie.",
+        "en": "Resolve 1825 cards in total. Intense extreme close-up with flaring nostrils during a 40-streak."
+      },
+      "alt": {
+        "de": "Extreme Nahaufnahme einer Katze mit weit geöffneten Nasenlöchern",
+        "en": "Extreme close-up of cat with flaring nostrils"
+      },
+      "asset": "web/cats/cat-86.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1825
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01875",
+      "sort_order": 87,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Tüten-Monster",
+        "en": "Paper Bag Monster"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1875 Karten ab. Kopf steckt in der Einkaufstüte und läuft rückwärts durch den Flur.",
+        "en": "Resolve 1875 cards in total. Head stuck in a brown paper bag, reversing wildly across the floor."
+      },
+      "alt": {
+        "de": "Katze mit Papiertüte über dem Kopf läuft rückwärts",
+        "en": "Cat with a brown grocery paper bag stuck over its head"
+      },
+      "asset": "web/cats/cat-87.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1875
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01925",
+      "sort_order": 88,
+      "pack_id": "popcat_maxwell",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Ninja-Popcat",
+        "en": "Ninja Stealth Popcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1925 Karten ab. Schwarze Maske und Stirnband für geräuschloses Lernen im Verborgenen.",
+        "en": "Resolve 1925 cards in total. Black ninja mask and headband for silent, focused stealth reviewing."
+      },
+      "alt": {
+        "de": "Popcat mit schwarzer Ninja-Maske und Stirnband",
+        "en": "Popcat wearing black ninja cowl and red forehead band"
+      },
+      "asset": "web/cats/cat-88.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1925
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.01975",
+      "sort_order": 89,
+      "pack_id": "work_lockin",
+      "rarity": "common",
+      "name": {
+        "de": "Post-It Klebe-Kater",
+        "en": "Sticky Note Covered Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 1975 Karten ab. Bedeckt mit bunten gelben und rosa Haftnotizen voller Vokabeln.",
+        "en": "Resolve 1975 cards in total. Covered in colorful yellow, pink, and blue sticky reminder notes."
+      },
+      "alt": {
+        "de": "Katze beklebt mit bunten quadratischen Post-It Zetteln",
+        "en": "Cat playfully covered with colorful pastel sticky reminder notes"
+      },
+      "asset": "web/cats/cat-89.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 1975
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02025",
+      "sort_order": 90,
+      "pack_id": "cozy_loaf",
+      "rarity": "common",
+      "name": {
+        "de": "Heizkörper-Schmelzer",
+        "en": "Radiator Hugger Loaf"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2025 Karten ab. Hängt wie ein nasses Handtuch über der warmen Heizung und schläft tief.",
+        "en": "Resolve 2025 cards in total. Draped over the warm winter radiator like laundry sleeping deeply."
+      },
+      "alt": {
+        "de": "Katze liegt der Länge nach schlafend auf einem Heizkörper",
+        "en": "Cat melted flat asleep across the top of a warm white winter radiator"
+      },
+      "asset": "web/cats/cat-90.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2025
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02075",
+      "sort_order": 91,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Hysterisch Lachende Katze",
+        "en": "Laughing Hysterical Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2075 Karten ab. Zugekniffene Augen vor Lachen über eine absurde Eselsbrücke.",
+        "en": "Resolve 2075 cards in total. Eyes squeezed shut laughing hysterically at an absurd mnemonic."
+      },
+      "alt": {
+        "de": "Katze lacht schallend mit zugekniffenen Augen",
+        "en": "Cat laughing hysterically with squeezed shut joyful eyes"
+      },
+      "asset": "web/cats/cat-91.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2075
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02125",
+      "sort_order": 92,
+      "pack_id": "chaos",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Duschvorhang-Spion",
+        "en": "Shower Curtain Stalker"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2125 Karten ab. Blickt mit heiligem Entsetzen über die Duschstange: 'Du wirst NASS?!'",
+        "en": "Resolve 2125 cards in total. Peering over the shower curtain in sheer horror: 'You're in WATER?!'"
+      },
+      "alt": {
+        "de": "Katzenkopf späht ängstlich über die Duschvorhangstange",
+        "en": "Cat peeking over shower curtain with eyes full of concern for you"
+      },
+      "asset": "web/cats/cat-92.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2125
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02175",
+      "sort_order": 93,
+      "pack_id": "popcat_maxwell",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Piraten-Popcat",
+        "en": "Pirate Captain Popcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2175 Karten ab. Augenklappe, Dreispitz und ein unstillbarer Durst nach guten Noten.",
+        "en": "Resolve 2175 cards in total. Leather eyepatch, bicorne captain hat, and a thirst for study treasure."
+      },
+      "alt": {
+        "de": "Popcat mit Piratenhut und Augenklappe",
+        "en": "Popcat wearing pirate captain hat with skull and eyepatch"
+      },
+      "asset": "web/cats/cat-93.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2175
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02225",
+      "sort_order": 94,
+      "pack_id": "work_lockin",
+      "rarity": "common",
+      "name": {
+        "de": "Textmarker-Artist",
+        "en": "Highlighter Paw Artist"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2225 Karten ab. Neongelbe Pfoten markieren gnadenlos jede wichtige Kartenseite.",
+        "en": "Resolve 2225 cards in total. Neon yellow paws highlighting every essential exam fact with glow."
+      },
+      "alt": {
+        "de": "Katze hält einen neongelben Textmarker mit leuchtenden Spuren",
+        "en": "Cat holding a neon yellow chisel-tip highlighter pen with streaks"
+      },
+      "asset": "web/cats/cat-94.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2225
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02275",
+      "sort_order": 95,
+      "pack_id": "cozy_loaf",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Flausch-Wolke",
+        "en": "Fluffy Cotton Cloud"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2275 Karten ab. Weißes Fell so fluffig wie Zuckerwatte an einem strahlenden Sommertag.",
+        "en": "Resolve 2275 cards in total. White fur puffed so light and soft it looks like cotton candy clouds."
+      },
+      "alt": {
+        "de": "Extrem flauschige weiße Katze wie eine weiche Wolke",
+        "en": "Extremely fluffy white Persian cat resembling a soft buoyant cloud"
+      },
+      "asset": "web/cats/cat-95.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2275
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02325",
+      "sort_order": 96,
+      "pack_id": "reactions",
+      "rarity": "epic",
+      "name": {
+        "de": "Verwirrter Mathe-Kater",
+        "en": "Confused Math Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2325 Karten ab. Umgeben von schwebenden Formeln und Integralen ohne Peilung.",
+        "en": "Resolve 2325 cards in total. Surrounded by floating calculus formulas with zero comprehension."
+      },
+      "alt": {
+        "de": "Verwirrte Katze umgeben von mathematischen Gleichungen und Fragezeichen",
+        "en": "Confused cat surrounded by floating math equations and question marks"
+      },
+      "asset": "web/cats/cat-96.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2325
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02375",
+      "sort_order": 97,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Tastatur-Trampler",
+        "en": "Keyboard Trampler"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2375 Karten ab. Tritt zielsicher auf Caps Lock, Escape und die Leertaste gleichzeitig.",
+        "en": "Resolve 2375 cards in total. Walking methodically across Caps Lock, Escape, and the Spacebar."
+      },
+      "alt": {
+        "de": "Katze legt sich mitten auf eine leuchtende Computertastatur",
+        "en": "Cat stepping directly onto a glowing mechanical keyboard"
+      },
+      "asset": "web/cats/cat-97.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2375
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02425",
+      "sort_order": 98,
+      "pack_id": "popcat_maxwell",
+      "rarity": "common",
+      "name": {
+        "de": "Chefkoch-Popcat",
+        "en": "Master Chef Popcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2425 Karten ab. Weiße Kochmütze bereitet ein 5-Gänge-Menü aus frischen Karten zu.",
+        "en": "Resolve 2425 cards in total. Tall white chef toque cooking up a 5-star feast of flashcards."
+      },
+      "alt": {
+        "de": "Popcat mit weißer Kochmütze und Holzlöffel",
+        "en": "Popcat wearing a tall white chef hat popping happily"
+      },
+      "asset": "web/cats/cat-98.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2425
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02475",
+      "sort_order": 99,
+      "pack_id": "work_lockin",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Bibliotheks-Flüsterer",
+        "en": "Library Shusher Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2475 Karten ab. Pfote vor den Lippen: 'Psssscht! Hier wird hochkonzentriert gelernt!'",
+        "en": "Resolve 2475 cards in total. Single paw pressed to lips: 'Shhh! Silent study zone in progress!'"
+      },
+      "alt": {
+        "de": "Katze macht die 'Pscht'-Geste mit Pfote vor dem Mund",
+        "en": "Cat with tiny paw to mouth in iconic library shushing gesture"
+      },
+      "asset": "web/cats/cat-99.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2475
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02525",
+      "sort_order": 100,
+      "pack_id": "cozy_loaf",
+      "rarity": "common",
+      "name": {
+        "de": "Pantoffel-Schläfer",
+        "en": "Double Slipper Sleeper"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2525 Karten ab. Hinterpfoten im linken Hausschuh, Schnauze tief im rechten vergraben.",
+        "en": "Resolve 2525 cards in total. Hind paws tucked into the left slipper, snout buried deep in the right."
+      },
+      "alt": {
+        "de": "Katze schläft quer über zwei weichen Filzpantoffeln",
+        "en": "Cat sleeping horizontally bridging across two fuzzy fleece house slippers"
+      },
+      "asset": "web/cats/cat-100.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2525
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02575",
+      "sort_order": 101,
+      "pack_id": "reactions",
+      "rarity": "common",
+      "name": {
+        "de": "Nervöser Schwitz-Kater",
+        "en": "Nervous Sweat Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2575 Karten ab. Ein riesiger Schweißtropfen vor dem Aufdecken der Antwort.",
+        "en": "Resolve 2575 cards in total. Giant cartoon sweat drop right before revealing the answer."
+      },
+      "alt": {
+        "de": "Nervöse Katze mit blauem Schweißtropfen an der Wange",
+        "en": "Nervous cat with blue anime sweat drop on forehead"
+      },
+      "asset": "web/cats/cat-101.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2575
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02625",
+      "sort_order": 102,
+      "pack_id": "chaos",
+      "rarity": "rare",
+      "name": {
+        "de": "Glasschüssel-Flüssigkeit",
+        "en": "Liquid Glass Bowl Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2625 Karten ab. Nimmt vollkommen die physikalische Form der runden Rührschüssel an.",
+        "en": "Resolve 2625 cards in total. Conforming completely to the exact curvature of the glass salad bowl."
+      },
+      "alt": {
+        "de": "Katze liegt zusammengerollt wie eine Flüssigkeit in einer Glasschale",
+        "en": "Cat melted like liquid inside a round transparent glass bowl"
+      },
+      "asset": "web/cats/cat-102.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2625
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02675",
+      "sort_order": 103,
+      "pack_id": "popcat_maxwell",
+      "rarity": "rare",
+      "name": {
+        "de": "DJ Maxwell",
+        "en": "DJ Maxwell Beats"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2675 Karten ab. Riesige Studio-Kopfhörer über den Ohren dreht den Bass voll auf.",
+        "en": "Resolve 2675 cards in total. Oversized professional studio DJ headphones dropping the bass."
+      },
+      "alt": {
+        "de": "Maxwell die Katze mit großen schwarzen DJ-Kopfhörern",
+        "en": "Maxwell the tuxedo cat wearing professional over-ear DJ headphones"
+      },
+      "asset": "web/cats/cat-103.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2675
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02725",
+      "sort_order": 104,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Tabellen-Architekt",
+        "en": "Spreadsheet Master Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2725 Karten ab. Navigiert mit der Maus durch grüne Excel-Zeilen wie ein Daten-Zauberer.",
+        "en": "Resolve 2725 cards in total. Mastering green spreadsheet grid rows like a true data wizard."
+      },
+      "alt": {
+        "de": "Katze starrt auf grüne Tabellenzeilen mit Computermaus in der Pfote",
+        "en": "Cat operating an ergonomic mouse before glowing green spreadsheet cells"
+      },
+      "asset": "web/cats/cat-104.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2725
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02775",
+      "sort_order": 105,
+      "pack_id": "cozy_loaf",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Teig-Kneter",
+        "en": "Biscuit Maker Apprentice"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2775 Karten ab. Knetet mit rhythmischem Pfötchendrücken unsichtbaren Pizzateig auf der Decke.",
+        "en": "Resolve 2775 cards in total. Rhythmically kneading invisible pizza dough biscuits on a plush throw blanket."
+      },
+      "alt": {
+        "de": "Katze knetet mit wechselnden Pfoten eine weiche Wolldecke",
+        "en": "Cat rhythmically kneading front paws into a soft textured throw blanket"
+      },
+      "asset": "web/cats/cat-105.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2775
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02825",
+      "sort_order": 106,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Verratener Kater",
+        "en": "Betrayed Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2825 Karten ab. Blickt mit gebrochenem Herzen zurück: 'Du hast Again geklickt?!'",
+        "en": "Resolve 2825 cards in total. Looking back with a broken heart: 'You actually clicked Again?!'"
+      },
+      "alt": {
+        "de": "Katze schaut dramatisch über die Schulter voller Enttäuschung",
+        "en": "Cat looking over shoulder with dramatic heartbreak eyes"
+      },
+      "asset": "web/cats/cat-106.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2825
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02875",
+      "sort_order": 107,
+      "pack_id": "chaos",
+      "rarity": "rare",
+      "name": {
+        "de": "Schatten-Leere",
+        "en": "Void Eyes Goblin"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2875 Karten ab. Pechschwarze Silhouette, aus der zwei gigantische Goldaugen strahlen.",
+        "en": "Resolve 2875 cards in total. Pure pitch-black shadow silhouette with two glowing golden saucers."
+      },
+      "alt": {
+        "de": "Tiefschwarze Katze mit riesigen leuchtend gelben Augen",
+        "en": "Black void cat with giant round glowing yellow eyes"
+      },
+      "asset": "web/cats/cat-107.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2875
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02925",
+      "sort_order": 108,
+      "pack_id": "popcat_maxwell",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Retro 8-Bit Maxwell",
+        "en": "8-Bit Dingus Maxwell"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2925 Karten ab. Niedrig aufgelöstes Retro-3D-Modell dreht sich endlos im Kreis.",
+        "en": "Resolve 2925 cards in total. Low-poly retro 3D Dingus model spinning endlessly in 8-bit space."
+      },
+      "alt": {
+        "de": "Pixelige Version von Maxwell dem Drehkater",
+        "en": "Pixelated Dingus the cat spinning smoothly in retro style"
+      },
+      "asset": "web/cats/cat-108.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2925
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.02975",
+      "sort_order": 109,
+      "pack_id": "work_lockin",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Barista-Katze",
+        "en": "Coffee Barista Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 2975 Karten ab. Serviert eine perfekte Tasse Cappuccino mit Schaumherz in Pfotenform.",
+        "en": "Resolve 2975 cards in total. Serving a freshly poured cappuccino with adorable cat paw latte art."
+      },
+      "alt": {
+        "de": "Katze mit brauner Schürze hält Tasse mit Latte-Art-Pfote",
+        "en": "Cat wearing barista apron holding warm coffee with paw-shaped latte art"
+      },
+      "asset": "web/cats/cat-109.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 2975
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03025",
+      "sort_order": 110,
+      "pack_id": "cozy_loaf",
+      "rarity": "rare",
+      "name": {
+        "de": "Heiße Schokolade Genießer",
+        "en": "Hot Cocoa Marshmallow"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3025 Karten ab. Beobachtet den Dampf einer heißen Schokolade mit winzigen Marshmallows.",
+        "en": "Resolve 3025 cards in total. Watching steam rise from hot cocoa topped with fluffy mini marshmallows."
+      },
+      "alt": {
+        "de": "Katze sitzt neben einer Tasse Kakao mit Marshmallows",
+        "en": "Cat seated next to a warm mug of hot chocolate with mini marshmallows"
+      },
+      "asset": "web/cats/cat-110.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3025
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03075",
+      "sort_order": 111,
+      "pack_id": "reactions",
+      "rarity": "common",
+      "name": {
+        "de": "Ausdrucksloser Profi",
+        "en": "Deadpan Veteran Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3075 Karten ab. Keine Emotion mehr. 500 Karten am Tag sind reiner Alltag.",
+        "en": "Resolve 3075 cards in total. Zero emotion left. 500 cards a day is just a normal Tuesday."
+      },
+      "alt": {
+        "de": "Katze mit völlig neutralem, leerem Pokerface",
+        "en": "Cat with perfectly neutral, emotionless poker face"
+      },
+      "asset": "web/cats/cat-111.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3075
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03125",
+      "sort_order": 112,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Pflanzen-Knabberer",
+        "en": "Houseplant Chomper"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3125 Karten ab. Knabbert genüsslich an der Monstera ohne die geringste Reue.",
+        "en": "Resolve 3125 cards in total. Chomping happily on the houseplant leaf with zero remorse."
+      },
+      "alt": {
+        "de": "Katze beißt mit schiefem Maul in ein grünes Zimmerpflanzenblatt",
+        "en": "Cat biting a green houseplant leaf with a defiant glare"
+      },
+      "asset": "web/cats/cat-112.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3125
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03175",
+      "sort_order": 113,
+      "pack_id": "popcat_maxwell",
+      "rarity": "common",
+      "name": {
+        "de": "Party-Maxwell",
+        "en": "Party Hat Maxwell"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3175 Karten ab. Bunter Papp-Partyhut und schwebendes Konfetti zum Jubiläum.",
+        "en": "Resolve 3175 cards in total. Colorful striped party cone hat with floating celebration confetti."
+      },
+      "alt": {
+        "de": "Maxwell mit buntem Partyhütchen und Konfetti",
+        "en": "Maxwell the cat wearing a festive party hat with confetti flakes"
+      },
+      "asset": "web/cats/cat-113.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3175
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03225",
+      "sort_order": 114,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Doppel-Monitor Stratege",
+        "en": "Dual Monitor Commander"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3225 Karten ab. Kopf schwenkt blitzschnell zwischen Frage- und Antwortbildschirm hin und her.",
+        "en": "Resolve 3225 cards in total. Head pivoting rapidly between dual widescreen study monitors."
+      },
+      "alt": {
+        "de": "Katze sitzt zwischen zwei leuchtenden Breitbildmonitoren",
+        "en": "Cat seated between two glowing curved study computer screens"
+      },
+      "asset": "web/cats/cat-114.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3225
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03275",
+      "sort_order": 115,
+      "pack_id": "cozy_loaf",
+      "rarity": "common",
+      "name": {
+        "de": "Wollschal-Kokon",
+        "en": "Cozy Wool Scarf Cocoon"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3275 Karten ab. In zwei Meter bunten Fransen-Wollschal eingewickelt gegen den Winterblues.",
+        "en": "Resolve 3275 cards in total. Wrapped inside seven feet of colorful fringed wool scarf against winter chill."
+      },
+      "alt": {
+        "de": "Katze schaut aus einem dicken bunten Wollschal hervor",
+        "en": "Cat head bundled inside a thick chunky knit red and green wool scarf"
+      },
+      "asset": "web/cats/cat-115.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3275
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03325",
+      "sort_order": 116,
+      "pack_id": "reactions",
+      "rarity": "rare",
+      "name": {
+        "de": "Traumatisierter Kater",
+        "en": "Traumatized Flashback Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3325 Karten ab. Sieht in der Ferne die verpatzten Karten der letzten Klausur.",
+        "en": "Resolve 3325 cards in total. Seeing distant flashbacks of failed exam flashcards."
+      },
+      "alt": {
+        "de": "Katze starrt mit weit aufgerissenen Augen ins Leere mit Vignette",
+        "en": "Cat staring into the distance with war flashback eyes"
+      },
+      "asset": "web/cats/cat-116.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3325
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03375",
+      "sort_order": 117,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Wäschekorb-Nestler",
+        "en": "Laundry Basket Bandit"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3375 Karten ab. Eingekuschelt in frische, warme Handtücher direkt aus dem Trockner.",
+        "en": "Resolve 3375 cards in total. Burrowed deep into fresh, warm laundry right out of the dryer."
+      },
+      "alt": {
+        "de": "Katze lugt zufrieden aus einem Korb voller warmer Wäsche hervor",
+        "en": "Cat peeking happily out of a basket of warm fresh towels"
+      },
+      "asset": "web/cats/cat-117.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3375
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03425",
+      "sort_order": 118,
+      "pack_id": "popcat_maxwell",
+      "rarity": "epic",
+      "name": {
+        "de": "Galaxie-Maxwell",
+        "en": "Cosmic Spinning Maxwell"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3425 Karten ab. Dreht sich im kosmischen Nebel umgeben von Sternen und Galaxien.",
+        "en": "Resolve 3425 cards in total. Spinning gracefully through a vibrant purple and cyan cosmic nebula."
+      },
+      "alt": {
+        "de": "Maxwell dreht sich vor einem bunten Weltraum-Nebel",
+        "en": "Maxwell cat spinning against a cosmic starry galaxy nebula"
+      },
+      "asset": "web/cats/cat-118.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3425
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03475",
+      "sort_order": 119,
+      "pack_id": "work_lockin",
+      "rarity": "common",
+      "name": {
+        "de": "Druckbleistift-Klicker",
+        "en": "Mechanical Pencil Clicker"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3475 Karten ab. Klickt rhythmisch auf den Drücker des Stifts zum Takt der Pomodoro-Uhr.",
+        "en": "Resolve 3475 cards in total. Clicking the mechanical pencil lead in sync with the Pomodoro ticking."
+      },
+      "alt": {
+        "de": "Katzenpfote drückt auf das Ende eines silbernen Druckbleistifts",
+        "en": "Cat paw rhythmically clicking the push-button of a mechanical pencil"
+      },
+      "asset": "web/cats/cat-119.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3475
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03525",
+      "sort_order": 120,
+      "pack_id": "cozy_loaf",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Schnurr-Motor",
+        "en": "Vibrating Purr Engine"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3525 Karten ab. Augen geschlossen in höchstem Glück. Man spürt das Schnurren durch den Tisch.",
+        "en": "Resolve 3525 cards in total. Eyes closed in supreme bliss, radiating soothing deep purr vibrations."
+      },
+      "alt": {
+        "de": "Katze schnurrt glücklich mit vibrierenden Schallwellen",
+        "en": "Cat in deep content purr with visible sound vibration ripples"
+      },
+      "asset": "web/cats/cat-120.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3525
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03575",
+      "sort_order": 121,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Unbeeindruckte Sphinx",
+        "en": "Unimpressed Sphinx Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3575 Karten ab. Verschränkte Pfoten, gelangweilt von kinderleichten Vokabeln.",
+        "en": "Resolve 3575 cards in total. Folded paws, completely unimpressed by easy beginner vocabulary."
+      },
+      "alt": {
+        "de": "Katze mit verschränkten Vorderpfoten und herablassendem Blick",
+        "en": "Cat with folded paws and bored condescending expression"
+      },
+      "asset": "web/cats/cat-121.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3575
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03625",
+      "sort_order": 122,
+      "pack_id": "chaos",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Socken-Dieb",
+        "en": "Sock Thief Sprint"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3625 Karten ab. Flitzt mit einer einzelnen Wollsocke im Maul triumphierend davon.",
+        "en": "Resolve 3625 cards in total. Sprinting away with a single wool sock clamped in its jaws."
+      },
+      "alt": {
+        "de": "Katze rennt weg mit einer bunten Socke im Maul",
+        "en": "Cat trotting away proudly with a striped sock in its mouth"
+      },
+      "asset": "web/cats/cat-122.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3625
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03675",
+      "sort_order": 123,
+      "pack_id": "popcat_maxwell",
+      "rarity": "legendary",
+      "name": {
+        "de": "Goldener Maxwell",
+        "en": "Golden Maxwell Idol"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3675 Karten ab. Glänzende goldene Drehkater-Statue auf poliertem Marmor-Sockel.",
+        "en": "Resolve 3675 cards in total. Solid polished gold Maxwell statue gleaming on a marble pedestal."
+      },
+      "alt": {
+        "de": "Goldene Statue von Maxwell dem Drehkater mit Glanzeffekten",
+        "en": "Solid gold sculpted statue of Maxwell Dingus cat with sparkle reflections"
+      },
+      "asset": "web/cats/cat-123.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3675
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03725",
+      "sort_order": 124,
+      "pack_id": "work_lockin",
+      "rarity": "epic",
+      "name": {
+        "de": "Gehirn-Expansions Kater",
+        "en": "Galaxy Brain Expansion"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3725 Karten ab. Ein leuchtendes kosmisches Gehirn pulsiert mit unendlicher Wissenskapazität.",
+        "en": "Resolve 3725 cards in total. Glowing cosmic galaxy brain radiating infinite memory recall energy."
+      },
+      "alt": {
+        "de": "Katze mit leuchtendem psychedelischem Galaxie-Gehirn",
+        "en": "Galaxy Brain meme cat with translucent glowing purple cosmic brain"
+      },
+      "asset": "web/cats/cat-124.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3725
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03775",
+      "sort_order": 125,
+      "pack_id": "cozy_loaf",
+      "rarity": "common",
+      "name": {
+        "de": "Buch-Kissen Kater",
+        "en": "Hardcover Book Rest"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3775 Karten ab. Nutzt ein 800-Seiten-Medizinbuch als perfekt abgewinkeltes Kinn-Kissen.",
+        "en": "Resolve 3775 cards in total. Using an 800-page heavy textbook as a perfectly angled chin pillow."
+      },
+      "alt": {
+        "de": "Katze legt das Kinn gemütlich auf ein dickes Buch",
+        "en": "Cat resting chin and sleepy head comfortably on an open hardcover book"
+      },
+      "asset": "web/cats/cat-125.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3775
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03825",
+      "sort_order": 126,
+      "pack_id": "reactions",
+      "rarity": "rare",
+      "name": {
+        "de": "Fauchender Kampf-Kater",
+        "en": "Hissing Combat Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3825 Karten ab. Faucht den Bildschirm an, wenn die Frage gemein formuliert ist.",
+        "en": "Resolve 3825 cards in total. Hissing directly at the monitor when the card is tricky."
+      },
+      "alt": {
+        "de": "Katze fletscht die Zähnchen und faucht energisch",
+        "en": "Cat showing sharp teeth and hissing fiercely"
+      },
+      "asset": "web/cats/cat-126.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3825
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03875",
+      "sort_order": 127,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Tür-Kratzer",
+        "en": "Doorway Screamer"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3875 Karten ab. Kratzt hysterisch an der Tür, um in den Raum zu kommen – und geht sofort wieder.",
+        "en": "Resolve 3875 cards in total. Scratches door frantically to enter, then immediately turns around to leave."
+      },
+      "alt": {
+        "de": "Katze kratzt mit ausgestreckten Pfoten an einer geschlossenen Holztür",
+        "en": "Cat scratching urgently at a closed door frame"
+      },
+      "asset": "web/cats/cat-127.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3875
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03925",
+      "sort_order": 128,
+      "pack_id": "popcat_maxwell",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Detektiv-Maxwell",
+        "en": "Detective Maxwell"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3925 Karten ab. Tweed-Karomütze und Lupe auf der Spur nach der richtigen Antwort.",
+        "en": "Resolve 3925 cards in total. Deerstalker tweed cap and magnifying glass solving card mysteries."
+      },
+      "alt": {
+        "de": "Maxwell mit Detektivmütze und Lupe",
+        "en": "Maxwell wearing a Sherlock Holmes deerstalker detective cap"
+      },
+      "asset": "web/cats/cat-128.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3925
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.03975",
+      "sort_order": 129,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Fokus-Brille Kater",
+        "en": "Lock-In Focus Visor"
+      },
+      "description": {
+        "de": "Schließe insgesamt 3975 Karten ab. High-Tech-Visier blockiert alle Ablenkungen und blendet nur die Karte ein.",
+        "en": "Resolve 3975 cards in total. High-tech HUD visor filtering all worldly distractions out of view."
+      },
+      "alt": {
+        "de": "Katze trägt ein sportliches blau leuchtendes Fokus-Visier",
+        "en": "Cat wearing sleek aerodynamic blue HUD focus goggles"
+      },
+      "asset": "web/cats/cat-129.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 3975
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04025",
+      "sort_order": 130,
+      "pack_id": "cozy_loaf",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Rollkragen-Model",
+        "en": "Turtleneck Sweater Model"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4025 Karten ab. Trägt einen schicken beigen Rollkragenpullover mit Zopfmuster.",
+        "en": "Resolve 4025 cards in total. Sporting a chic beige cable-knit turtleneck sweater in autumn style."
+      },
+      "alt": {
+        "de": "Katze trägt einen hellbraunen Rollkragenpullover mit Zopfmuster",
+        "en": "Cat wearing a stylish beige cable-knit turtleneck sweater"
+      },
+      "asset": "web/cats/cat-130.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4025
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04075",
+      "sort_order": 131,
+      "pack_id": "reactions",
+      "rarity": "rare",
+      "name": {
+        "de": "Bettelaugen-Kätzchen",
+        "en": "Pleading Eyes Kitten"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4075 Karten ab. Riesige feuchte Anime-Augen betteln um eine 5-Minuten-Pause.",
+        "en": "Resolve 4075 cards in total. Enormous watery anime eyes begging for a 5-minute break."
+      },
+      "alt": {
+        "de": "Kätzchen mit riesigen glänzenden Knopfaugen",
+        "en": "Kitten with enormous sparkling anime eyes begging softly"
+      },
+      "asset": "web/cats/cat-131.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4075
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04125",
+      "sort_order": 132,
+      "pack_id": "chaos",
+      "rarity": "epic",
+      "name": {
+        "de": "Kronleuchter-Akrobat",
+        "en": "Chandelier Acrobat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4125 Karten ab. Wie ist er da hochgekommen?! Schwingt todesmutig an der Deckenlampe.",
+        "en": "Resolve 4125 cards in total. How did it even get up there?! Hanging bravely from the light fixture."
+      },
+      "alt": {
+        "de": "Katze klammert sich mit allen vier Pfoten an eine Deckenlampe",
+        "en": "Cat clinging with four paws to an ornate hanging chandelier"
+      },
+      "asset": "web/cats/cat-132.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4125
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04175",
+      "sort_order": 133,
+      "pack_id": "popcat_maxwell",
+      "rarity": "rare",
+      "name": {
+        "de": "Maxwell auf dem Plattenteller",
+        "en": "Vinyl Turntable Maxwell"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4175 Karten ab. Dreht sich mit 33 RPM auf einer klassischen schwarzen Vinyl-Schallplatte.",
+        "en": "Resolve 4175 cards in total. Spinning smoothly at 33 RPM on a classic black vinyl record player."
+      },
+      "alt": {
+        "de": "Maxwell sitzt auf einer Schallplatte und dreht sich im Kreis",
+        "en": "Maxwell cat sitting atop a vintage black vinyl turntable disc"
+      },
+      "asset": "web/cats/cat-133.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4175
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04225",
+      "sort_order": 134,
+      "pack_id": "work_lockin",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Schreibtisch-Ordnungsfanatiker",
+        "en": "Desk Organizer Perfectionist"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4225 Karten ab. Jeder Stift und jedes Notizheft liegt millimetergenau im rechten Winkel.",
+        "en": "Resolve 4225 cards in total. Every pen, ruler, and eraser aligned to strict 90-degree perfection."
+      },
+      "alt": {
+        "de": "Katze mit Holzlineal richtet Stifte auf dem Tisch akkurat aus",
+        "en": "Cat using a wooden ruler to align desk accessories in neat parallel rows"
+      },
+      "asset": "web/cats/cat-134.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4225
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04275",
+      "sort_order": 135,
+      "pack_id": "cozy_loaf",
+      "rarity": "rare",
+      "name": {
+        "de": "Taschen-Schläfer",
+        "en": "Cardigan Pocket Sleeper"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4275 Karten ab. Schläft zusammengerollt in der großen Seitentasche einer dicken Strickjacke.",
+        "en": "Resolve 4275 cards in total. Fast asleep curled inside the deep front pocket of an oversized cardigan."
+      },
+      "alt": {
+        "de": "Kätzchen schläft in der Außentasche einer Strickjacke",
+        "en": "Tiny kitten sleeping soundly inside a knitted sweater cardigan pocket"
+      },
+      "asset": "web/cats/cat-135.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4275
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04325",
+      "sort_order": 136,
+      "pack_id": "reactions",
+      "rarity": "common",
+      "name": {
+        "de": "Erleichterter Seufzer",
+        "en": "Relieved Sigh Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4325 Karten ab. Sanfte geschlossene Augen nach Erreichen des Tagesziels.",
+        "en": "Resolve 4325 cards in total. Soft closed eyes and an exhale after finishing the daily goal."
+      },
+      "alt": {
+        "de": "Zufriedene Katze atmet erleichtert aus mit sanftem Lächeln",
+        "en": "Content cat exhaling a relieved sigh with peaceful smile"
+      },
+      "asset": "web/cats/cat-136.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4325
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04375",
+      "sort_order": 137,
+      "pack_id": "chaos",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Kühlschrank-König",
+        "en": "Refrigerator King"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4375 Karten ab. Thront erhaben ganz oben auf dem Kühlschrank und mustert sein Reich.",
+        "en": "Resolve 4375 cards in total. Surveying the kitchen kingdom from the top of the refrigerator."
+      },
+      "alt": {
+        "de": "Katze blickt majestätisch von einem Kühlschrank herab",
+        "en": "Cat sitting regally on the very top of a tall refrigerator"
+      },
+      "asset": "web/cats/cat-137.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4375
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04425",
+      "sort_order": 138,
+      "pack_id": "popcat_maxwell",
+      "rarity": "rare",
+      "name": {
+        "de": "Vaporwave Neon Maxwell",
+        "en": "Synthwave Maxwell"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4425 Karten ab. Rosa und türkise Synthwave-Gitterlinien mit Sonnenuntergang im Rücken.",
+        "en": "Resolve 4425 cards in total. Pink and cyan retro 80s synthwave grid with glowing retro sun."
+      },
+      "alt": {
+        "de": "Maxwell vor retro Synthwave-Gitternetz und Neon-Sonne",
+        "en": "Maxwell the cat on a 1980s synthwave vaporwave grid background"
+      },
+      "asset": "web/cats/cat-138.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4425
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04475",
+      "sort_order": 139,
+      "pack_id": "work_lockin",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Kerzenschein-Leser",
+        "en": "Candlelight Scholar"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4475 Karten ab. Studiert bei warmem Kerzenlicht alte Bücher bis tief in die Nacht.",
+        "en": "Resolve 4475 cards in total. Studying heavy textbooks by the warm flickering light of a candle."
+      },
+      "alt": {
+        "de": "Katze liest in einem Buch neben einer brennenden Kerze",
+        "en": "Cat studying an open book illuminated by a flickering candle flame"
+      },
+      "asset": "web/cats/cat-139.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4475
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04525",
+      "sort_order": 140,
+      "pack_id": "cozy_loaf",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Fenster-Hängematte",
+        "en": "Window Hammock Lounger"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4525 Karten ab. Schwebt in der Saugnapf-Hängematte am Fenster mit Ausblick auf die Welt.",
+        "en": "Resolve 4525 cards in total. Suspended in a suction-cup window hammock with a panoramic street view."
+      },
+      "alt": {
+        "de": "Katze liegt entspannt in einer Fenster-Hängematte",
+        "en": "Cat lounging comfortably in a canvas window hammock suctioned to glass"
+      },
+      "asset": "web/cats/cat-140.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4525
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04575",
+      "sort_order": 141,
+      "pack_id": "reactions",
+      "rarity": "common",
+      "name": {
+        "de": "Paranoider Späher",
+        "en": "Paranoid Peeking Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4575 Karten ab. Späht vorsichtig über den Fensterrand deines Anki-Fensters.",
+        "en": "Resolve 4575 cards in total. Cautiously peeking over the bottom edge of your Anki window."
+      },
+      "alt": {
+        "de": "Katzenaugen und Ohren spitzen knapp über eine Kante hervor",
+        "en": "Cat eyes and ear tips peeking nervously over a ledge"
+      },
+      "asset": "web/cats/cat-141.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4575
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04625",
+      "sort_order": 142,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Hausschuh-Ringer",
+        "en": "Slipper Wrestler"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4625 Karten ab. Ringt den unschuldigen Filz-Hausschuh mit Kaninchen-Tritten nieder.",
+        "en": "Resolve 4625 cards in total. Bunny-kicking an innocent felt slipper into total submission."
+      },
+      "alt": {
+        "de": "Katze tritt mit den Hinterpfoten wild gegen einen Pantoffel",
+        "en": "Cat rolling on back bunny-kicking a fuzzy house slipper"
+      },
+      "asset": "web/cats/cat-142.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4625
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04675",
+      "sort_order": 143,
+      "pack_id": "popcat_maxwell",
+      "rarity": "rare",
+      "name": {
+        "de": "Bongo Cat: Synthesizer",
+        "en": "Bongo Cat: Synth Keytar"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4675 Karten ab. Klopft mit den Pfötchen virtuos auf die Tasten eines 80er-Synthesizers.",
+        "en": "Resolve 4675 cards in total. Paws tapping enthusiastically on an iconic 80s electronic synthesizer."
+      },
+      "alt": {
+        "de": "Bongo Cat spielt auf einem elektronischen Keyboard",
+        "en": "Bongo Cat enthusiastically playing an electronic keyboard piano"
+      },
+      "asset": "web/cats/cat-143.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4675
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04725",
+      "sort_order": 144,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Bücherberg-Gelehrter",
+        "en": "Tower of Books Scholar"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4725 Karten ab. Thront auf einem meterhohen Stapel alter ledergebundener Folianten.",
+        "en": "Resolve 4725 cards in total. Perched comfortably atop a towering stack of leather-bound encyclopedias."
+      },
+      "alt": {
+        "de": "Katze sitzt ganz oben auf einem hohen Stapel bunter Bücher",
+        "en": "Cat sitting contentedly atop a towering vertical stack of hardback books"
+      },
+      "asset": "web/cats/cat-144.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4725
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04775",
+      "sort_order": 145,
+      "pack_id": "cozy_loaf",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Regenfenster-Lauscher",
+        "en": "Rainy Window Listener"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4775 Karten ab. Kuschelig drinnen, während draußen sanfter Regen an die Scheibe klopft.",
+        "en": "Resolve 4775 cards in total. Cozy inside listening to soft autumn rain pitter-pattering on the window."
+      },
+      "alt": {
+        "de": "Katze schaut auf verregnete Fensterscheibe mit Wassertropfen",
+        "en": "Cat looking peacefully through rain-streaked glass window with droplets"
+      },
+      "asset": "web/cats/cat-145.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4775
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04825",
+      "sort_order": 146,
+      "pack_id": "reactions",
+      "rarity": "epic",
+      "name": {
+        "de": "Stolze Freudenträne",
+        "en": "Proud Tear Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4825 Karten ab. Wischt sich eine einzelne Träne des Stolzes über die 100er-Serie ab.",
+        "en": "Resolve 4825 cards in total. Wiping away a single golden tear of pride over a 100-streak."
+      },
+      "alt": {
+        "de": "Katze lächelt stolz mit einer einzelnen Träne auf der Wange",
+        "en": "Cat smiling proudly with a single glistening tear on cheek"
+      },
+      "asset": "web/cats/cat-146.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4825
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04875",
+      "sort_order": 147,
+      "pack_id": "chaos",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Fenster-Zwitscherer",
+        "en": "Window Chattering Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4875 Karten ab. Macht bizarre 'Ek-ek-ek'-Geräusche bei der Taube auf dem Fensterbrett.",
+        "en": "Resolve 4875 cards in total. Making bizarre 'ek-ek-ek' jaw vibrations at the pigeon outside."
+      },
+      "alt": {
+        "de": "Katze starrt aus dem Fenster mit vibrierendem Unterkiefer",
+        "en": "Cat chattering teeth eagerly at a bird outside the window pane"
+      },
+      "asset": "web/cats/cat-147.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4875
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04925",
+      "sort_order": 148,
+      "pack_id": "popcat_maxwell",
+      "rarity": "rare",
+      "name": {
+        "de": "Bongo Cat: Heavy Metal",
+        "en": "Bongo Cat: Drum Solo"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4925 Karten ab. Headbangt mit Drumsticks auf einem mächtigen Doppelbass-Schlagzeug.",
+        "en": "Resolve 4925 cards in total. Headbanging with tiny wooden drumsticks on a twin-bass drum kit."
+      },
+      "alt": {
+        "de": "Bongo Cat spielt wild Schlagzeug mit Drumsticks",
+        "en": "Bongo Cat with two drumsticks pounding a heavy metal drum kit"
+      },
+      "asset": "web/cats/cat-148.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4925
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.04975",
+      "sort_order": 149,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Code-Debugger Kater",
+        "en": "Terminal Debugger Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 4975 Karten ab. Grüner Code spiegelt sich in den Augen beim Finden des fehlenden Semikolons.",
+        "en": "Resolve 4975 cards in total. Green matrix terminal code reflecting in eyes hunting down a missing bracket."
+      },
+      "alt": {
+        "de": "Katze starrt in schwarzen Bildschirm mit grünem Matrix-Code",
+        "en": "Cat gazing into a black monitor screen with cascading green terminal code"
+      },
+      "asset": "web/cats/cat-149.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 4975
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05025",
+      "sort_order": 150,
+      "pack_id": "cozy_loaf",
+      "rarity": "common",
+      "name": {
+        "de": "Zimtschnecken-Rolle",
+        "en": "Cinnamon Bun Swirl"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5025 Karten ab. Zu einer unmöglich engen, runden Zimtschnecke zusammengerollt.",
+        "en": "Resolve 5025 cards in total. Curled into an impossibly tight, round swirl like a fresh cinnamon bun."
+      },
+      "alt": {
+        "de": "Katze liegt kreisrund zusammengerollt wie eine Zimtschnecke",
+        "en": "Cat curled into an ultra-tight circular swirl like a golden pastry"
+      },
+      "asset": "web/cats/cat-150.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5025
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05075",
+      "sort_order": 151,
+      "pack_id": "reactions",
+      "rarity": "rare",
+      "name": {
+        "de": "Stille Wut",
+        "en": "Silent Rage Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5075 Karten ab. Vibriert leise vor Zorn nach einem Fehlklick auf 'Again'.",
+        "en": "Resolve 5075 cards in total. Vibrating with suppressed fury after misclicking Again."
+      },
+      "alt": {
+        "de": "Katze zittert mit roter Wut-Ader an der Schläfe",
+        "en": "Cat trembling with a throbbing red anime vein mark"
+      },
+      "asset": "web/cats/cat-151.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5075
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05125",
+      "sort_order": 152,
+      "pack_id": "chaos",
+      "rarity": "rare",
+      "name": {
+        "de": "Mitternachts-Sänger",
+        "en": "Midnight Opera Singer"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5125 Karten ab. Singt das traurige Klagelied seines Volkes pünktlich um 3:15 Uhr.",
+        "en": "Resolve 5125 cards in total. Singing the tragic anthem of his people promptly at 3:15 AM."
+      },
+      "alt": {
+        "de": "Katze jault mit erhobenem Kopf wie ein kleiner Wolf",
+        "en": "Cat howling upward into the dark night room with musical notes"
+      },
+      "asset": "web/cats/cat-152.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5125
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05175",
+      "sort_order": 153,
+      "pack_id": "popcat_maxwell",
+      "rarity": "epic",
+      "name": {
+        "de": "Bongo Cat: Lo-Fi Study",
+        "en": "Bongo Cat: Lo-Fi Chill"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5175 Karten ab. Dampfender Kaffee, sanfte Lo-Fi-Beats und entspannte Tasten-Töne.",
+        "en": "Resolve 5175 cards in total. Steaming warm mug, gentle lo-fi study beats, and peaceful vibes."
+      },
+      "alt": {
+        "de": "Bongo Cat mit Kaffeetasse und Kopfhörern beim entspannten Musizieren",
+        "en": "Bongo Cat chilling with coffee mug and lo-fi aesthetic headphones"
+      },
+      "asset": "web/cats/cat-153.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5175
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05225",
+      "sort_order": 154,
+      "pack_id": "work_lockin",
+      "rarity": "common",
+      "name": {
+        "de": "Karten-Mischer Pro",
+        "en": "Flashcard Speed Shuffler"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5225 Karten ab. Mischte Karten im Riffle-Shuffle wie ein Casino-Croupier in Las Vegas.",
+        "en": "Resolve 5225 cards in total. Shuffling paper flashcards with clean Vegas casino croupier dexterity."
+      },
+      "alt": {
+        "de": "Katzenpfoten mischen flink einen Fächer aus Lernkarten",
+        "en": "Cat shuffling an arched fan bridge of study cards between two paws"
+      },
+      "asset": "web/cats/cat-154.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5225
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05275",
+      "sort_order": 155,
+      "pack_id": "cozy_loaf",
+      "rarity": "rare",
+      "name": {
+        "de": "Kissenburg-Gipfelstürmer",
+        "en": "Pillow Mountain Summit"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5275 Karten ab. Eingeschlafen auf dem höchsten Gipfel von fünf gestapelten Kissen.",
+        "en": "Resolve 5275 cards in total. Napping proudly at the summit of five piled featherbed pillows."
+      },
+      "alt": {
+        "de": "Katze schläft ganz oben auf einem Turm aus weichen Kissen",
+        "en": "Cat asleep at the very top of a tall stack of colorful plush pillows"
+      },
+      "asset": "web/cats/cat-155.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5275
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05325",
+      "sort_order": 156,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Rauschen im Kopf",
+        "en": "Static Noise Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5325 Karten ab. Kein einziger Gedanke. Nur altes Fernseh-Rauschen im Gehirn.",
+        "en": "Resolve 5325 cards in total. Not a single thought. Just old cathode TV static in the brain."
+      },
+      "alt": {
+        "de": "Katze starrt ins Leere mit Fernseh-Rauschen als Hintergrund",
+        "en": "Cat staring blankly with TV static noise behind eyes"
+      },
+      "asset": "web/cats/cat-156.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5325
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05375",
+      "sort_order": 157,
+      "pack_id": "chaos",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Flur-Drifter",
+        "en": "Hallway Rug Drifter"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5375 Karten ab. Nimmt mit 30 km/h die Kurve und driftet samt Teppichbrücke in die Wand.",
+        "en": "Resolve 5375 cards in total. Takes the hallway corner at 30 km/h drifting the floor rug into the wall."
+      },
+      "alt": {
+        "de": "Katze driftet mit eingeknickten Beinen auf einem Teppichläufer",
+        "en": "Cat Tokyo-drifting sideways across wood floor on an area rug"
+      },
+      "asset": "web/cats/cat-157.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5375
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05425",
+      "sort_order": 158,
+      "pack_id": "popcat_maxwell",
+      "rarity": "rare",
+      "name": {
+        "de": "Bongo Cat: Harfe",
+        "en": "Bongo Cat: Classical Harp"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5425 Karten ab. Zupft engelsgleich die goldenen Saiten einer klassischen Harfe.",
+        "en": "Resolve 5425 cards in total. Angelic paws plucking graceful melodies on a golden classical harp."
+      },
+      "alt": {
+        "de": "Bongo Cat spielt auf einer goldenen Harfe mit Engelsflügeln",
+        "en": "Bongo Cat playing a classical golden harp with tiny angel wings"
+      },
+      "asset": "web/cats/cat-158.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5425
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05475",
+      "sort_order": 159,
+      "pack_id": "work_lockin",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Whiteboard-Architekt",
+        "en": "Whiteboard Architect"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5475 Karten ab. Zeichnet komplexe Pfeil-Diagramme mit schwarzem Marker an die Wand.",
+        "en": "Resolve 5475 cards in total. Drawing intricate knowledge mind-maps and arrows on a shiny whiteboard."
+      },
+      "alt": {
+        "de": "Katze hält Whiteboard-Marker vor beschriebener Tafel",
+        "en": "Cat holding a dry-erase marker before a whiteboard full of neat diagrams"
+      },
+      "asset": "web/cats/cat-159.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5475
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05525",
+      "sort_order": 160,
+      "pack_id": "cozy_loaf",
+      "rarity": "common",
+      "name": {
+        "de": "Kastenbrot-Azubi",
+        "en": "Baby Loaflet in Training"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5525 Karten ab. Ein winziges Kätzchen übt schon fleißig die Kunst des Pfoteneinklappens.",
+        "en": "Resolve 5525 cards in total. Tiny baby kitten diligently practicing the sacred art of tucking paws."
+      },
+      "alt": {
+        "de": "Kleines Kätzchen versucht sich an der Brot-Haltung",
+        "en": "Miniature baby kitten sitting in slightly imperfect baby loaf tuck"
+      },
+      "asset": "web/cats/cat-160.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5525
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05575",
+      "sort_order": 161,
+      "pack_id": "reactions",
+      "rarity": "common",
+      "name": {
+        "de": "Spöttischer Schelm",
+        "en": "Sneering Rascal Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5575 Karten ab. Zieht eine Schnurrbarthaare hoch: 'Das war wohl nix!'",
+        "en": "Resolve 5575 cards in total. Raising one side of the whiskers: 'Nice try, buddy!'"
+      },
+      "alt": {
+        "de": "Katze grinst schelmisch mit hochgezogener Lippe",
+        "en": "Cat smirking wryly with raised lip and wink"
+      },
+      "asset": "web/cats/cat-161.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5575
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05625",
+      "sort_order": 162,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Stifte-Abräumer",
+        "en": "Pencil Swatter Pro"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5625 Karten ab. Schlägt mit chirurgischer Präzision jeden Kugelschreiber vom Tisch.",
+        "en": "Resolve 5625 cards in total. Methodically batting every single pen off the study desk."
+      },
+      "alt": {
+        "de": "Katzenpfote schlägt einen Bleistift schwungvoll von der Schreibtischkante",
+        "en": "Cat paw swatting a yellow pencil into the air off table"
+      },
+      "asset": "web/cats/cat-162.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5625
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05675",
+      "sort_order": 163,
+      "pack_id": "popcat_maxwell",
+      "rarity": "epic",
+      "name": {
+        "de": "Nyan Cat: Hyperraum-Warp",
+        "en": "Nyan Cat: Warp Speed"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5675 Karten ab. Schießt mit Lichtgeschwindigkeit und Regenbogen-Schweif durchs All.",
+        "en": "Resolve 5675 cards in total. Streaking through deep space at warp speed with rainbow jet trail."
+      },
+      "alt": {
+        "de": "Nyan Cat fliegt mit hoher Geschwindigkeit und langem Regenbogenschweif",
+        "en": "Nyan Cat in hyperspace with stretching vibrant rainbow trail"
+      },
+      "asset": "web/cats/cat-163.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5675
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05725",
+      "sort_order": 164,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Frist-Bezwinger",
+        "en": "Deadline Crusher"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5725 Karten ab. Sprintet 30 Sekunden vor 23:59 Uhr mit der Hausarbeit ins Ziel.",
+        "en": "Resolve 5725 cards in total. Power-walking to submit 30 seconds before 11:59 PM deadline with icy calm."
+      },
+      "alt": {
+        "de": "Katze läuft zielstrebig mit Dokumentenmappe unter der Pfote",
+        "en": "Cat power-walking with briefcase and folder under arm against a digital clock"
+      },
+      "asset": "web/cats/cat-164.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5725
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05775",
+      "sort_order": 165,
+      "pack_id": "cozy_loaf",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Flauschsocken-Schläfer",
+        "en": "Fuzzy Bed Socks Sleeper"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5775 Karten ab. Alle Pfötchen warm eingepackt in kuschelige Plüsch-Bettensocken.",
+        "en": "Resolve 5775 cards in total. All paws bundled warm and cozy inside extra-fluffy fuzzy bed socks."
+      },
+      "alt": {
+        "de": "Katzenpfoten stecken in bunten Plüschsocken",
+        "en": "Cat dozing peacefully with paws tucked into fluffy pastel bed socks"
+      },
+      "asset": "web/cats/cat-165.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5775
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05825",
+      "sort_order": 166,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Überwältigter Kater",
+        "en": "Facepalm Overwhelmed Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5825 Karten ab. Beide Pfoten vor dem Gesicht: 'Wie konnte ich DAS vergessen?!'",
+        "en": "Resolve 5825 cards in total. Both paws covering face: 'How could I possibly forget THAT?!'"
+      },
+      "alt": {
+        "de": "Katze vergräbt das Gesicht beschämt in beiden Vorderpfoten",
+        "en": "Cat covering its face with both paws in a cute facepalm"
+      },
+      "asset": "web/cats/cat-166.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5825
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05875",
+      "sort_order": 167,
+      "pack_id": "chaos",
+      "rarity": "rare",
+      "name": {
+        "de": "Spinnen-Kletterer",
+        "en": "Screen Door Spider Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5875 Karten ab. Hängt senkrecht im Fliegengitter wie Spider-Man auf Patrouille.",
+        "en": "Resolve 5875 cards in total. Hanging vertically on the mesh screen door like Spider-Man on patrol."
+      },
+      "alt": {
+        "de": "Katze hängt mit allen Krallen senkrecht am Fliegengitter",
+        "en": "Cat clinging vertically to mesh screen door with all four paws"
+      },
+      "asset": "web/cats/cat-167.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5875
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05925",
+      "sort_order": 168,
+      "pack_id": "popcat_maxwell",
+      "rarity": "rare",
+      "name": {
+        "de": "Nyan Cat: Dunkle Toast-Nacht",
+        "en": "Midnight Dark Mode Nyan"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5925 Karten ab. Dunkler Schoko-Toast mit violetten Sternen für nächtliche Lernsitzungen.",
+        "en": "Resolve 5925 cards in total. Dark chocolate toast body with deep purple cosmic stars for night study."
+      },
+      "alt": {
+        "de": "Nyan Cat im Dark Mode mit dunklem Toast und violettem Sternenschweif",
+        "en": "Dark Mode Nyan Cat with chocolate pastry body and purple trail"
+      },
+      "asset": "web/cats/cat-168.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5925
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.05975",
+      "sort_order": 169,
+      "pack_id": "work_lockin",
+      "rarity": "common",
+      "name": {
+        "de": "Ergonomie-Vorbild",
+        "en": "Ergonomic Posture King"
+      },
+      "description": {
+        "de": "Schließe insgesamt 5975 Karten ab. Perfekte 90-Grad-Winkel der Beine auf dem orthopädischen Gaming-Stuhl.",
+        "en": "Resolve 5975 cards in total. Flawless spinal posture and lumbar support seated in ergonomic mesh chair."
+      },
+      "alt": {
+        "de": "Katze sitzt aufrecht wie eine Kerze im ergonomischen Bürostuhl",
+        "en": "Cat sitting with textbook-perfect upright spinal posture in a desk chair"
+      },
+      "asset": "web/cats/cat-169.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 5975
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06025",
+      "sort_order": 170,
+      "pack_id": "cozy_loaf",
+      "rarity": "rare",
+      "name": {
+        "de": "Kaminfeuer-Träumer",
+        "en": "Hearthside Fireside Dreamer"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6025 Karten ab. Döst im warmen orangefarbenen Licht der knisternden Kaminholz-Glut.",
+        "en": "Resolve 6025 cards in total. Dozing in the warm orange glow of crackling fireplace birch embers."
+      },
+      "alt": {
+        "de": "Katze schläft im warmen Licht eines Kaminfeuers",
+        "en": "Cat resting before a warm brick fireplace with glowing orange embers"
+      },
+      "asset": "web/cats/cat-170.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6025
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06075",
+      "sort_order": 171,
+      "pack_id": "reactions",
+      "rarity": "epic",
+      "name": {
+        "de": "Triumphaler Sieger",
+        "en": "Triumphant Victor Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6075 Karten ab. Kinn stolz erhoben mit der Energie eines wahren Champions.",
+        "en": "Resolve 6075 cards in total. Chin held high with the glowing energy of a true study champion."
+      },
+      "alt": {
+        "de": "Katze reckt die Schnauze stolz in den Himmel mit Siegerkranz",
+        "en": "Cat holding head high in victory with laurel wreath"
+      },
+      "asset": "web/cats/cat-171.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6075
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06125",
+      "sort_order": 172,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Schuh-Inspektor",
+        "en": "Sneaker Sniffer"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6125 Karten ab. Kopf steckt bis zu den Ohren im muffigen Laufschuh nach dem Training.",
+        "en": "Resolve 6125 cards in total. Head fully buried inside a gym sneaker for reasons science cannot explain."
+      },
+      "alt": {
+        "de": "Katzenhinterteil schaut aus einem Turnschuh hervor",
+        "en": "Cat with head entirely wedged inside a running sneaker"
+      },
+      "asset": "web/cats/cat-172.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6125
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06175",
+      "sort_order": 173,
+      "pack_id": "popcat_maxwell",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Nyan Cat: 16-Bit Pixel",
+        "en": "Nyan Cat: 16-Bit Sprite"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6175 Karten ab. Klassische SNES-Pixel-Pracht mit knackigen Regenbogen-Blöcken.",
+        "en": "Resolve 6175 cards in total. Crisp 16-bit retro console sprite with blocky pixel rainbow bricks."
+      },
+      "alt": {
+        "de": "Nyan Cat als detailliertes 16-Bit Videospiel-Sprite",
+        "en": "Nyan Cat rendered in authentic 16-bit retro video game pixel art"
+      },
+      "asset": "web/cats/cat-173.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6175
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06225",
+      "sort_order": 174,
+      "pack_id": "work_lockin",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Noise-Cancelling Kater",
+        "en": "Noise-Cancelling Silence"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6225 Karten ab. Aktive Geräuschunterdrückung filtert die Welt in absolute Stille.",
+        "en": "Resolve 6225 cards in total. Active noise cancellation enveloping your ears in a bubble of silent bliss."
+      },
+      "alt": {
+        "de": "Katze mit riesigen mattschwarzen Studio-Kopfhörern",
+        "en": "Cat wearing oversized matte-black noise-cancelling headphones in calm silence"
+      },
+      "asset": "web/cats/cat-174.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6225
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06275",
+      "sort_order": 175,
+      "pack_id": "cozy_loaf",
+      "rarity": "rare",
+      "name": {
+        "de": "Gewichtsdecken-Schläfer",
+        "en": "Weighted Blanket Bliss"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6275 Karten ab. Sanfter, beruhigender Tiefendruck unter einer 7-Kilo-Gewichtsdecke.",
+        "en": "Resolve 6275 cards in total. Deep touch pressure bliss settled comfortably under a heavy weighted duvet."
+      },
+      "alt": {
+        "de": "Katze schläft selig unter einer gesteppten schweren Decke",
+        "en": "Cat smiling in pure deep sleep under a quilted weighted sensory blanket"
+      },
+      "asset": "web/cats/cat-175.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6275
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06325",
+      "sort_order": 176,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Sarkastische Augenbraue",
+        "en": "Sarcastic Eyebrow Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6325 Karten ab. Eine hochgezogene Augenbraue beim Lesen dieser Antwort.",
+        "en": "Resolve 6325 cards in total. One raised eyebrow reading that questionable card explanation."
+      },
+      "alt": {
+        "de": "Katze zieht eine Augenbraue hoch im Stil von The Rock",
+        "en": "Cat raising a single eyebrow in iconic sarcastic skepticism"
+      },
+      "asset": "web/cats/cat-176.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6325
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06375",
+      "sort_order": 177,
+      "pack_id": "chaos",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Geister-Starrer",
+        "en": "Greeble Ghost Hunter"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6375 Karten ab. Starrt 20 Minuten ununterbrochen in eine völlig leere Zimmerecke.",
+        "en": "Resolve 6375 cards in total. Staring unblinkingly at an entirely empty room corner for 20 minutes."
+      },
+      "alt": {
+        "de": "Katze starrt wie hypnotisiert auf eine leere weiße Wandecke",
+        "en": "Cat staring spooked at an empty corner with tiny ghost doodle"
+      },
+      "asset": "web/cats/cat-177.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6375
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06425",
+      "sort_order": 178,
+      "pack_id": "popcat_maxwell",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Wikinger-Popcat",
+        "en": "Viking Popcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6425 Karten ab. Gehörnter Wikingerhelm brüllt den Schlachtruf für die nächste Prüfung.",
+        "en": "Resolve 6425 cards in total. Horned iron Viking helmet shouting fierce battle cries into Anki."
+      },
+      "alt": {
+        "de": "Popcat mit gehörntem Wikingerhelm und Bart-Zöpfen",
+        "en": "Popcat wearing an iron Viking helmet with horns"
+      },
+      "asset": "web/cats/cat-178.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6425
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06475",
+      "sort_order": 179,
+      "pack_id": "work_lockin",
+      "rarity": "common",
+      "name": {
+        "de": "Abhaker-Champion",
+        "en": "Checklist Champion"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6475 Karten ab. Setzt triumphale grüne Häkchen an jeden Punkt der To-Do-Liste.",
+        "en": "Resolve 6475 cards in total. Placing satisfying bright green checkmarks next to every daily study goal."
+      },
+      "alt": {
+        "de": "Katze hakt mit grünem Stift Kästchen auf einem Klemmbrett ab",
+        "en": "Cat marking bold green checkmarks on a study to-do list clipboard"
+      },
+      "asset": "web/cats/cat-179.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6475
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06525",
+      "sort_order": 180,
+      "pack_id": "cozy_loaf",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Seiden-Schlafmaske",
+        "en": "Silk Eye Mask Sleeper"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6525 Karten ab. Eine rosa Seidenschlafmaske über den Augen für absolute Dunkelheit.",
+        "en": "Resolve 6525 cards in total. Pink satin sleep mask over the eyes for completely uninterrupted beauty rest."
+      },
+      "alt": {
+        "de": "Katze trägt eine seidige rosa Schlafmaske mit Katzenaugen-Stickerei",
+        "en": "Cat wearing a pink silk sleeping eye mask with embroidered lashes"
+      },
+      "asset": "web/cats/cat-180.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6525
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06575",
+      "sort_order": 181,
+      "pack_id": "reactions",
+      "rarity": "rare",
+      "name": {
+        "de": "Dramatische Ohnmacht",
+        "en": "Dramatic Faint Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6575 Karten ab. Fällt wie eine Operndiva dramatisch nach hinten auf das Kissen.",
+        "en": "Resolve 6575 cards in total. Collapsing backward onto the pillow like a dramatic opera diva."
+      },
+      "alt": {
+        "de": "Katze kippt theatralisch nach hinten mit Pfote an der Stirn",
+        "en": "Cat fainting dramatically backward with paw to forehead"
+      },
+      "asset": "web/cats/cat-181.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6575
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06625",
+      "sort_order": 182,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Kabel-Gourmet",
+        "en": "Cable Nibbler"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6625 Karten ab. Knabbert liebevoll an deinem 100-Euro-Laptop-Ladekabel.",
+        "en": "Resolve 6625 cards in total. Gently nibbling on your expensive laptop charging cable."
+      },
+      "alt": {
+        "de": "Katze kaut unschuldig an einem weißen Ladekabel",
+        "en": "Cat chewing gently on a white power cable with innocent eyes"
+      },
+      "asset": "web/cats/cat-182.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6625
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06675",
+      "sort_order": 183,
+      "pack_id": "popcat_maxwell",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Samurai-Popcat",
+        "en": "Samurai Popcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6675 Karten ab. Traditionelles Stirnband und eiserner Fokus beim Karten-Schneiden.",
+        "en": "Resolve 6675 cards in total. White hachimaki headband and laser focus slicing through reviews."
+      },
+      "alt": {
+        "de": "Popcat mit weißem Samurai-Stirnband",
+        "en": "Popcat wearing a Japanese martial arts headband with sun symbol"
+      },
+      "asset": "web/cats/cat-183.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6675
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06725",
+      "sort_order": 184,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Klausur-Überlebender",
+        "en": "Exam Survivor 100%"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6725 Karten ab. Müdes, aber überglückliches Lächeln mit einer glatten Eins auf der Karte.",
+        "en": "Resolve 6725 cards in total. Tired but radiant triumphant smile holding an exam marked with A+."
+      },
+      "alt": {
+        "de": "Erschöpfte aber glückliche Katze hält Klausurbogen mit Bestnote",
+        "en": "Exhausted but happy cat holding a graded exam paper with a red A+ circle"
+      },
+      "asset": "web/cats/cat-184.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6725
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06775",
+      "sort_order": 185,
+      "pack_id": "cozy_loaf",
+      "rarity": "common",
+      "name": {
+        "de": "Kamillentee-Kater",
+        "en": "Chamomile Tea Dunker"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6775 Karten ab. Tunkt mit der Pfote behutsam den Teebeutel in die warme Tasse.",
+        "en": "Resolve 6775 cards in total. Dipping a miniature chamomile tea bag string carefully into a warm mug."
+      },
+      "alt": {
+        "de": "Katze tunkt mit Pfote einen Teebeutel in eine dampfende Tasse",
+        "en": "Cat gently dipping a yellow herbal tea bag tag into a pastel mug"
+      },
+      "asset": "web/cats/cat-185.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6775
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06825",
+      "sort_order": 186,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Zähneknirschende Höflichkeit",
+        "en": "Gritted Teeth Smile"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6825 Karten ab. Ein schmerzhaft höfliches Lächeln bei der 10. Wiederholung derselben Karte.",
+        "en": "Resolve 6825 cards in total. Painfully polite gritted teeth on your 10th review of the same card."
+      },
+      "alt": {
+        "de": "Katze lächelt gequält mit zusammengebissenen Zähnen",
+        "en": "Cat smiling through gritted teeth while sweating slightly"
+      },
+      "asset": "web/cats/cat-186.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6825
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06875",
+      "sort_order": 187,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Kissen-Tunnelbauer",
+        "en": "Couch Pillow Excavator"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6875 Karten ab. Gräbt sich zwischen die Polster des Sofas und verschwindet spurlos.",
+        "en": "Resolve 6875 cards in total. Burrowing between sofa cushions and disappearing into another dimension."
+      },
+      "alt": {
+        "de": "Katzenhintern und Schwanz ragen zwischen zwei Sofakissen hervor",
+        "en": "Cat tunneling head-first between two big couch cushions"
+      },
+      "asset": "web/cats/cat-187.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6875
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06925",
+      "sort_order": 188,
+      "pack_id": "popcat_maxwell",
+      "rarity": "rare",
+      "name": {
+        "de": "Königliche Popcat",
+        "en": "Monarch Crown Popcat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6925 Karten ab. Samtkrone mit funkelnden Juwelen herrscht über alle Stapel.",
+        "en": "Resolve 6925 cards in total. Velvet gold crown with rubies reigning supreme over all decks."
+      },
+      "alt": {
+        "de": "Popcat mit goldener königlicher Krone mit roten Juwelen",
+        "en": "Popcat wearing an ornate royal gold crown with ruby jewels"
+      },
+      "asset": "web/cats/cat-188.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6925
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.06975",
+      "sort_order": 189,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Kaffee-Infusion Kater",
+        "en": "Cold Brew IV Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 6975 Karten ab. Ein kleiner Infusionsständer leitet frischen Cold Brew direkt in die Pfote.",
+        "en": "Resolve 6975 cards in total. Miniature medical IV stand dripping pure cold brew coffee straight to paw."
+      },
+      "alt": {
+        "de": "Katze sitzt neben einem Infusionsbeutel voll Kaffee",
+        "en": "Cat sitting next to a glass IV drip bag full of rich dark roast cold brew"
+      },
+      "asset": "web/cats/cat-189.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 6975
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07025",
+      "sort_order": 190,
+      "pack_id": "cozy_loaf",
+      "rarity": "common",
+      "name": {
+        "de": "Muffinblech-Nestler",
+        "en": "Muffin Tin Sitter"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7025 Karten ab. Runder Körper passt perfekt in eine runde Muffin-Backform auf der Arbeitsplatte.",
+        "en": "Resolve 7025 cards in total. Round cat body settling snugly into a circular muffin baking tin tray."
+      },
+      "alt": {
+        "de": "Katze sitzt zusammengerollt in einer metallenen Muffin-Backform",
+        "en": "Cat sitting tucked inside a round indent of a metallic muffin baking tin"
+      },
+      "asset": "web/cats/cat-190.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7025
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07075",
+      "sort_order": 191,
+      "pack_id": "reactions",
+      "rarity": "common",
+      "name": {
+        "de": "Schmoll-Kater",
+        "en": "Sulking Wall Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7075 Karten ab. Hat sich zur Wand gedreht und streikt demonstrativ.",
+        "en": "Resolve 7075 cards in total. Turned around facing the wall in demonstrative strike."
+      },
+      "alt": {
+        "de": "Katze sitzt beleidigt mit dem Rücken zum Betrachter",
+        "en": "Cat sitting turned away facing the wall in protest"
+      },
+      "asset": "web/cats/cat-191.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7075
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07125",
+      "sort_order": 192,
+      "pack_id": "chaos",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Schwanz-Wirbelwind",
+        "en": "Tail Chase Tornado"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7125 Karten ab. Dreht sich im Kreis um die eigene Achse und jagt den eigenen Schwanz.",
+        "en": "Resolve 7125 cards in total. Spinning in dizzying 360 loops chasing its own tail at full throttle."
+      },
+      "alt": {
+        "de": "Katze jagt im Kreis ihren eigenen Schwanz mit Wirbel-Effekt",
+        "en": "Cat in a spiral motion chasing its own tail in circles"
+      },
+      "asset": "web/cats/cat-192.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7125
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07175",
+      "sort_order": 193,
+      "pack_id": "popcat_maxwell",
+      "rarity": "common",
+      "name": {
+        "de": "Strickjacken-Maxwell",
+        "en": "Cardigan Maxwell"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7175 Karten ab. Trägt eine gemütliche braune Strickjacke und nippt an Kamillentee.",
+        "en": "Resolve 7175 cards in total. Wearing a warm knitted cardigan sipping cozy chamomile tea."
+      },
+      "alt": {
+        "de": "Maxwell die Katze trägt eine gemütliche braune Strickweste",
+        "en": "Maxwell tuxedo cat wearing a warm brown buttoned wool cardigan"
+      },
+      "asset": "web/cats/cat-193.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7175
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07225",
+      "sort_order": 194,
+      "pack_id": "work_lockin",
+      "rarity": "epic",
+      "name": {
+        "de": "Doktorhut-Verteidiger",
+        "en": "Thesis Defender Mortarboard"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7225 Karten ab. Schwarzer akademischer Doktorhut mit Quaste vor dem Prüfungsausschuss.",
+        "en": "Resolve 7225 cards in total. Academic mortarboard cap with golden tassel presenting findings to the board."
+      },
+      "alt": {
+        "de": "Katze trägt schwarzen Doktorhut mit goldener Quaste",
+        "en": "Cat proudly wearing a black graduation cap mortarboard with gold tassel"
+      },
+      "asset": "web/cats/cat-194.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7225
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07275",
+      "sort_order": 195,
+      "pack_id": "cozy_loaf",
+      "rarity": "epic",
+      "name": {
+        "de": "Auf Wolke Sieben",
+        "en": "Cloud Nine Daydreamer"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7275 Karten ab. Schwebt entspannt auf einer fluffigen weißen Schönwetter-Wolke im Himmel.",
+        "en": "Resolve 7275 cards in total. Floating weightlessly on a soft, puffy white daydream cloud in pastel skies."
+      },
+      "alt": {
+        "de": "Katze liegt auf einer schwebenden weißen Wolke mit Sternen",
+        "en": "Cat lounging peacefully on a fluffy white cloud drifting across pastel skies"
+      },
+      "asset": "web/cats/cat-195.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7275
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07325",
+      "sort_order": 196,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Kinnlade-Unten Kater",
+        "en": "Jaw Drop Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7325 Karten ab. Kinnlade auf dem Schreibtisch nach einer unerwarteten 2-Tage-Pause.",
+        "en": "Resolve 7325 cards in total. Jaw completely dropped on the desk after a surprise streak reset."
+      },
+      "alt": {
+        "de": "Katze mit bis zum Boden geöffnetem Maul vor Erstaunen",
+        "en": "Cat with jaw dropped cartoonishly low in astonishment"
+      },
+      "asset": "web/cats/cat-196.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7325
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07375",
+      "sort_order": 197,
+      "pack_id": "chaos",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Drucker-Verprügler",
+        "en": "Printer Head Menace"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7375 Karten ab. Schlägt reflexartig auf jedes Blatt Papier, das der Drucker ausspuckt.",
+        "en": "Resolve 7375 cards in total. Bapping the printer head vigorously every time a test page emerges."
+      },
+      "alt": {
+        "de": "Katzenpfote schlägt auf ein aus dem Drucker kommendes Blatt Papier",
+        "en": "Cat swatting a freshly printed paper sheet emerging from printer"
+      },
+      "asset": "web/cats/cat-197.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7375
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07425",
+      "sort_order": 198,
+      "pack_id": "popcat_maxwell",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Rennfahrer-Maxwell",
+        "en": "Go-Kart Racing Maxwell"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7425 Karten ab. Miniatur-Rennhelm dreht Drift-Kreise auf der Zielgeraden.",
+        "en": "Resolve 7425 cards in total. Full-face racing helmet drifting donuts across the finish line."
+      },
+      "alt": {
+        "de": "Maxwell mit buntem Rennhelm und Zielflagge",
+        "en": "Maxwell wearing a sleek red racing helmet with checkered flags"
+      },
+      "asset": "web/cats/cat-198.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7425
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07475",
+      "sort_order": 199,
+      "pack_id": "work_lockin",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Schnell-Leser Wirbel",
+        "en": "Speed Reader Cyclone"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7475 Karten ab. Seiten des Wörterbuchs blättern im Sekundentakt im sanften Wind.",
+        "en": "Resolve 7475 cards in total. Book pages fluttering in rapid succession as information downloads smoothly."
+      },
+      "alt": {
+        "de": "Katze liest Buch im schnellen Vorblättern mit Wind-Effekt",
+        "en": "Cat scanning pages of an open dictionary with dynamic page-flip flutter"
+      },
+      "asset": "web/cats/cat-199.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7475
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07525",
+      "sort_order": 200,
+      "pack_id": "cozy_loaf",
+      "rarity": "legendary",
+      "name": {
+        "de": "Der Ewige Schlummer",
+        "en": "Eternal Slumber Loaf Supreme"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7525 Karten ab. Der vollendete Gipfel aller Entspannung: Ein Kastenbrot von kosmischer Ruhe.",
+        "en": "Resolve 7525 cards in total. The ultimate state of pure feline rest, comfort, and peaceful satisfaction."
+      },
+      "alt": {
+        "de": "Prächtiges Kastenbrot strahlt im sanften Licht ewiger Zufriedenheit",
+        "en": "Magnificent loaf cat glowing softly in warm golden light of eternal relaxation"
+      },
+      "asset": "web/cats/cat-200.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7525
+      },
+      "credit_id": "cozy-loaf-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07575",
+      "sort_order": 201,
+      "pack_id": "reactions",
+      "rarity": "common",
+      "name": {
+        "de": "Kneif-Inspektor",
+        "en": "Squinting Inspector Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7575 Karten ab. Kneift die Augen zusammen, um die mikroskopische Schrift zu entziffern.",
+        "en": "Resolve 7575 cards in total. Squinting hard trying to decipher microscopic card font sizes."
+      },
+      "alt": {
+        "de": "Katze kneift die Augen zu Schlitzen zusammen beim Lesen",
+        "en": "Cat squinting intensely with magnifying monocle"
+      },
+      "asset": "web/cats/cat-201.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7575
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07625",
+      "sort_order": 202,
+      "pack_id": "chaos",
+      "rarity": "common",
+      "name": {
+        "de": "Tapeten-Schmecker",
+        "en": "Wallpaper Licker"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7625 Karten ab. Leckt mit ernster Miene an der Raufasertapete im Flur.",
+        "en": "Resolve 7625 cards in total. Licking the textured hallway wallpaper with solemn determination."
+      },
+      "alt": {
+        "de": "Katze leckt mit Zunge an einer gemusterten Wand",
+        "en": "Cat tongue extended licking a textured wall panel"
+      },
+      "asset": "web/cats/cat-202.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7625
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07675",
+      "sort_order": 203,
+      "pack_id": "popcat_maxwell",
+      "rarity": "epic",
+      "name": {
+        "de": "Hologramm-Maxwell",
+        "en": "Sci-Fi Hologram Maxwell"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7675 Karten ab. Blau flackernde Sci-Fi-Übertragung dreht sich im virtuellen Raum.",
+        "en": "Resolve 7675 cards in total. Glowing blue translucent holographic transmission spinning in 3D."
+      },
+      "alt": {
+        "de": "Maxwell als blau leuchtendes transparentes Hologramm",
+        "en": "Maxwell rendered as a glowing cyan transparent hologram with scanlines"
+      },
+      "asset": "web/cats/cat-203.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7675
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07725",
+      "sort_order": 204,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Gewohnheits-Kaiser",
+        "en": "Habit Tracker Monarch"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7725 Karten ab. Eine 30-Tage-Monatsübersicht lückenlos voll mit goldenen Sternchen.",
+        "en": "Resolve 7725 cards in total. Monthly wall calendar completely filled with golden study stars."
+      },
+      "alt": {
+        "de": "Katze zeigt stolz auf einen Kalender voller goldener Sterne",
+        "en": "Cat pointing proudly to a 30-day habit calendar filled with golden stars"
+      },
+      "asset": "web/cats/cat-204.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7725
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07775",
+      "sort_order": 205,
+      "pack_id": "reactions",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Kicher-Pfötchen",
+        "en": "Giggling Paw Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7775 Karten ab. Hält die Pfote vor das Maul, um ein lautes Kichern zu unterdrücken.",
+        "en": "Resolve 7775 cards in total. Holding paw over mouth stifling a giggle at a funny example sentence."
+      },
+      "alt": {
+        "de": "Katze kichert mit Pfote vor dem Mund und geschlossenen Augen",
+        "en": "Cat giggling with paw over mouth and cheerful crinkled eyes"
+      },
+      "asset": "web/cats/cat-205.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7775
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07825",
+      "sort_order": 206,
+      "pack_id": "chaos",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Badewannen-Curler",
+        "en": "Dry Tub Skater"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7825 Karten ab. Rutscht mit Vollgas durch die trockene Badewanne wie in einer Bobbahn.",
+        "en": "Resolve 7825 cards in total. Slicing through the dry porcelain bathtub like an Olympic bobsledder."
+      },
+      "alt": {
+        "de": "Katze rutscht schwungvoll durch die Rundung einer weißen Badewanne",
+        "en": "Cat banking around the curved wall of a white bathtub"
+      },
+      "asset": "web/cats/cat-206.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7825
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07875",
+      "sort_order": 207,
+      "pack_id": "popcat_maxwell",
+      "rarity": "common",
+      "name": {
+        "de": "Bongo Cat: Maracas",
+        "en": "Bongo Cat: Fiesta Maracas"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7875 Karten ab. Schüttelt bunte Maracas mit unglaublichem rhythmischem Elan.",
+        "en": "Resolve 7875 cards in total. Shaking festive colorful maracas with joyful rhythmic precision."
+      },
+      "alt": {
+        "de": "Bongo Cat schüttelt zwei bunte Holz-Maracas mit Sombrero",
+        "en": "Bongo Cat wearing a mini sombrero shaking two colorful maracas"
+      },
+      "asset": "web/cats/cat-207.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7875
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07925",
+      "sort_order": 208,
+      "pack_id": "work_lockin",
+      "rarity": "common",
+      "name": {
+        "de": "Lesezeichen-Kater",
+        "en": "Dictionary Bookmark Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7925 Karten ab. Liegt bequem als lebendiges Lesezeichen zwischen zwei dicken Buchseiten.",
+        "en": "Resolve 7925 cards in total. Snuggled comfortably between the pages of an encyclopedia as a live bookmark."
+      },
+      "alt": {
+        "de": "Katze liegt langgestreckt zwischen den Seiten eines dicken Buches",
+        "en": "Cat curled comfortably between two heavy pages of a leather dictionary"
+      },
+      "asset": "web/cats/cat-208.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7925
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.07975",
+      "sort_order": 209,
+      "pack_id": "reactions",
+      "rarity": "rare",
+      "name": {
+        "de": "Puff-Schwanz Panik",
+        "en": "Puffy Tail Panic"
+      },
+      "description": {
+        "de": "Schließe insgesamt 7975 Karten ab. Schwanz auf dreifache Dicke aufgeplustert vor Prüfungsangst.",
+        "en": "Resolve 7975 cards in total. Tail puffed to 3x thickness facing an exam countdown."
+      },
+      "alt": {
+        "de": "Katze mit riesig aufgeplustertem Schwanz und erschrockenem Blick",
+        "en": "Cat with massive bottle-brush puffed tail in cartoon panic"
+      },
+      "asset": "web/cats/cat-209.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 7975
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.08025",
+      "sort_order": 210,
+      "pack_id": "chaos",
+      "rarity": "rare",
+      "name": {
+        "de": "Jalousien-Schredder",
+        "en": "Blinds Shredder"
+      },
+      "description": {
+        "de": "Schließe insgesamt 8025 Karten ab. Köpft sich durch die Lamellen der Jalousie, um den Nachbarshund zu sehen.",
+        "en": "Resolve 8025 cards in total. Wedging head between horizontal blind slats to inspect the street."
+      },
+      "alt": {
+        "de": "Katzenkopf schaut durch verbogene Fensterlamellen",
+        "en": "Cat head stuck between bent white horizontal window blinds"
+      },
+      "asset": "web/cats/cat-210.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 8025
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.08075",
+      "sort_order": 211,
+      "pack_id": "popcat_maxwell",
+      "rarity": "uncommon",
+      "name": {
+        "de": "Bongo Cat: Akustik-Gitarre",
+        "en": "Bongo Cat: Campfire Guitar"
+      },
+      "description": {
+        "de": "Schließe insgesamt 8075 Karten ab. Zupft sanfte Lagerfeuer-Akkorde zur Belohnung nach 100 Karten.",
+        "en": "Resolve 8075 cards in total. Strumming gentle acoustic campfire chords after a solid 100 cards."
+      },
+      "alt": {
+        "de": "Bongo Cat zupft an einer hölzernen Akustikgitarre",
+        "en": "Bongo Cat happily strumming a miniature wooden acoustic guitar"
+      },
+      "asset": "web/cats/cat-211.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 8075
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.08125",
+      "sort_order": 212,
+      "pack_id": "work_lockin",
+      "rarity": "rare",
+      "name": {
+        "de": "Zeitwächter-Kater",
+        "en": "Golden Pocket Watchkeeper"
+      },
+      "description": {
+        "de": "Schließe insgesamt 8125 Karten ab. Hält eine antike goldene Taschenuhr und überwacht jede Lernsekunde.",
+        "en": "Resolve 8125 cards in total. Holding an antique golden pocket watch accurately keeping focus intervals."
+      },
+      "alt": {
+        "de": "Katze hält eine goldene Taschenuhr an einer Kette",
+        "en": "Cat holding a gleaming antique gold open-face pocket watch on a chain"
+      },
+      "asset": "web/cats/cat-212.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 8125
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.08175",
+      "sort_order": 213,
+      "pack_id": "reactions",
+      "rarity": "common",
+      "name": {
+        "de": "Enttäuschter Seufzer",
+        "en": "Disappointed Sigh"
+      },
+      "description": {
+        "de": "Schließe insgesamt 8175 Karten ab. Kopf auf Pfoten gelegt, Ohren flach im sanften Kummer.",
+        "en": "Resolve 8175 cards in total. Head resting on paws, ears flat in gentle disappointment."
+      },
+      "alt": {
+        "de": "Katze lässt traurig die Ohren hängen und seufzt",
+        "en": "Cat with flattened airplane ears sighing gently over paws"
+      },
+      "asset": "web/cats/cat-213.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 8175
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.08225",
+      "sort_order": 214,
+      "pack_id": "chaos",
+      "rarity": "rare",
+      "name": {
+        "de": "Müsli-Karton Kopf",
+        "en": "Cereal Box Trap"
+      },
+      "description": {
+        "de": "Schließe insgesamt 8225 Karten ab. Kopf steckt in der leeren Haferflocken-Packung und tappt durchs Zimmer.",
+        "en": "Resolve 8225 cards in total. Head firmly wedged inside an empty cereal box wandering blindly."
+      },
+      "alt": {
+        "de": "Katze mit bunter Müslischachtel über dem Kopf",
+        "en": "Cat wandering around with a colorful cereal box over head"
+      },
+      "asset": "web/cats/cat-214.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 8225
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.08275",
+      "sort_order": 215,
+      "pack_id": "popcat_maxwell",
+      "rarity": "legendary",
+      "name": {
+        "de": "Kosmische Popcat-Supernova",
+        "en": "Popcat Supernova"
+      },
+      "description": {
+        "de": "Schließe insgesamt 8275 Karten ab. Ein kosmisches 'POP!' erschüttert die Galaxie mit goldenen Sternen.",
+        "en": "Resolve 8275 cards in total. A cosmic POP of astronomical proportions shaking the study galaxy."
+      },
+      "alt": {
+        "de": "Popcat im Zentrum einer leuchtenden Sternen-Supernova",
+        "en": "Popcat exploding with golden energy rays like a cosmic supernova"
+      },
+      "asset": "web/cats/cat-215.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 8275
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.08325",
+      "sort_order": 216,
+      "pack_id": "work_lockin",
+      "rarity": "epic",
+      "name": {
+        "de": "Flow-Zustand Meister",
+        "en": "Pure Flow State Aura"
+      },
+      "description": {
+        "de": "Schließe insgesamt 8325 Karten ab. Schwebt in einer blauen Aura der reinsten, unerschütterlichen Konzentration.",
+        "en": "Resolve 8325 cards in total. Hovering in a serene cyan sphere of absolute effortless flow concentration."
+      },
+      "alt": {
+        "de": "Katze meditiert umgeben von einer blau leuchtenden Flow-Aura",
+        "en": "Cat hovering serenely surrounded by an ethereal glowing cyan flow aura"
+      },
+      "asset": "web/cats/cat-216.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 8325
+      },
+      "credit_id": "work-lockin-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.08375",
+      "sort_order": 217,
+      "pack_id": "reactions",
+      "rarity": "legendary",
+      "name": {
+        "de": "Zen-Erleuchteter Kater",
+        "en": "Zen Master Cat"
+      },
+      "description": {
+        "de": "Schließe insgesamt 8375 Karten ab. Vollkommener innerer Friede. Die Karten fließen wie Wasser.",
+        "en": "Resolve 8375 cards in total. Absolute inner peace. The flashcards flow like gentle mountain water."
+      },
+      "alt": {
+        "de": "Katze meditiert im Lotussitz mit goldenem Heiligenschein",
+        "en": "Cat meditating in zen lotus pose with golden halo"
+      },
+      "asset": "web/cats/cat-217.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 8375
+      },
+      "credit_id": "reactions-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.08425",
+      "sort_order": 218,
+      "pack_id": "chaos",
+      "rarity": "legendary",
+      "name": {
+        "de": "Chaos-Dämon",
+        "en": "Chaos Demon Ascendant"
+      },
+      "description": {
+        "de": "Schließe insgesamt 8425 Karten ab. Reine unbändige Goblin-Energie. Pupillen auf 100%, Ohren im Angriffsmodus.",
+        "en": "Resolve 8425 cards in total. Pure untamed goblin aura. Pupils dilated 100%, airplane ears fully engaged."
+      },
+      "alt": {
+        "de": "Katze im Angriffsmodus mit lila Chaos-Aura und riesigen schwarzen Pupillen",
+        "en": "Cat with wild airplane ears surrounded by purple chaotic anime aura"
+      },
+      "asset": "web/cats/cat-218.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 8425
+      },
+      "credit_id": "chaos-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.08475",
+      "sort_order": 219,
+      "pack_id": "popcat_maxwell",
+      "rarity": "legendary",
+      "name": {
+        "de": "Das Ultimative Legenden-Duo",
+        "en": "Maxwell & Popcat Supreme"
+      },
+      "description": {
+        "de": "Schließe insgesamt 8475 Karten ab. Popcat und Maxwell Rücken an Rücken vereint im ultimativen Meme-Gipfel.",
+        "en": "Resolve 8475 cards in total. Popcat and Maxwell back-to-back crowned in supreme meme mastery."
+      },
+      "alt": {
+        "de": "Popcat und Maxwell gemeinsam Rücken an Rücken mit Siegerkranz",
+        "en": "Popcat and Maxwell Dingus side-by-side bathed in golden victory light"
+      },
+      "asset": "web/cats/cat-219.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 8475
+      },
+      "credit_id": "popcat-maxwell-community"
+    },
+    {
+      "id": "cat.resolved_cards_total.08525",
+      "sort_order": 220,
+      "pack_id": "work_lockin",
+      "rarity": "legendary",
+      "name": {
+        "de": "Großmeister der Gelehrsamkeit",
+        "en": "Grandmaster Scholar Ascendant"
+      },
+      "description": {
+        "de": "Schließe insgesamt 8525 Karten ab. Die höchste Ehre für alle, die das Lernen zu ihrer wahren Kunst gemacht haben.",
+        "en": "Resolve 8525 cards in total. The ultimate golden accolade for those who turned daily study into high art."
+      },
+      "alt": {
+        "de": "Gelehrter Kater mit goldenem Lorbeerkranz und schwebenden Runen",
+        "en": "Ascendant scholar cat crowned in gold laurels surrounded by wisdom runes"
+      },
+      "asset": "web/cats/cat-220.png",
+      "unlock": {
+        "metric": "resolved_cards_total",
+        "threshold": 8525
+      },
+      "credit_id": "work-lockin-community"
+    }
+  ],
+  "packs": [
+    {
+      "id": "classic",
+      "name": {
+        "de": "Klassische Legenden",
+        "en": "Classic Legends"
+      },
+      "description": {
+        "de": "Die 50 legendären Ur-Katzen des Internets.",
+        "en": "The 50 original legendary cats of the internet."
+      },
+      "badge_color": "#9b5de5"
+    },
+    {
+      "id": "reactions",
+      "name": {
+        "de": "Emotionen & Drama",
+        "en": "Emotional & Dramatic"
+      },
+      "description": {
+        "de": "Verzweiflung, Hoffnung und pure Dramatik beim Lernen.",
+        "en": "Despair, hope, and pure study drama."
+      },
+      "badge_color": "#f15bb5"
+    },
+    {
+      "id": "chaos",
+      "name": {
+        "de": "Chaos & 3-Uhr-Zoomies",
+        "en": "Chaos & 3 AM Zoomies"
+      },
+      "description": {
+        "de": "Unberechenbare Energie, Kobolde und absolute Eskalation.",
+        "en": "Unpredictable energy, goblins, and unhinged antics."
+      },
+      "badge_color": "#fee440"
+    },
+    {
+      "id": "popcat_maxwell",
+      "name": {
+        "de": "Popcat & Maxwell",
+        "en": "Popcat & Maxwell Universe"
+      },
+      "description": {
+        "de": "Die Meister des Rhythmus, des Rotierens und des Poppens.",
+        "en": "The masters of rhythm, spinning, and popping."
+      },
+      "badge_color": "#00bbf9"
+    },
+    {
+      "id": "work_lockin",
+      "name": {
+        "de": "Arbeit, Studium & Fokus",
+        "en": "Work, Study & Lock-In"
+      },
+      "description": {
+        "de": "Disziplin, Überstunden und unzerstörbarer Hyperfokus.",
+        "en": "Hard work, overtime, and unbreakable study focus."
+      },
+      "badge_color": "#00f5d4"
+    },
+    {
+      "id": "cozy_loaf",
+      "name": {
+        "de": "Gemütlich & Chonky",
+        "en": "Cozy, Chonk & Loaf"
+      },
+      "description": {
+        "de": "Wohlverdiente Entspannung, runde Brotlaibe und sanftes Schnurren.",
+        "en": "Well-deserved rest, round loaves, and gentle purrs."
+      },
+      "badge_color": "#ff9f1c"
     }
   ]
 }

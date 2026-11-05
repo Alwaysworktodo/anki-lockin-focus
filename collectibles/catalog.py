@@ -18,30 +18,34 @@ DEFAULT_LOCALE = "de"
 CATALOG_SCHEMA_VERSION = 1
 DAILY_GOAL = 20
 
+CLASSIC_RESOLVED_THRESHOLDS: tuple[int, ...] = (
+    1,
+    5,
+    10,
+    25,
+    50,
+    100,
+    200,
+    350,
+    500,
+    750,
+    1000,
+    1500,
+    2500,
+    4000,
+    7000,
+    10000,
+)
+EXPANSION_RESOLVED_THRESHOLDS: tuple[int, ...] = tuple(75 + (i * 50) for i in range(170))
+
 EXPECTED_THRESHOLDS: dict[str, tuple[int, ...]] = {
-    "resolved_cards_total": (
-        1,
-        5,
-        10,
-        25,
-        50,
-        100,
-        200,
-        350,
-        500,
-        750,
-        1000,
-        1500,
-        2500,
-        4000,
-        7000,
-        10000,
-    ),
+    "resolved_cards_total": CLASSIC_RESOLVED_THRESHOLDS + EXPANSION_RESOLVED_THRESHOLDS,
     "session_resolved_max": (3, 5, 8, 10, 15, 20, 25, 30, 40, 50, 75, 100),
     "recoveries_total": (1, 3, 5, 10, 20, 35, 50, 100),
     "daily_goal_streak_max": (2, 3, 5, 7, 14, 30, 60, 100),
     "qualified_days_total": (1, 5, 10, 25, 50, 100),
 }
+TOTAL_CATS = 220
 
 
 class CatalogError(ValueError):
@@ -63,9 +67,26 @@ def _translated(values: Mapping[str, str], locale: str) -> str:
 
 
 @dataclass(frozen=True)
+class PackEntry:
+    id: str
+    name: Mapping[str, str]
+    description: Mapping[str, str]
+    badge_color: str
+
+    def localized(self, locale: str) -> dict[str, str]:
+        return {
+            "id": self.id,
+            "localized_name": _translated(self.name, locale),
+            "localized_description": _translated(self.description, locale),
+            "badge_color": self.badge_color,
+        }
+
+
+@dataclass(frozen=True)
 class CatEntry:
     id: str
     sort_order: int
+    pack_id: str
     rarity: str
     name: Mapping[str, str]
     description: Mapping[str, str]
@@ -82,6 +103,7 @@ class CatEntry:
         return {
             "id": self.id,
             "sort_order": self.sort_order,
+            "pack_id": self.pack_id,
             "rarity": self.rarity,
             "localized_name": _translated(self.name, locale),
             "localized_description": _translated(self.description, locale),
@@ -101,6 +123,7 @@ class Catalog:
         entries: Iterable[CatEntry],
         credits: Mapping[str, Mapping[str, str]],
         *,
+        packs: Iterable[PackEntry] = (),
         schema_version: int = CATALOG_SCHEMA_VERSION,
         daily_goal: int = DAILY_GOAL,
     ) -> None:
@@ -109,6 +132,11 @@ class Catalog:
         self.entries = tuple(sorted(entries, key=lambda entry: entry.sort_order))
         self.credits = {key: dict(value) for key, value in credits.items()}
         self.by_id = {entry.id: entry for entry in self.entries}
+        self.packs = tuple(packs)
+        self.packs_by_id = {pack.id: pack for pack in self.packs}
+
+    def entries_by_pack(self, pack_id: str) -> list[CatEntry]:
+        return [entry for entry in self.entries if entry.pack_id == pack_id]
 
     @classmethod
     def load(cls, path: str | Path | None = None) -> "Catalog":
@@ -119,10 +147,20 @@ class Catalog:
             raise CatalogError(f"Unable to load collectible catalog: {exc}") from exc
 
         cls._validate_raw(raw)
+        packs = [
+            PackEntry(
+                id=item["id"],
+                name=dict(item["name"]),
+                description=dict(item["description"]),
+                badge_color=item.get("badge_color", "#888888"),
+            )
+            for item in raw.get("packs", [])
+        ]
         entries = [
             CatEntry(
                 id=item["id"],
                 sort_order=item["sort_order"],
+                pack_id=item.get("pack_id", "classic"),
                 rarity=item["rarity"],
                 name=dict(item["name"]),
                 description=dict(item["description"]),
@@ -137,6 +175,7 @@ class Catalog:
         return cls(
             entries,
             raw["credits"],
+            packs=packs,
             schema_version=raw["schema_version"],
             daily_goal=raw["daily_goal"],
         )
@@ -153,13 +192,13 @@ class Catalog:
         if not isinstance(credits, dict) or not credits:
             raise CatalogError("Catalog must define credits")
         cats = raw.get("cats")
-        if not isinstance(cats, list) or len(cats) != 50:
-            raise CatalogError("Catalog must contain exactly 50 cats")
+        if not isinstance(cats, list) or len(cats) != TOTAL_CATS:
+            raise CatalogError(f"Catalog must contain exactly {TOTAL_CATS} cats")
 
         seen_ids: set[str] = set()
         seen_orders: set[int] = set()
         seen_assets: set[str] = set()
-        expected_assets = {f"web/cats/cat-{number:02d}.png" for number in range(1, 51)}
+        expected_assets = {f"web/cats/cat-{number:02d}.png" for number in range(1, TOTAL_CATS + 1)}
         thresholds: dict[str, list[int]] = {metric: [] for metric in EXPECTED_THRESHOLDS}
         allowed_rarities = {"common", "uncommon", "rare", "epic", "legendary"}
 
@@ -206,10 +245,10 @@ class Catalog:
                 raise CatalogError(f"Invalid unlock rule for {cat_id}")
             thresholds[metric].append(threshold)
 
-        if seen_orders != set(range(1, 51)):
-            raise CatalogError("sort_order values must be exactly 1 through 50")
+        if seen_orders != set(range(1, TOTAL_CATS + 1)):
+            raise CatalogError(f"sort_order values must be exactly 1 through {TOTAL_CATS}")
         if seen_assets != expected_assets:
-            raise CatalogError("Catalog must use every cat-01.png through cat-50.png exactly once")
+            raise CatalogError(f"Catalog must use every cat-01.png through cat-{TOTAL_CATS:02d}.png exactly once")
         for metric, expected in EXPECTED_THRESHOLDS.items():
             actual = tuple(thresholds[metric])
             if actual != expected:
@@ -232,13 +271,17 @@ def load_catalog(path: str | Path | None = None) -> Catalog:
 
 __all__ = [
     "CATALOG_SCHEMA_VERSION",
+    "CLASSIC_RESOLVED_THRESHOLDS",
     "DAILY_GOAL",
     "DEFAULT_LOCALE",
+    "EXPANSION_RESOLVED_THRESHOLDS",
     "EXPECTED_THRESHOLDS",
     "SUPPORTED_LOCALES",
+    "TOTAL_CATS",
     "CatEntry",
     "Catalog",
     "CatalogError",
+    "PackEntry",
     "load_catalog",
     "normalize_locale",
 ]

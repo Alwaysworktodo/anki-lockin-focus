@@ -685,7 +685,7 @@
     const milestone = snapshot && snapshot.next_milestone;
     if (!milestone) {
       const unlocked = Math.max(0, finiteNumber(snapshot && snapshot.unlocked_count, 0));
-      const total = Math.max(1, finiteNumber(snapshot && snapshot.total_count, 50));
+      const total = Math.max(1, finiteNumber(snapshot && snapshot.total_count, 220));
       return unlocked >= total ? t('collection_complete') : t('collection_empty');
     }
     let label = milestone.localized_label || milestone.label || milestone.progress_label ||
@@ -713,7 +713,7 @@
     }
 
     const unlocked = Math.max(0, finiteNumber(snapshot.unlocked_count, 0));
-    const total = Math.max(1, finiteNumber(snapshot.total_count, 50));
+    const total = Math.max(1, finiteNumber(snapshot.total_count, 220));
     const equipped = snapshot.equipped || snapshot.equipped_cat || null;
     const name = catDisplayName(equipped);
     const milestoneText = nextMilestoneText(snapshot);
@@ -1007,7 +1007,7 @@
                 <span id="lockin-cat-avatar-fallback" class="lockin-cat-avatar-fallback">🐈</span>
               </span>
               <span class="lockin-cat-chip-copy">
-                <span id="lockin-cat-count">${t('collection_count', { unlocked: 0, total: 50 })}</span>
+                <span id="lockin-cat-count">${t('collection_count', { unlocked: 0, total: 220 })}</span>
                 <span id="lockin-cat-next">${t('collection_empty')}</span>
               </span>
               <span id="lockin-cat-unseen" class="lockin-cat-unseen" hidden></span>
@@ -1043,6 +1043,32 @@
         const stopBtn = document.getElementById('lockin-pomo-stop-btn');
         if (stopBtn) stopBtn.addEventListener('click', stopPomodoro);
       }
+    }
+
+    // Deck list / deck overview: small floating Pomodoro pill (bottom-right)
+    // so the timer can be paused, resumed or reset outside of reviews. It
+    // reuses the reviewer's element IDs so updateUI() drives it unchanged.
+    // These webviews never run their own countdown (see tick()).
+    if ((isDeckBrowserWebview || isOverviewWebview) && config.pomodoro_visible !== false
+        && !document.getElementById('lockin-pomo-widget')) {
+      const widget = document.createElement('div');
+      widget.id = 'lockin-pomo-widget';
+      widget.lang = getLocale();
+      widget.innerHTML = `
+        <div id="lockin-pomo-status">
+          <span class="lockin-dot"></span>
+          <span id="lockin-pomo-timer">25:00</span>
+          <span class="lockin-pomo-controls">
+            <button type="button" class="lockin-pomo-btn" id="lockin-pomo-pause-btn" title="${t('pause_timer')}" aria-label="${t('pause_timer')}">⏸</button>
+            <button type="button" class="lockin-pomo-btn" id="lockin-pomo-resume-btn" title="${t('resume_timer')}" aria-label="${t('resume_timer')}" style="display:none;">▶</button>
+            <button type="button" class="lockin-pomo-btn" id="lockin-pomo-stop-btn" title="${t('stop_timer')}" aria-label="${t('stop_timer')}">■</button>
+          </span>
+        </div>
+      `;
+      document.body.appendChild(widget);
+      document.getElementById('lockin-pomo-pause-btn').addEventListener('click', pausePomodoro);
+      document.getElementById('lockin-pomo-resume-btn').addEventListener('click', resumePomodoro);
+      document.getElementById('lockin-pomo-stop-btn').addEventListener('click', stopPomodoro);
     }
 
     // Only create overlays in the main webview or deck list screens
@@ -1091,8 +1117,9 @@
         document.body.appendChild(overlay);
       }
 
-      // Break screen overlay
-      if (!document.getElementById('lockin-break-overlay')) {
+      // Break screen overlay (reviewer only: a full-screen overlay must never
+      // block the deck list or deck overview)
+      if (isMainWebview && !document.getElementById('lockin-break-overlay')) {
         const breakOverlay = document.createElement('div');
         breakOverlay.id = 'lockin-break-overlay';
         breakOverlay.lang = getLocale();
@@ -1989,6 +2016,8 @@
       // Clean up existing elements and rebuild based on new config position
       const bar = document.getElementById('lockin-bar');
       if (bar) bar.remove();
+      const widget = document.getElementById('lockin-pomo-widget');
+      if (widget) widget.remove();
       const overlay = document.getElementById('lockin-break-overlay');
       if (overlay) overlay.remove();
       const lowHealth = document.getElementById('lockin-low-health-overlay');

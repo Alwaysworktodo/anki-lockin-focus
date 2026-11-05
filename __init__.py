@@ -55,6 +55,7 @@ _current_rating_map = {1: "again", 2: "hard", 3: "good", 4: "easy"}
 _layout_snapshot = None
 _review_session_id = None
 _answer_undo_counters = {}
+_fallback_undo_seq = 0
 _collectibles_store = None
 _collection_action = None
 _latest_buttons_payload = None
@@ -133,7 +134,7 @@ def collection_snapshot(include_cats=False):
         "locale": ui_language(config),
         "enabled": False,
         "unlocked_count": 0,
-        "total_count": 50,
+        "total_count": 220,
         "unseen_count": 0,
         "equipped": None,
         "next_milestone": None,
@@ -477,6 +478,7 @@ def set_distraction_free(visible: bool, ignore_config: bool = False):
             bottom_web.setVisible(snapshot["bottom"])
     else:
         if distraction_enabled and (ignore_config or config.get("no_distraction_hide_menu_bar", True)):
+            keep_menu_shortcuts_active()
             mw.menuBar().setVisible(False)
         if distraction_enabled and (ignore_config or config.get("no_distraction_hide_top_toolbar", True)):
             if hasattr(mw, "toolbar") and mw.toolbar and hasattr(mw.toolbar, "web") and mw.toolbar.web:
@@ -593,6 +595,34 @@ def toggle_distraction_free():
     menu_bar_visible = mw.menuBar().isVisible()
     set_distraction_free(not menu_bar_visible, ignore_config=True)
 
+def keep_menu_shortcuts_active():
+    """
+    A hidden menu bar stops its keyboard shortcuts (e.g. Ctrl+Z / Strg+Z undo)
+    on Linux. Also register every menu action on the main window so shortcuts
+    keep working in distraction-free mode. Same QAction object, so no
+    ambiguous-shortcut conflicts when the menu bar is visible again.
+    """
+    try:
+        existing = set(mw.actions())
+
+        def walk(menu, depth=0):
+            if depth > 5:
+                return
+            for action in menu.actions():
+                submenu = action.menu()
+                if submenu is not None:
+                    walk(submenu, depth + 1)
+                elif action not in existing and any(not seq.isEmpty() for seq in action.shortcuts()):
+                    mw.addAction(action)
+                    existing.add(action)
+
+        for top_action in mw.menuBar().actions():
+            menu = top_action.menu()
+            if menu is not None:
+                walk(menu)
+    except Exception:
+        _log.exception("Unable to keep menu shortcuts active")
+
 def setup_shortcuts():
     """
     Binds the keyboard shortcuts globally.
@@ -645,6 +675,25 @@ def _advance_pomodoro(state, time_left, elapsed, study_duration, break_duration)
     return state, max(0.0, time_left - elapsed)
 
 
+def _deck_browser_class():
+    try:
+        import aqt.deckbrowser
+        return getattr(aqt.deckbrowser, "DeckBrowser", None)
+    except Exception:
+        return None
+
+
+def _deck_screen_classes():
+    """DeckBrowser / Overview classes (empty tuple if unavailable)."""
+    classes = [_deck_browser_class()]
+    try:
+        import aqt.overview
+        classes.append(getattr(aqt.overview, "Overview", None))
+    except Exception:
+        pass
+    return tuple(cls for cls in classes if isinstance(cls, type))
+
+
 # Hook into Web Content Loading to inject JS and CSS
 def on_webview_will_set_content(web_content, context):
     from aqt.qt import sip
@@ -658,6 +707,9 @@ def on_webview_will_set_content(web_content, context):
     allowed_contexts = [aqt.reviewer.Reviewer]
     if hasattr(aqt.reviewer, "ReviewerBottomBar"):
         allowed_contexts.append(aqt.reviewer.ReviewerBottomBar)
+    # Deck list / overview only get the floating Pomodoro pill.
+    deck_contexts = _deck_screen_classes()
+    allowed_contexts.extend(deck_contexts)
         
     if not isinstance(context, tuple(allowed_contexts)):
         return
@@ -688,6 +740,8 @@ def on_webview_will_set_content(web_content, context):
     # Determine the webview kind from Python context
     if hasattr(aqt.reviewer, "ReviewerBottomBar") and isinstance(context, aqt.reviewer.ReviewerBottomBar):
         webview_kind = "bottom"
+    elif deck_contexts and isinstance(context, deck_contexts):
+        webview_kind = "deckBrowser" if (_deck_browser_class() and isinstance(context, _deck_browser_class())) else "overview"
     else:
         webview_kind = "main"
 
@@ -708,8 +762,8 @@ def on_webview_will_set_content(web_content, context):
 
     # Append custom stylesheet and script to the reviewer content.
     # Version query strings bust Anki's web cache after addon updates.
-    web_content.css.append(f"/_addons/{addon_package}/web/lockin.css?v=5")
-    web_content.js.append(f"/_addons/{addon_package}/web/lockin.js?v=5")
+    web_content.css.append(f"/_addons/{addon_package}/web/lockin.css?v=6")
+    web_content.js.append(f"/_addons/{addon_package}/web/lockin.js?v=6")
 
 gui_hooks.webview_will_set_content.append(on_webview_will_set_content)
 
@@ -798,13 +852,16 @@ def on_reviewer_will_init_answer_buttons(buttons, reviewer, card):
     return buttons
 
 def on_reviewer_did_answer_card(reviewer, card, ease):
+    global _fallback_undo_seq
     counter = None
     try:
         counter = mw.col.undo_status().last_step
     except Exception:
         _log.exception("Unable to read Anki undo counter")
-    if counter is not None:
-        _answer_undo_counters[counter] = {"session_id": _review_session_id, "items": [], "status": "active", "counter": counter}
+    if counter is None:
+        _fallback_undo_seq -= 1
+        counter = _fallback_undo_seq
+    _answer_undo_counters[counter] = {"session_id": _review_session_id, "items": [], "status": "active", "counter": counter}
 
     label = _current_rating_map.get(ease, "again" if ease == 1 else "good")
     if mw.reviewer and mw.reviewer.web:
@@ -840,10 +897,35 @@ if hasattr(gui_hooks, "reviewer_will_init_answer_buttons"):
 
 # Hook into undo event to revert health/stats gains
 if hasattr(gui_hooks, "state_did_undo"):
+    def _find_undone_answer_counter():
+        """Fallback when Anki's undo counter doesn't match a recorded answer:
+        the newest active answer whose review-log rows are gone was undone."""
+        if not mw or not getattr(mw, "col", None):
+            return None
+        for key in reversed(list(_answer_undo_counters.keys())):
+            operation = _answer_undo_counters[key]
+            if operation.get("status") != "active":
+                continue
+            revlogs = operation.get("revlog_ids") or []
+            if not revlogs:
+                return None
+            try:
+                placeholders = ",".join("?" for _ in revlogs)
+                remaining = mw.col.db.scalar(
+                    f"SELECT COUNT(*) FROM revlog WHERE id IN ({placeholders})", *revlogs
+                )
+            except Exception:
+                _log.exception("Unable to verify undone answer")
+                return None
+            return key if not remaining else None
+        return None
+
     def on_state_did_undo(changes):
         counter = getattr(changes, "counter", None)
         if counter not in _answer_undo_counters:
-            return
+            counter = _find_undone_answer_counter()
+            if counter is None:
+                return
         operation = _answer_undo_counters[counter]
         if operation["status"] != "active":
             return
@@ -896,7 +978,11 @@ def on_js_message(handled, message, context):
         allowed_contexts.append(aqt.reviewer.ReviewerBottomBar)
         
     if not isinstance(context, tuple(allowed_contexts)):
-        return handled
+        # The deck list / overview Pomodoro pill may only sync the timer.
+        deck_contexts = _deck_screen_classes()
+        if not (deck_contexts and isinstance(context, deck_contexts)
+                and isinstance(message, str) and message.startswith("lockin-pomo-sync:")):
+            return handled
 
     if not isinstance(message, str):
         return handled

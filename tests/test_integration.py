@@ -244,12 +244,12 @@ def test_collection_frontend_contract_is_exposed() -> None:
     assert "prefers-reduced-motion" in source
 
 
-def test_exactly_fifty_well_formed_local_cat_pngs() -> None:
-    cat_paths = sorted(CAT_DIRECTORY.glob("*.png"))
-    expected_names = [f"cat-{number:02d}.png" for number in range(1, 51)]
+def test_exactly_two_hundred_twenty_well_formed_local_cat_pngs() -> None:
+    cat_paths = sorted(CAT_DIRECTORY.glob("*.png"), key=lambda path: int(path.stem.split("-")[1]))
+    expected_names = [f"cat-{number:02d}.png" for number in range(1, 221)]
 
     assert [path.name for path in cat_paths] == expected_names
-    assert len(cat_paths) == 50
+    assert len(cat_paths) == 220
 
     for path in cat_paths:
         data = path.read_bytes()
